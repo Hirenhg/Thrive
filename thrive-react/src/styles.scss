@@ -1,0 +1,17 @@
+$primary: #171717;
+$primary-hover: #262626;
+$secondary: #dfb938;
+$gray100: #f5f5f5;
+$gray200: #e5e5e5;
+$gray300: #737373;
+$gray400: #a3a3a3;
+$gray500: #fafafa;
+$gray600: #404040;
+$text-danger: #ef4444;
+$text-blue: #1d4ed8;
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    background-color: #f8f9fa;
+}
