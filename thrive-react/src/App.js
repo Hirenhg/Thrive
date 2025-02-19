@@ -1,8 +1,10 @@
+import React from 'react'
+import Layout from "./Layout/Layout";
+import Login from './pages/Login/Login';
+
 function App() {
   return (
-    <div className="container">
-      <button className="btn btn-primary">Project Setup</button>
-    </div>
+    <Layout/>
   );
 }
 
