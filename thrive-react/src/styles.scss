@@ -43,7 +43,6 @@ $text-blue: #1d4ed8;
         animation: spin 1s linear infinite;
         display: block;
         margin-bottom: 20px;
-        margin-bottom: 20px;
     }
 
     .loading-text {
@@ -1195,6 +1194,9 @@ input[type=number] {
 }
 /// ** bank transfer end ***/
 /*** table start */
+.table > :not(:last-child) > :last-child > * {
+    border-color: $gray100;
+}
 .table {
     th,
     td {

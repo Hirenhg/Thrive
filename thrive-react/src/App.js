@@ -1,10 +1,19 @@
 import React from 'react'
 import Layout from "./Layout/Layout";
-import Login from './pages/Login/Login';
+
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Login from './pages/Login/Login';
 
 function App() {
   return (
-    <Layout/>
+    <>
+      {/* <Router>
+        <Routes>
+            <Route path="/login" element={<Login />} />
+          </Routes>
+      </Router> */}
+      <Layout/>
+    </>
   );
 }
 
