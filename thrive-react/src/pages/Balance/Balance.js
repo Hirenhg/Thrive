@@ -1,34 +1,13 @@
 import React from 'react'
 import TopBalance from '../../components/TopBalance/TopBalance'
+import FilterHeading from '../../components/FilterHeading/FilterHeading'
 
 const Balance = () => {
   return (
     <div className='balance-main'>
       <TopBalance />
       <div className="bg-white border-radius-14 w-100 balance-history-box rounder-sm-0 padding-30 border-ea">
-        <div className="d-flex align-items-md-center flex-column flex-md-row justify-content-between margin-b-20">
-          <h6 className="margin-b-20 mb-md-0 margin-r-10 text-capitalize">
-            Transaction History
-          </h6>
-
-          <div className="d-flex align-items-md-center flex-column flex-md-row justify-content-md-end flex-grow-1 flex-shrink-1">
-            <div className="form-group margin-r-10 mw-md-200 searchbar">
-              <input type="text" id="txtSearch"
-                className="form-control w-100 f-size-12 fw-medium text-gray-400"
-                placeholder="Search"
-              />
-            </div>
-            <div className="mw-md-150 w-100 margin-r-10">
-              <select className="form-select form-control w-100 f-size-12 fw-medium text-gray-400">
-                <option>Type</option>
-              </select>
-            </div>
-            <div className="btns d-flex align-items-center">
-              <button id="btnSearch" type="button" className="btn btn-primary btn-primary-hover rounded f-size-12 fw-medium">Search</button>
-              <button id="btnClear" type="button" className="btn btn-primary btn-primary-hover rounded f-size-12 fw-medium margin-l-10">Clear</button>
-            </div>
-          </div>
-        </div>
+        <FilterHeading/>
         <form id="ProfilePersonalForm" FormName="ProfilePersonalForm" className="w-100">
           <table className="table transaction-history-table" id="tblBalance">
             <thead className="bg-gray-100 rounded">

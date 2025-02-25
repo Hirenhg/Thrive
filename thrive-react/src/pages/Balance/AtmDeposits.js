@@ -1,17 +1,19 @@
 import React from 'react'
+import PageHeading from '../../components/PageHeading/PageHeading'
 
 const AtmDeposits = () => {
     return (
 
         <div className="atm-desposits-main">
-            <div className="d-flex align-items-center margin-b-20 page-heading">
+            <PageHeading/>
+            {/* <div className="d-flex align-items-center margin-b-20 page-heading">
                 <a className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 d-flex align-items-center justify-content-center" href="/balance">
                     <i className="icon ico-desposit"></i>
                 </a>
                 <h6 className="mb-0 text-primary fw-medium text-capitalize">
                     Deposit
                 </h6>
-            </div>
+            </div> */}
             <div className="bg-white border-radius-14 w-100 contant-detail-box rounder-sm-0 border-ea atm-desposits-detail-box">
                 <div className="atm-desposits-detail-info-title">
                     <h5 className="margin-b-20 text-primary">Nearest Standard Bank ATM’s</h5>
