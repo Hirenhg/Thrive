@@ -1,15 +1,12 @@
 import React from 'react'
+import PageHeading from '../../components/PageHeading/PageHeading'
+import Pagination from '../../components/Pagination/Pagination'
 
 const TransactionDetail = () => {
     return (
         <div className="transaction-detail-main">
-            <div className="d-flex align-items-center margin-b-20 page-heading">
-                <a className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 d-flex align-items-center justify-content-center" href="/balance">
-                    <i className="icon ico-back"></i>
-                </a>
-                <h6 className="mb-0 text-primary fw-medium text-capitalize">
-                    Wallet Transfers
-                </h6>
+            <div className='margin-b-20'>
+                <PageHeading PageHeadingName="Wallet Transfers" iconClassName="ico-back" iconTo="/balance"/>
             </div>
             <div className="bg-white border-radius-14 w-100 contant-detail-box rounder-sm-0 d-flex flex-column justify-content-between border-ea">
                 <table className="table" id="tblTransactionDetail">
@@ -59,39 +56,7 @@ const TransactionDetail = () => {
                         </tr>
                     </tbody>
                 </table>
-                <div class="d-flex align-items-center justify-content-between pt-1">
-                    <div class="f-size-14 text-primary line-height-20 text-nowrap margin-r-10">
-                        <span class="d-none d-sm-inline"> Showing </span> 1 to 1 of 1 <span class="d-none d-sm-inline">results</span></div>
-                    <div class="pagination-block">
-                        <ul class="pagination mb-0">
-                            <li class="page-item w-sm-40 page-first page-back disabled">
-                                <a class="page-link text-center d-flex align-items-center justify-content-center h-100">
-                                    <i class="icon ico-back"></i>
-                                    <i class="icon ico-back"></i>
-                                </a>
-                            </li>
-                            <li class="page-item w-sm-40 page-back disabled">
-                                <a class="page-link text-center d-flex align-items-center justify-content-center h-100">
-                                    <i class="icon ico-back"></i>
-                                </a>
-                            </li>
-                            <li class="page-item w-sm-40 active">
-                                <a class="page-link text-center f-size-14 fw-semibold">1</a>
-                            </li>
-                            <li class="page-item w-sm-40 page-next ">
-                                <a class="page-link text-center d-flex align-items-center justify-content-center h-100">
-                                    <i class="icon ico-next"></i>
-                                </a>
-                            </li>
-                            <li class="page-item w-sm-40 page-last page-next ">
-                                <a class="page-link text-center d-flex align-items-center justify-content-center h-100">
-                                    <i class="icon ico-next"></i>
-                                    <i class="icon ico-next"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <Pagination TotalCount="1 to 1 of 1" pgIndex="1" />
             </div>
         </div>
     )

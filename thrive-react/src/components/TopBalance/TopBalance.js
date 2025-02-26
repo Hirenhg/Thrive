@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const TopBalance = () => {
     return (
@@ -9,21 +10,20 @@ const TopBalance = () => {
                         Balance
                     </h5>
                     <div class="d-flex align-items-center btns">
-                        <a href="#" class="f-size-12 fw-medium btn btn-primary btn-primary-hover margin-l-10 d-flex align-items-center justify-content-center">
+                        <Link to="/documents" class="f-size-12 fw-medium btn btn-primary btn-primary-hover margin-l-10 d-flex align-items-center justify-content-center">
                             <span class="text-white fw-medium margin-r-10 d-none d-sm-block">Statements</span>
-                            <i class="icon ico-download">
-                            </i>
-                        </a>
-                        <a href="#" class="f-size-12 fw-medium btn btn-primary btn-primary-hover margin-l-10 d-flex align-items-center justify-content-center">
+                            <i class="icon ico-download"></i>
+                        </Link>
+                        <Link to="/atm-deposits" class="f-size-12 fw-medium btn btn-primary btn-primary-hover margin-l-10 d-flex align-items-center justify-content-center">
                             <span class="text-white fw-medium margin-r-10 d-none d-sm-block">Deposit</span>
                             <i class="icon ico-desposit">
                             </i>
-                        </a>
-                        <a href="#" class="f-size-12 fw-medium btn btn-primary btn-primary-hover margin-l-10 d-flex align-items-center justify-content-center">
+                        </Link>
+                        <Link to="/bank-transfer" class="f-size-12 fw-medium btn btn-primary btn-primary-hover margin-l-10 d-flex align-items-center justify-content-center">
                             <span class="text-white fw-medium margin-r-10 d-none d-sm-block">Bank Transfer</span>
                             <i class="icon ico-wallet-transfer">
                             </i>
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div class="margin-b-20">

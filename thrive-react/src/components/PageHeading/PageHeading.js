@@ -1,14 +1,13 @@
 import React from 'react'
+import PageHeadingIcon from './PageHeadingIcon';
 
-const PageHeading = () => {
+const PageHeading = (props) => {
     return (
         <div className='page-heading-main'>
-            <div className="d-flex align-items-center margin-b-20 page-heading">
-                <div className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 d-flex align-items-center justify-content-center">
-                    <a className="icon ico-dashboard" href="/dashboard"></a>
-                </div>
-                <h6 className="mb-0 text-primary fw-medium text-capitalize">
-                    Dashboard
+            <div className="d-flex align-items-center page-heading">
+                <PageHeadingIcon className={props.iconClassName} to={props.iconTo} />
+                <h6 className="mb-0 text-primary fw-medium text-capitalize d-flex align-items-center">
+                    {props.PageHeadingName}
                 </h6>
             </div>
         </div>

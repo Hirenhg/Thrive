@@ -1,13 +1,15 @@
 import React from 'react'
 import TopBalance from '../../components/TopBalance/TopBalance'
 import FilterHeading from '../../components/FilterHeading/FilterHeading'
+import { Link } from 'react-router-dom'
+import Pagination from '../../components/Pagination/Pagination'
 
 const Balance = () => {
   return (
     <div className='balance-main'>
       <TopBalance />
       <div className="bg-white border-radius-14 w-100 balance-history-box rounder-sm-0 padding-30 border-ea">
-        <FilterHeading/>
+        <FilterHeading FilterHeadingName="Transaction History" showSelect={true} option1="Type" option2="Deposit" option3="Withdrawal" />
         <form id="ProfilePersonalForm" FormName="ProfilePersonalForm" className="w-100">
           <table className="table transaction-history-table" id="tblBalance">
             <thead className="bg-gray-100 rounded">
@@ -51,7 +53,9 @@ const Balance = () => {
                   </label>
                 </td>
                 <td className="w-sm-40">
-                  <button type="button" className="btn btn-outline border border-gray-200 rounded d-flex align-items-center"><i className="icon ico-arrow-right"></i></button>
+                  <Link to="/transaction-detail">
+                    <button type="button" className="btn btn-outline border border-gray-200 rounded d-flex align-items-center"><i className="icon ico-arrow-right"></i></button>
+                  </Link>
                 </td>
               </tr>
               <tr>
@@ -82,7 +86,9 @@ const Balance = () => {
                   </label>
                 </td>
                 <td className="w-sm-40 border-0">
-                  <button type="button" className="btn btn-outline border border-gray-200 rounded d-flex align-items-center"><i className="icon ico-arrow-right"></i></button>
+                  <Link to="/transaction-detail">
+                    <button type="button" className="btn btn-outline border border-gray-200 rounded d-flex align-items-center"><i className="icon ico-arrow-right"></i></button>
+                  </Link>
                 </td>
               </tr>
             </tbody>
@@ -127,59 +133,14 @@ const Balance = () => {
                   </label>
                 </td>
                 <td className="w-sm-40 border-0">
-                  <button type="button" className="btn btn-outline border border-gray-200 rounded d-flex align-items-center"><i className="icon ico-arrow-right"></i></button>
+                  <Link to="/transaction-detail">
+                    <button type="button" className="btn btn-outline border border-gray-200 rounded d-flex align-items-center"><i className="icon ico-arrow-right"></i></button>
+                  </Link>
                 </td>
               </tr>
             </tbody>
           </table>
-          <div class="d-flex align-items-center justify-content-between pt-1">
-            <div class="f-size-14 text-primary line-height-20 text-nowrap margin-r-10">
-              <span class="d-none d-sm-inline"> Showing </span> 1 to 10 of 51 <span class="d-none d-sm-inline">results</span></div>
-            <div class="pagination-block">
-              <ul class="pagination mb-0">
-                <li class="page-item w-sm-40 page-first page-back disabled">
-                  <a class="page-link text-center d-flex align-items-center justify-content-center h-100">
-                    <i class="icon ico-back"></i>
-                    <i class="icon ico-back"></i>
-                  </a>
-                </li>
-                <li class="page-item w-sm-40 page-back disabled">
-                  <a class="page-link text-center d-flex align-items-center justify-content-center h-100">
-                    <i class="icon ico-back"></i>
-                  </a>
-                </li>
-                <li class="page-item w-sm-40 active">
-                  <a class="page-link text-center f-size-14 fw-semibold">1</a>
-                </li>
-                <li class="page-item w-sm-40">
-                  <a class="page-link text-center f-size-14 fw-semibold">2</a>
-                </li>
-                <li class="page-item w-sm-40">
-                  <a class="page-link text-center f-size-14 fw-semibold">3</a>
-                </li>
-                <li class="page-item w-sm-40">
-                  <a class="page-link text-center f-size-14 fw-semibold">4</a>
-                </li>
-                <li class="page-item w-sm-40">
-                  <a class="page-link text-center f-size-14 fw-semibold">5</a>
-                </li>
-                <li class="page-item w-sm-40">
-                  <a class="page-link text-center f-size-14 fw-semibold">...</a>
-                </li>
-                <li class="page-item w-sm-40 page-next">
-                  <a class="page-link text-center d-flex align-items-center justify-content-center h-100">
-                    <i class="icon ico-next"></i>
-                  </a>
-                </li>
-                <li class="page-item w-sm-40 page-last page-next ">
-                  <a class="page-link text-center d-flex align-items-center justify-content-center h-100">
-                    <i class="icon ico-next"></i>
-                    <i class="icon ico-next"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <Pagination TotalCount="1 to 10 of 51" pgIndex={"1" || "2"  || "3"  || "4"} />
         </form>
       </div>
     </div>

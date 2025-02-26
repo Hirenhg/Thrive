@@ -1,5 +1,6 @@
 import React from 'react'
 import { images } from '../../../config/images';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   return (
@@ -7,25 +8,16 @@ const SignUp = () => {
       <div className="position-fixed top-0 bottom-0 login-skeleton bg-primary min-vh-100">
         <div className="content min-vh-100 d-flex align-items-end align-items-sm-center justify-content-center">
           <div className="bg-white border-radius-14 padding-40 w-100 mw-sm-360 rounder-sm-0 h-sm-100 d-flex flex-column align-items-center signup-form-block">
-            <div className="w-100">
+            <div className="w-100 personal-details">
               <div className="margin-b-30 logo">
                 <img src={images.Logo} alt="logo" />
               </div>
-              <h4 className="margin-b-10 text-primary fw-medium d -flex align-items-center justify-content-between">
+              <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">
                 Sign Up
                 <span className="fw-normal">1/3</span>
               </h4>
               <p className="margin-b-30 text-gray-300">
                 Personal details
-              </p>
-              <p className="margin-b-30 text-gray-300 d-none">
-                Shop details
-              </p>
-              <p className="margin-b-30 text-gray-300 d-none">
-                Bank details
-              </p>
-              <p className="margin-b-30 text-gray-300 d-none">
-                How many purchase devices do you need?
               </p>
               <form>
                 <div className="form-group margin-b-10">
@@ -49,7 +41,109 @@ const SignUp = () => {
                   <div className="f-size-12 pt-1 text-error d-none">Id is required</div>
                 </div>
                 <div className="form-group">
-                  <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
+                  <Link to="/login"> 
+                    <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
+                  </Link>
+                </div>
+              </form>
+            </div>
+            <div className="w-100 shop-details d-none">
+              <div className="margin-b-30 logo">
+                <img src={images.Logo} alt="logo" />
+              </div>
+              <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">
+                Sign Up
+                <span className="fw-normal">2/2</span>
+              </h4>
+              <p className="margin-b-30 text-gray-300">
+                Shop details
+              </p>
+              <form>
+                <div className="form-group margin-b-10">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Shop name</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Shop name" />
+                  <div className="f-size-12 pt-1 text-error d-none">Shop name is required</div>
+                </div>
+                <div className="form-group margin-b-10">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Select nature</label>
+                  <select className="form-select form-control w-100 f-size-12 fw-medium text-gray-400">
+                    <option>Select nature</option>
+                    <option>Select business</option>
+                  </select>
+                  <div className="f-size-12 pt-1 text-error d-none">Select is required</div>
+                </div>
+                <div className="form-group margin-b-10">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Street name</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Street name" />
+                  <div className="f-size-12 pt-1 text-error d-none">Street name is required</div>
+                </div>
+                <div className="form-group margin-b-10">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Suburb</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Suburb" />
+                  <div className="f-size-12 pt-1 text-error d-none">Suburb is required</div>
+                </div>
+                <div className="form-group margin-b-30">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">City</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="City" />
+                  <div className="f-size-12 pt-1 text-error d-none">City is required</div>
+                </div>
+                <div className="form-group margin-b-30">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Province</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Province" />
+                  <div className="f-size-12 pt-1 text-error d-none">Province is required</div>
+                </div>
+                <div className="form-group margin-b-30">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Postal code</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Postal code" />
+                  <div className="f-size-12 pt-1 text-error d-none">Postal code is required</div>
+                </div>
+                <div className="form-group d-flex justify-content-beetween ">
+                    <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10">Back</button>
+                    <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
+                </div>
+              </form>
+            </div>
+            <div className="w-100 bank-details d-none">
+              <div className="margin-b-30 logo">
+                <img src={images.Logo} alt="logo" />
+              </div>
+              <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">
+                Sign Up
+                <span className="fw-normal">3/3</span>
+              </h4>
+              <p className="margin-b-30 text-gray-300">
+                Bank details
+              </p>
+              <form>
+                <div className="form-group margin-b-10">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Account holder</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Account holder" />
+                  <div className="f-size-12 pt-1 text-error d-none">Account holder is required</div>
+                </div>
+                <div className="form-group margin-b-10">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Bank</label>
+                  <select className="form-select form-control w-100 f-size-12 fw-medium text-gray-400">
+                    <option>Bank</option>
+                    <option>Bank 2</option>
+                  </select>
+                  <div className="f-size-12 pt-1 text-error d-none">Bank is required</div>
+                </div>
+                <div className="form-group margin-b-10">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Account type</label>
+                  <select className="form-select form-control w-100 f-size-12 fw-medium text-gray-400">
+                    <option>Account type</option>
+                    <option>Account type 2</option>
+                  </select>
+                  <div className="f-size-12 pt-1 text-error d-none">Account type is required</div>
+                </div>
+                <div className="form-group margin-b-30">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Bank account number</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Bank account number" />
+                  <div className="f-size-12 pt-1 text-error d-none">Bank account number is required</div>
+                </div>
+                <div className="form-group d-flex justify-content-beetween ">
+                    <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10">Back</button>
+                    <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
                 </div>
               </form>
             </div>

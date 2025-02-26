@@ -1,5 +1,6 @@
 ﻿import React from 'react'
 import { images } from '../../../config/images';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -28,18 +29,21 @@ const Login = () => {
                                     <div className="f-size-12 pt-1 text-error d-none">Password is required</div>
                                 </div>
                                 <div className="form-group margin-b-20">
-                                    <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Sign In <i className="arrow-right mx-2"></i></button>
+                                    <Link to="/dashboard"> 
+                                        <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Sign In <i className="arrow-right mx-2"></i></button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="form-group margin-b-20 text-center">
                                 <label className="text-gray-400 f-size-14">
-                                    Forgot password? <a href="javascript:void(0)" title="Reset Password" className="text-primary">Reset
-                                        Password</a>
+                                    Forgot password? <Link to="/reset-password" title="Reset Password" className="text-primary">Reset Password</Link>
                                 </label>
                             </div>
                             <div className="divider margin-b-30"></div>
                             <div className="form-group">
-                                <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium">Sign up</button>
+                                <Link to="/signup"> 
+                                    <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium">Sign up</button>
+                                </Link>
                             </div>
                         </form>
                     </div>

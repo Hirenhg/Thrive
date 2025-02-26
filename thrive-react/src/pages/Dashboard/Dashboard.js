@@ -6,8 +6,10 @@ import PageHeading from '../../components/PageHeading/PageHeading';
 const Dashboard = () => {
     return (
         <div className="dashboard-block">
-            <PageHeading/>
-            <TopBalance/>
+            <div className='margin-b-20'>
+                <PageHeading PageHeadingName="Dashboard" iconClassName="ico-dashboard" />
+            </div>
+            <TopBalance />
             <div className="row">
                 <div className="col-md-6">
                     <div className="card border-radius-14 border-ea activity-card padding-30 margin-b-20 overlay">
