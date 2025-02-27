@@ -6,7 +6,7 @@ import PageHeading from '../../components/PageHeading/PageHeading';
 const Dashboard = () => {
     return (
         <div className="dashboard-block">
-            <div className='margin-b-20'>
+            <div className='margin-b-20 page-heading'>
                 <PageHeading PageHeadingName="Dashboard" iconClassName="ico-dashboard" />
             </div>
             <TopBalance />

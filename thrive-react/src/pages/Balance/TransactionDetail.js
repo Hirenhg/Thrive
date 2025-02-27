@@ -5,7 +5,7 @@ import Pagination from '../../components/Pagination/Pagination'
 const TransactionDetail = () => {
     return (
         <div className="transaction-detail-main">
-            <div className='margin-b-20'>
+            <div className='margin-b-20 page-heading'>
                 <PageHeading PageHeadingName="Wallet Transfers" iconClassName="ico-back" iconTo="/balance"/>
             </div>
             <div className="bg-white border-radius-14 w-100 contant-detail-box rounder-sm-0 d-flex flex-column justify-content-between border-ea">

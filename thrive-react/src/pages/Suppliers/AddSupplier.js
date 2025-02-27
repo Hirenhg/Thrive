@@ -7,7 +7,7 @@ import Pagination from '../../components/Pagination/Pagination'
 const AddSupplier = () => {
     return (
         <div className="add-supplier-main">
-            <div className='margin-b-20'>
+            <div className='margin-b-20 page-heading'>
                 <PageHeading PageHeadingName="Supplier" iconClassName="ico-back" iconTo="/Suppliers"  />
             </div>
             <div className="bg-white border-radius-14 w-100 rounder-sm-0 padding-30 border-ea supplier-list-block">

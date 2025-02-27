@@ -4,7 +4,7 @@ import PageHeading from '../../components/PageHeading/PageHeading'
 const AddSuperTrader = () => {
     return (
         <div className="add-super-trader-main">
-            <div className='margin-b-20'>
+            <div className='margin-b-20 page-heading'>
                 <PageHeading PageHeadingName="Supplier" iconClassName="ico-back" iconTo="/Suppliers" />
             </div>
             <div className="center-block mw-sm-340 m-auto">

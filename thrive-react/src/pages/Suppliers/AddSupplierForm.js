@@ -4,7 +4,7 @@ import PageHeading from '../../components/PageHeading/PageHeading'
 const AddSupplierForm = () => {
     return (
         <div className="add-suppliers-form-main">
-            <div className='margin-b-20'>
+            <div className='margin-b-20 page-heading'>
                 <PageHeading PageHeadingName="Add Distell" iconClassName="ico-back" iconTo="/add-supplier" />
             </div>
             <div className="d-flex align-items-center justify-content-center p-sm-3 m-sm-1">

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const BankTransfer = () => {
     return (
         <div className='bank-transfer-main'>
-            <div className='margin-b-20'>
+            <div className='margin-b-20 page-heading'>
                 <PageHeading PageHeadingName="Bank Transfer" iconClassName="ico-bank-transfer" />
             </div>
             <div class="d-flex align-items-center justify-content-center mx-4 px-1 mx-sm-0 px-sm-0 m-center-box">

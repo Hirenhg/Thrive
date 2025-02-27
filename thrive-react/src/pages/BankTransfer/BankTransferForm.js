@@ -4,7 +4,9 @@ import PageHeading from '../../components/PageHeading/PageHeading'
 const BankTransferForm = () => {
     return (
         <div className="bank-transfer-main">
-            <PageHeading PageHeadingName="Bank Transfer" iconClassName="ico-bank-transfer"/>
+            <div className='margin-b-20 page-heading'>
+                <PageHeading PageHeadingName="Bank Transfer" iconClassName="ico-bank-transfer"/>
+            </div>
             <div className="d-flex align-items-center justify-content-center mx-4 px-1 mx-sm-0 px-sm-0 m-center-box">
                 <div className="w-100 mw-sm-340 bank-transfer-block">
                     <div className="bg-white border-ea border-radius-14 padding-30 w-100 mw-sm-340 d-none">

@@ -97,7 +97,7 @@ const Header = () => {
                                                 <li>
                                                     <NavLink
                                                         className="dropdown-item text-primary fw-medium f-size-12 p-2 rounded d-flex align-items-center"
-                                                        to="/logout"
+                                                        to="/login"
                                                         onClick={handleCloseDropdown}
                                                     >
                                                         <i className="nav-icon ico-signout margin-r-10"></i>Sign Out
@@ -145,7 +145,7 @@ const Header = () => {
                                     </li>
                                     <li className="divider margin-t-10 margin-b-10"></li>
                                     <li className="nav-item">
-                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" to="/delete">
+                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" to="/deleteaccount" onClick={toggleNavbar} aria-label={navbarOpen ? "Close navigation" : "Open navigation"}>
                                             <i className="nav-icon ico-delete margin-r-10"></i>
                                             Delete account
                                         </NavLink>
@@ -155,7 +155,7 @@ const Header = () => {
                             <div className="d-sm-none signout-menu position-absolute margin-b-20 w-100 bottom-0">
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" to="/signout">
+                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" to="/login" onClick={toggleNavbar} aria-label={navbarOpen ? "Close navigation" : "Open navigation"}>
                                             <i className="nav-icon ico-signout margin-r-10"></i>
                                             Sign Out
                                         </NavLink>
