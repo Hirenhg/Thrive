@@ -36,7 +36,7 @@ const Header = () => {
             <nav className="navbar navbar-expand-lg">
                 <div className="container mw-sm-960 px-4">
                     <div className="navbar-top d-flex align-items-center">
-                        <NavLink className="navbar-brand" href="/">
+                        <NavLink className="navbar-brand" to="/">
                             <img src={images.Logo} alt="logo" />
                         </NavLink>
                         <button type="button" className="navbar-toggler collapsed" onClick={toggleNavbar} aria-label={navbarOpen ? "Close navigation" : "Open navigation"} ></button>
