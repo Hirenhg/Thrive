@@ -546,7 +546,7 @@ input[type=number] {
                 li {
                     a.dropdown-item {
                         cursor: pointer;
-
+                        background: transparent;
                         &:hover {
                             background: $gray100;
                         }
@@ -1730,6 +1730,9 @@ input[type=number] {
             display: none;
             &.active {
                 display: block;
+                .page-link {
+                    z-index: 1;
+                }
             }
         }
         .page-back,
