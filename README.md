@@ -1,2 +1,0 @@
-# Thrive
-Bank system 

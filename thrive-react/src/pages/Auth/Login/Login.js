@@ -1,8 +1,29 @@
-﻿import React from 'react'
+﻿import React, { useState } from 'react';
 import { images } from '../../../config/images';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const [cellPhone, setCellPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const handleLogin = (e) => {
+        const payload = {
+            email: cellPhone,
+            password: password
+        }
+        // john@mail.com/changeme
+        axios.post('https://api.escuelajs.co/api/v1/auth/login', payload)
+        .then((res) => {
+            localStorage.setItem("token", JSON.stringify(res.data.access_token));
+            navigate('/');
+        })
+        .catch((err) => {
+            console.log("Login Failed", err)
+        })
+    };
+
     return (
         <div className='login_main'>
             <div className="position-fixed top-0 bottom-0 login-skeleton bg-primary min-vh-100">
@@ -11,7 +32,7 @@ const Login = () => {
                         <div className="imagebox margin-r-30 bg-gray-200 border-radius-10 d-sm-flex align-items-center justify-content-center">
                             <img className="w-auto" src={images.loginImage} alt="login-image" />
                         </div>
-                        <form className="loginform-block w-100 mw-sm-300">
+                        <div className="loginform-block w-100 mw-sm-300">
                             <div className="margin-b-30 logo">
                                 <img src={images.Logo} alt="logo" />
                             </div>
@@ -20,32 +41,31 @@ const Login = () => {
                                 <p className="margin-b-30 text-gray-300"> Stock up and pay suppliers 24/7. <br /> Buy stock now, pay later.<br />  It’s time to thrive!</p>
                                 <div className="form-group margin-b-10">
                                     <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Cell Phone</label>
-                                    <input type="text" className="form-control f-size-12 fw-medium" placeholder="Cell Phone" />
-                                    <div className="f-size-12 pt-1 text-error d-none">Username is required</div>
+                                    <input
+                                        type="text"
+                                        className="form-control f-size-12 fw-medium"
+                                        placeholder="Cell Phone"
+                                        value={cellPhone}
+                                        onChange={(e) => setCellPhone(e.target.value)}
+                                    />
+                                    {/* {error && <div className="f-size-12 pt-1 text-error">{error}</div>} */}
                                 </div>
                                 <div className="form-group margin-b-10">
                                     <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Password</label>
-                                    <input type="password" className="form-control f-size-12 fw-medium" placeholder="Password" />
-                                    <div className="f-size-12 pt-1 text-error d-none">Password is required</div>
+                                    <input
+                                        type="password"
+                                        className="form-control f-size-12 fw-medium"
+                                        placeholder="Password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                    {/* {error && <div className="f-size-12 pt-1 text-error">{error}</div>} */}
                                 </div>
                                 <div className="form-group margin-b-20">
-                                    <Link to="/dashboard"> 
-                                        <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Sign In <i className="arrow-right mx-2"></i></button>
-                                    </Link>
+                                    <button onClick={handleLogin} type="submit" className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Sign In <i className="arrow-right mx-2"></i></button>
                                 </div>
                             </div>
-                            <div className="form-group margin-b-20 text-center">
-                                <label className="text-gray-400 f-size-14">
-                                    Forgot password? <Link to="/reset-password" title="Reset Password" className="text-primary">Reset Password</Link>
-                                </label>
-                            </div>
-                            <div className="divider margin-b-30"></div>
-                            <div className="form-group">
-                                <Link to="/signup"> 
-                                    <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium">Sign up</button>
-                                </Link>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { images } from '../../../config/images';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const SignUp = () => {
   return (
@@ -21,9 +22,9 @@ const SignUp = () => {
               </p>
               <form>
                 <div className="form-group margin-b-10">
-                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Surname</label>
-                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Surname" />
-                  <div className="f-size-12 pt-1 text-error d-none">Surname is required</div>
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Title</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Title" />
+                  <div className="f-size-12 pt-1 text-error d-none">Title is required</div>
                 </div>
                 <div className="form-group margin-b-10">
                   <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Name</label>
@@ -31,23 +32,28 @@ const SignUp = () => {
                   <div className="f-size-12 pt-1 text-error d-none">Name is required</div>
                 </div>
                 <div className="form-group margin-b-10">
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Surname</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Surname" />
+                  <div className="f-size-12 pt-1 text-error d-none">Surname is required</div>
+                </div>
+                <div className="form-group margin-b-10">
                   <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Cell Phone</label>
                   <input type="text" className="form-control f-size-12 fw-medium" placeholder="Cell Phone" />
                   <div className="f-size-12 pt-1 text-error d-none">Cell Phone is required</div>
                 </div>
                 <div className="form-group margin-b-30">
-                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Id</label>
-                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Id" />
-                  <div className="f-size-12 pt-1 text-error d-none">Id is required</div>
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Date of Birth</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Date of Birth" />
+                  <div className="f-size-12 pt-1 text-error d-none">Date of Birth is required</div>
                 </div>
-                <div className="form-group">
-                  <Link to="/login"> 
+                <div className="form-group margin-b-30">
+                  <Link to="/login">
                     <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
                   </Link>
                 </div>
               </form>
             </div>
-            <div className="w-100 shop-details d-none">
+            <div className="w-100 business-details d-none">
               <div className="margin-b-30 logo">
                 <img src={images.Logo} alt="logo" />
               </div>
@@ -56,13 +62,13 @@ const SignUp = () => {
                 <span className="fw-normal">2/2</span>
               </h4>
               <p className="margin-b-30 text-gray-300">
-                Shop details
+                Business details
               </p>
               <form>
                 <div className="form-group margin-b-10">
-                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Shop name</label>
-                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Shop name" />
-                  <div className="f-size-12 pt-1 text-error d-none">Shop name is required</div>
+                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Business Name</label>
+                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Business Name" />
+                  <div className="f-size-12 pt-1 text-error d-none">Business Name is required</div>
                 </div>
                 <div className="form-group margin-b-10">
                   <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Select nature</label>
@@ -98,52 +104,8 @@ const SignUp = () => {
                   <div className="f-size-12 pt-1 text-error d-none">Postal code is required</div>
                 </div>
                 <div className="form-group d-flex justify-content-beetween ">
-                    <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10">Back</button>
-                    <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
-                </div>
-              </form>
-            </div>
-            <div className="w-100 bank-details d-none">
-              <div className="margin-b-30 logo">
-                <img src={images.Logo} alt="logo" />
-              </div>
-              <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">
-                Sign Up
-                <span className="fw-normal">3/3</span>
-              </h4>
-              <p className="margin-b-30 text-gray-300">
-                Bank details
-              </p>
-              <form>
-                <div className="form-group margin-b-10">
-                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Account holder</label>
-                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Account holder" />
-                  <div className="f-size-12 pt-1 text-error d-none">Account holder is required</div>
-                </div>
-                <div className="form-group margin-b-10">
-                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Bank</label>
-                  <select className="form-select form-control w-100 f-size-12 fw-medium text-gray-400">
-                    <option>Bank</option>
-                    <option>Bank 2</option>
-                  </select>
-                  <div className="f-size-12 pt-1 text-error d-none">Bank is required</div>
-                </div>
-                <div className="form-group margin-b-10">
-                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Account type</label>
-                  <select className="form-select form-control w-100 f-size-12 fw-medium text-gray-400">
-                    <option>Account type</option>
-                    <option>Account type 2</option>
-                  </select>
-                  <div className="f-size-12 pt-1 text-error d-none">Account type is required</div>
-                </div>
-                <div className="form-group margin-b-30">
-                  <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Bank account number</label>
-                  <input type="text" className="form-control f-size-12 fw-medium" placeholder="Bank account number" />
-                  <div className="f-size-12 pt-1 text-error d-none">Bank account number is required</div>
-                </div>
-                <div className="form-group d-flex justify-content-beetween ">
-                    <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10">Back</button>
-                    <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
+                  <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10">Back</button>
+                  <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
                 </div>
               </form>
             </div>

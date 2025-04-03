@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { images } from "../../config/images";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Header = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const [userData, setUserData] = useState(null)
+    const navigate = useNavigate()
 
     const toggleNavbar = () => {
         setNavbarOpen(!navbarOpen);
@@ -30,6 +33,41 @@ const Header = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    useEffect(() => {
+        getProfileData();
+    }, [])
+
+    const Token = JSON.parse(localStorage.getItem('token'))
+
+    const getProfileData = () => {
+        const profileToken = JSON.parse(localStorage.getItem('token'))
+
+        const header = {
+            headers: {
+                Authorization: `Bearer ${profileToken}`
+            }
+        }
+
+        axios.get('https://api.escuelajs.co/api/v1/auth/profile', header)
+            .then((res) => {
+                setUserData(res.data)
+            })
+            .catch((err) => {
+                console.log("Error occured", err)
+                alert("Failed to fetch profile data. Please try again.");
+            })
+    }
+
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login")
+    }
+
+    if (!Token) {
+        return <Navigate to="/login" />;
+    }
 
     return (
         <div className="header_main">
@@ -72,17 +110,21 @@ const Header = () => {
                                     </li>
                                 </ul>
                                 <div className="d-flex align-items-center nav-user-details">
-                                    <NavLink className="userpic rounded-circle overflow-hidden" to="/profile">
-                                        <img src={images.UserPlaceholder} alt="UserPlaceholder" />
-                                    </NavLink>
+                                    {userData && (
+                                        <NavLink className="userpic rounded-circle overflow-hidden" to="/profile">
+                                            <img src={userData?.avatar} alt="UserPlaceholder" />
+                                        </NavLink>
+                                    )}
                                     <div className="nav-item dropdown">
-                                        <Link
-                                            className="nav-link dropdown-toggle userinfo margin-l-10"
-                                            onClick={toggleDropdown}
-                                        >
-                                            <div className="username text-primary fw-medium pb-1 f-size-14 line-height-18">Hiren Gabu</div>
-                                            <div className="thrive-id text-primary fw-medium f-size-10">Thrive ID: 3297894</div>
-                                        </Link>
+                                        {userData && (
+                                            <Link
+                                                className="nav-link dropdown-toggle userinfo margin-l-10"
+                                                onClick={toggleDropdown}
+                                            >
+                                                <div className="username text-primary fw-medium pb-1 f-size-14 line-height-18">{userData?.name || "N/A"}</div>
+                                                <div className="thrive-id text-primary fw-medium f-size-10">Thrive ID: 355777</div>
+                                            </Link>
+                                       )}
                                         {dropdownOpen && (
                                             <ul className="dropdown-menu bg-white border-ea p-1 show">
                                                 <li>
@@ -95,13 +137,14 @@ const Header = () => {
                                                     </NavLink>
                                                 </li>
                                                 <li>
+                                                {userData && (
                                                     <NavLink
-                                                        className="dropdown-item text-primary fw-medium f-size-12 p-2 rounded d-flex align-items-center"
-                                                        to="/login"
-                                                        onClick={handleCloseDropdown}
-                                                    >
-                                                        <i className="nav-icon ico-signout margin-r-10"></i>Sign Out
-                                                    </NavLink>
+                                                    className="dropdown-item text-primary fw-medium f-size-12 p-2 rounded d-flex align-items-center"
+                                                    onClick={handleLogout}
+                                                >
+                                                    <i className="nav-icon ico-signout margin-r-10"></i>Sign Out
+                                                </NavLink> 
+                                                )}
                                                 </li>
                                             </ul>
                                         )}
@@ -155,7 +198,7 @@ const Header = () => {
                             <div className="d-sm-none signout-menu position-absolute margin-b-20 w-100 bottom-0">
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" to="/login" onClick={toggleNavbar} aria-label={navbarOpen ? "Close navigation" : "Open navigation"}>
+                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" onClick={toggleNavbar} aria-label={navbarOpen ? "Close navigation" : "Open navigation"}>
                                             <i className="nav-icon ico-signout margin-r-10"></i>
                                             Sign Out
                                         </NavLink>
