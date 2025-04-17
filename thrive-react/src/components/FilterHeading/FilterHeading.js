@@ -1,4 +1,5 @@
 import React from 'react'
+// import PropTypes from 'prop-types';
 
 const FilterHeading = (props) => {
     return (
@@ -43,5 +44,22 @@ const FilterHeading = (props) => {
         </div>
     )
 }
+
+// FilterHeading.propTypes = {
+//     filterHeadingName: PropTypes.string.isRequired,
+//     showSelect: PropTypes.bool,
+//     option1: PropTypes.string,
+//     option2: PropTypes.string,
+//     option3: PropTypes.string,
+//     showDatepicker: PropTypes.bool,
+// };
+
+// FilterHeading.defaultProps = {
+//     showSelect: false,
+//     option1: 'Option 1',
+//     option2: 'Option 2',
+//     option3: 'Option 3',
+//     showDatepicker: false,
+// };
 
 export default FilterHeading

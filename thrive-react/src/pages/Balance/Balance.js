@@ -3,15 +3,41 @@ import TopBalance from '../../components/TopBalance/TopBalance'
 import FilterHeading from '../../components/FilterHeading/FilterHeading'
 import { Link } from 'react-router-dom'
 import Pagination from '../../components/Pagination/Pagination'
+import TransactionHistoryTable from '../../components/TransactionHistoryTable/TransactionHistoryTable'
 
 const Balance = () => {
+  const availableAmount = 15732;
+  const incomingAmount = 5732.100;
+  const outgoingAmount = 3732.100;
+
+  const transactions = [
+    {
+        date: '21 Feb 2025',
+        label: 'Wallet Transfers',
+        amount: -10.95,
+        icon: 'ico-wallet-transfer',
+    },
+    {
+        date: '21 Feb 2025',
+        label: 'Redemption',
+        amount: 25.00,
+        icon: 'ico-withdrwal',
+    },
+    {
+        date: '19 Feb 2025',
+        label: 'Wallet Transfers',
+        amount: -100.00,
+        icon: 'ico-wallet-transfer',
+    },
+];
+
   return (
     <div className='balance-main'>
-      <TopBalance />
+      <TopBalance availableAmount={availableAmount} incomingAmount={incomingAmount} outgoingAmount={outgoingAmount}/>
       <div className="bg-white border-radius-14 w-100 balance-history-box rounder-sm-0 padding-30 border-ea">
         <FilterHeading FilterHeadingName="Transaction History" showSelect={true} option1="Type" option2="Deposit" option3="Withdrawal" />
         <form id="ProfilePersonalForm" FormName="ProfilePersonalForm" className="w-100">
-          <table className="table transaction-history-table" id="tblBalance">
+          {/* <table className="table transaction-history-table" id="tblBalance">
             <thead className="bg-gray-100 rounded">
               <tr>
                 <th className='border-0'>
@@ -139,7 +165,8 @@ const Balance = () => {
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
+          <TransactionHistoryTable transactions={transactions}  />
           <Pagination TotalCount="1 to 10 of 51" pgIndex={"1" || "2"  || "3"  || "4"} />
         </form>
       </div>
