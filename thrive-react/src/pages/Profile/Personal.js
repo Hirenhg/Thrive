@@ -9,7 +9,7 @@ const Personal = () => {
                     Personal
                 </div>
             </div>
-            <div Model="@ProfileViewModel" FormName="ProfilePersonalForm" className="w-100 profile-editform bg-white">
+            <div FormName="ProfilePersonalForm" className="w-100 profile-editform bg-white">
                 <div className="form-group margin-b-20">
                     <label for="surname" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Surname</label>
                     <input type='text' className="form-control f-size-12 fw-medium" readonly />

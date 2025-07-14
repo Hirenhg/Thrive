@@ -9,19 +9,21 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
+        e.preventDefault();
         const payload = {
             email: cellPhone,
             password: password
-        }
-        // john@mail.com/changeme
-        axios.post('https://api.escuelajs.co/api/v1/auth/login', payload)
-        .then((res) => {
-            localStorage.setItem("token", JSON.stringify(res.data.access_token));
-            navigate('/');
-        })
-        .catch((err) => {
-            console.log("Login Failed", err)
-        })
+        };
+
+        axios.post('http://localhost:5000/api/auth/login', payload)
+               .then((res) => {
+                    localStorage.setItem("token", res.data.token);
+                    navigate('/');
+                })
+                .catch((err) => {
+                    console.log("Login Failed", err);
+                    alert("Login Failed: " + (err.response?.data?.message || 'Server error'));
+                });
     };
 
     return (
@@ -70,7 +72,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
-export default Login
+export default Login;

@@ -2,10 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { images } from "../../config/images";
 import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import ModalPopup from "../ModalPopup/ModalPopup";
+import Profile from "../../pages/Profile/Profile";
 
 const Header = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [modalType, setModalType] = useState(null); // null, 'profile', etc.
     const dropdownRef = useRef(null);
     const [userData, setUserData] = useState(null)
     const navigate = useNavigate()
@@ -18,14 +21,10 @@ const Header = () => {
         setDropdownOpen(prevState => !prevState);
     };
 
-    const handleCloseDropdown = () => {
-        setDropdownOpen(false);
-    };
-
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                handleCloseDropdown();
+                setDropdownOpen(false);
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
@@ -38,10 +37,10 @@ const Header = () => {
         getProfileData();
     }, [])
 
-    const Token = JSON.parse(localStorage.getItem('token'))
+    const Token = localStorage.getItem('token')
 
     const getProfileData = () => {
-        const profileToken = JSON.parse(localStorage.getItem('token'))
+        const profileToken = localStorage.getItem('token')
 
         const header = {
             headers: {
@@ -49,20 +48,24 @@ const Header = () => {
             }
         }
 
-        axios.get('https://api.escuelajs.co/api/v1/auth/profile', header)
+        axios.get('http://localhost:5000/api/auth/user', header)
             .then((res) => {
                 setUserData(res.data)
             })
             .catch((err) => {
-                console.log("Error occured", err)
-                alert("Failed to fetch profile data. Please try again.");
+                console.log("Error occurred", err)
+                // Don't show alert for profile fetch errors, just log them
             })
     }
-
 
     const handleLogout = () => {
         localStorage.removeItem("token");
         navigate("/login")
+    }
+
+    // Modal close handler
+    const handleCloseModal = () => {
+        setModalType(null);
     }
 
     if (!Token) {
@@ -110,41 +113,36 @@ const Header = () => {
                                     </li>
                                 </ul>
                                 <div className="d-flex align-items-center nav-user-details">
-                                    {userData && (
-                                        <NavLink className="userpic rounded-circle overflow-hidden" to="/profile">
-                                            <img src={userData?.avatar} alt="UserPlaceholder" />
-                                        </NavLink>
-                                    )}
-                                    <div className="nav-item dropdown">
-                                        {userData && (
-                                            <Link
-                                                className="nav-link dropdown-toggle userinfo margin-l-10"
-                                                onClick={toggleDropdown}
-                                            >
-                                                <div className="username text-primary fw-medium pb-1 f-size-14 line-height-18">{userData?.name || "N/A"}</div>
-                                                <div className="thrive-id text-primary fw-medium f-size-10">Thrive ID: 355777</div>
-                                            </Link>
-                                       )}
+                                    <NavLink className="userpic rounded-circle overflow-hidden">
+                                        <img src={userData?.avatar || images.UserPlaceholder} alt="UserPlaceholder" />
+                                    </NavLink>
+                                    <div className="nav-item dropdown" ref={dropdownRef}>
+                                        <Link
+                                            className="nav-link dropdown-toggle userinfo margin-l-10"
+                                            onClick={toggleDropdown}
+                                        >
+                                            <div className="username text-primary fw-medium pb-1 f-size-14 line-height-18">{userData?.name || "User"}</div>
+                                            <div className="thrive-id text-primary fw-medium f-size-10">Thrive ID: {userData?.id || "N/A"}</div>
+                                        </Link>
                                         {dropdownOpen && (
                                             <ul className="dropdown-menu bg-white border-ea p-1 show">
                                                 <li>
-                                                    <NavLink
+                                                    <button
                                                         className="dropdown-item text-primary fw-medium f-size-12 p-2 rounded d-flex align-items-center"
-                                                        to="/profile"
-                                                        onClick={handleCloseDropdown}
+                                                        type="button"
+                                                        onClick={() => { setModalType('profile'); setDropdownOpen(false); }}
                                                     >
                                                         <i className="nav-icon ico-profile margin-r-10"></i>Profile
-                                                    </NavLink>
+                                                    </button>
                                                 </li>
                                                 <li>
-                                                {userData && (
-                                                    <NavLink
-                                                    className="dropdown-item text-primary fw-medium f-size-12 p-2 rounded d-flex align-items-center"
-                                                    onClick={handleLogout}
-                                                >
-                                                    <i className="nav-icon ico-signout margin-r-10"></i>Sign Out
-                                                </NavLink> 
-                                                )}
+                                                    <button
+                                                        className="dropdown-item text-primary fw-medium f-size-12 p-2 rounded d-flex align-items-center"
+                                                        type="button"
+                                                        onClick={handleLogout}
+                                                    >
+                                                        <i className="nav-icon ico-signout margin-r-10"></i>Sign Out
+                                                    </button>
                                                 </li>
                                             </ul>
                                         )}
@@ -198,7 +196,7 @@ const Header = () => {
                             <div className="d-sm-none signout-menu position-absolute margin-b-20 w-100 bottom-0">
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" onClick={toggleNavbar} aria-label={navbarOpen ? "Close navigation" : "Open navigation"}>
+                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" onClick={handleLogout} aria-label={navbarOpen ? "Close navigation" : "Open navigation"}>
                                             <i className="nav-icon ico-signout margin-r-10"></i>
                                             Sign Out
                                         </NavLink>
@@ -211,6 +209,14 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
+            {/* ModalPopup for Profile */}
+            {modalType === 'profile' && (
+                <ModalPopup
+                    title="Profile"
+                    body={<Profile/>}
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     );
 };

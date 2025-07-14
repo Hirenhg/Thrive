@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from './pages/Auth/Login/Login';
 import VerificationCode from './pages/Auth/Login/VerificationCode';
 import TermsConditions from './pages/Auth/Login/TermsConditions';
@@ -23,40 +23,45 @@ import BankTransfer from "./pages/BankTransfer/BankTransfer";
 import BankTransferForm from "./pages/BankTransfer/BankTransferForm";
 import Documents from "./pages/Documents/Documents";
 import Profile from "./pages/Profile/Profile";
+
 function App() {
+  const token = localStorage.getItem("token");
+
   return (
     <div className='page bg-gray-100 min-vh-100'>
       <Router>
         <Routes>
+          {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/verification-code" element={<VerificationCode />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/reset-password" element={<PasswordUpdated />} />
+          <Route path="/password-updated" element={<PasswordUpdated />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signup-tc" element={<SignUpTC />} />
           <Route path="/signup-complete" element={<SignUpComplete />} />
+          
+          {/* Protected Routes */}
+          <Route path="/" element={<ProtectedRoute />}>
+            <Route index element={<Dashboard />} />
+            <Route path="balance" element={<Balance />} />
+            <Route path="atm-deposits" element={<AtmDeposits />} />
+            <Route path="transaction-detail" element={<TransactionDetail />} />
+            <Route path="suppliers" element={<Suppliers />} />
+            <Route path="add-supertrader" element={<AddSuperTrader />} />
+            <Route path="add-supplier" element={<AddSupplier />} />
+            <Route path="add-supplier-form" element={<AddSupplierForm />} />
+            <Route path="supplier-history" element={<SupplierHistory />} />
+            <Route path="view-supplier-pay" element={<ViewSupplierPay />} />
+            <Route path="bank-transfer" element={<BankTransfer />} />
+            <Route path="bank-transfer-form" element={<BankTransferForm />} />
+            <Route path="documents" element={<Documents />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+          
+          {/* Catch all route - redirect to login if not authenticated, otherwise to dashboard */}
+          <Route path="*" element={token ? <Navigate to="/" /> : <Navigate to="/login" />} />
         </Routes>
-        <div>
-          <Routes>
-            <Route path="/" element={<ProtectedRoute />}>
-              <Route index element={<Dashboard />} />
-              <Route path="/balance" element={<Balance />} />
-              <Route path="/atm-deposits" element={<AtmDeposits />} />
-              <Route path="/transaction-detail" element={<TransactionDetail />} />
-              <Route path="/suppliers" element={<Suppliers />} />
-              <Route path="/add-supertrader" element={<AddSuperTrader />} />
-              <Route path="/add-supplier" element={<AddSupplier />} />
-              <Route path="/add-supplier-form" element={<AddSupplierForm />} />
-              <Route path="/supplier-history" element={<SupplierHistory />} />
-              <Route path="/view-supplier-pay" element={<ViewSupplierPay />} />
-              <Route path="/bank-transfer" element={<BankTransfer />} />
-              <Route path="/bank-transfer-form" element={<BankTransferForm />} />
-              <Route path="/documents" element={<Documents />} />
-              <Route path="/profile" element={<Profile />} />
-            </Route>
-          </Routes>
-        </div>
       </Router>
     </div>
   );

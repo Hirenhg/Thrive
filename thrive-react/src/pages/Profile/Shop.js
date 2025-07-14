@@ -54,7 +54,7 @@ const Shop = () => {
                     <div className="form-col margin-l-10">
                         <div className="form-group">
                             <label for="postalcode" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Postal code</label>
-                            <input lassName="form-control f-size-12 fw-medium" readonly></input>
+                            <input className="form-control f-size-12 fw-medium" readonly></input>
                         </div>
                     </div>
                 </div>
