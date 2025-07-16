@@ -78,11 +78,15 @@ const FilterHeading = (props) => {
 
     return (
         <div className='filter-heading-main'>
-            <div className="d-flex align-items-md-center flex-column flex-md-row justify-content-between margin-b-20">
-                <h6 className="margin-b-20 mb-md-0 margin-r-10 text-capitalize">
-                    {props.FilterHeadingName}
-                </h6>
-                <div className="d-flex align-items-md-center flex-column flex-md-row justify-content-md-end flex-grow-1 flex-shrink-1">
+            <h6 className="margin-b-20 text-capitalize">
+                {props.FilterHeadingName}
+            </h6>
+            <div className="d-flex align-items-md-center flex-column flex-md-row justify-content-between">
+                <div className="available-amount-col margin-b-20">
+                    <div className="f-size-12 text-gray-400 fw-semibold w-100 d-block text-uppercase">available Amount</div>
+                    <div className="f-size-20 text-primary fw-medium w-100 d-block">R147,975.00</div>
+                </div>
+                <div className="d-flex align-items-md-center flex-column flex-md-row justify-content-md-end flex-grow-1 flex-shrink-1 margin-b-20">
                     <div className="form-group margin-r-10 mw-md-200 searchbar">
                         <input 
                             type="text" 

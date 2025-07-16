@@ -1,32 +1,46 @@
-import React from 'react'
-import { images } from '../../../config/images';
+import React from "react";
+import { images } from "../../../config/images";
 
 const SignUpComplete = () => {
     return (
         <div className="signup-complete-main">
-            <div className="page bg-primary min-vh-100">
-                <div className="content signup-comp-content min-vh-100 d-flex align-items-end align-items-sm-center justify-content-center">
-                    <div className="bg-white border-radius-14 padding-40 w-100 mw-sm-360 rounder-sm-0 h-sm-100 d-flex flex-column align-items-center signup-comp-block">
+            <div className="content min-vh-100 d-flex align-items-end align-items-sm-center justify-content-center">
+                <div className="bg-white border-radius-14 padding-30 w-100 mw-sm-380 rounder-sm-0 h-sm-100 d-flex flex-column align-items-center signup-success-block m-3">
+                    <div className="signup-success-comp-block w-100">
                         <div className="w-100 text-center">
-                            <div className="margin-b-30 check-status">
-                                <img src={images.CheckStatus} alt="check status" />
+                            <div className="margin-b-20 check-status">
+                                <img alt="checkstatus" src="./assets/check-status.svg" />
                             </div>
-                            <h4 className="margin-b-10 text-primary fw-semibold ">
-                                Welcome to Thrive
-                            </h4>
-                            <p className="margin-b-30 text-gray-300">
-                                Let’s get you thriving
+                            <div className="margin-b-20 f-size-20 text-primary fw-medium">
+                                Success!
+                            </div>
+                            <div className="margin-b-20 f-size-20 text-primary fw-semibold">
+                                Profile Created
+                            </div>
+                            <p className="margin-b-30 text-primary f-size-12 ">
+                                You have successfully created your profile.
                             </p>
-                            <div id="api" role="main"></div>
-                            <div className="form-group">
-                                <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Take me to my dashboard<i className="arrow-right mx-2"></i></button>
+                            <div className="form-group margin-b-30">
+                                <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">
+                                    Login
+                                </button>
+                            </div>
+                            <div className="text-center f-size-14 fw-medium text-gray-400">
+                                Need help? Contact support <br />
+                                <a href="#" className="text-primary">
+                                    SupportEmail
+                                </a>
+                                or
+                                <a href="#" title="Contact support" className="text-primary">
+                                    SupportPhone
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default SignUpComplete
+export default SignUpComplete;

@@ -60,7 +60,7 @@ const Header = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("token");
-        navigate("/login")
+        navigate("/home")
     }
 
     // Modal close handler
@@ -104,6 +104,11 @@ const Header = () => {
                                     <li className="nav-item margin-r-20">
                                         <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" to="/bank-transfer" onClick={toggleNavbar} aria-label={navbarOpen ? "Close navigation" : "Open navigation"}>
                                             <i className="nav-icon ico-balance margin-r-10 d-sm-none"></i>Bank Transfer
+                                        </NavLink>
+                                    </li>
+                                       <li className="nav-item margin-r-20">
+                                        <NavLink className="nav-link text-primary fw-medium f-size-12 d-flex align-items-center" to="/vas" onClick={toggleNavbar} aria-label={navbarOpen ? "Close navigation" : "Open navigation"}>
+                                            <i className="nav-icon ico-vas margin-r-10 d-sm-none"></i>VAS
                                         </NavLink>
                                     </li>
                                     <li className="nav-item margin-r-20">
