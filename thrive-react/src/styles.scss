@@ -1119,8 +1119,19 @@ input[type=number] {
         }
     }
 }
+.quick-action-main:after {
+    content: "";
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
 .quick-action-dialog-block {
-    position: relative;
+    position: fixed;
+    z-index: 2;
     left: 50%;
     right: 50%;
     transform: translate(-50%, -0%);

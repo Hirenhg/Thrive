@@ -22,7 +22,7 @@ import BankTransfer from "./pages/BankTransfer/BankTransfer";
 import BankTransferForm from "./pages/BankTransfer/BankTransferForm";
 import Documents from "./pages/Documents/Documents";
 import Profile from "./pages/Profile/Profile";
-import NetworkProvider from './pages/Vas/NetworkProvider';
+import Vas from './pages/Vas/Home/Index';
 import Home from './pages/Auth/Home';
 
 function AppWrapper() {
@@ -57,7 +57,7 @@ function AppWrapper() {
           <Route path="bank-transfer-form" element={<BankTransferForm />} />
           <Route path="documents" element={<Documents />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="vas" element={<NetworkProvider />} />
+          <Route path="vas" element={<Vas />} />
         </Route>
         {/* Redirect root to /home if not authenticated */}
         <Route path="/" element={token ? <Navigate to="/" /> : <Navigate to="/home" />} />

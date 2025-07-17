@@ -16,5 +16,6 @@ export const images = {
     CheckStatus: CheckStatus,
     landingImage: landingImage,
     landingImageMobile: require('./../assets/landing-mobile.png'),
+    PosDevice: require('./../assets/pos-1.png'),
 }
   
