@@ -38,25 +38,12 @@ const Vas = () => {
               {activeTab === 'products' && (
                 <div className="tab-pane fade active show" id="pills-vas-products" role="tabpanel" aria-labelledby="pills-vas-products-tab" tabIndex={0}>
                   <div className="flex-grow-1 d-flex flex-column">
-                    {categories && categories.length > 0 ? (
-                      <div className="d-grid margin-b-20 product-list-grid">
-                        {categories.map((category, idx) => (
-                          <a key={idx} href={`products#${category.TabUrl}`} className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
-                            <span className={`icon-circle`}><i className={`icon ${category.IconClass}`}></i></span>
-                            <label className="product-name text-primary fw-medium">{category.Name}</label>
-                          </a>
-                        ))}
-                      </div>
-                    ) : !dataLoaded ? (
-                      <div className="d-grid margin-b-20 product-list-grid loading-skeleton">
-                        {[...Array(4)].map((_, i) => (
-                          <div key={i} className="border-radius-14 w-100 d-flex align-items-center product-card">
-                            <span className="icon-circle custom-skeleton"></span>
-                            <label className="product-name custom-skeleton w-75 h-24"></label>
-                          </div>
-                        ))}
-                      </div>
-                    ) : null}
+                    <div className="d-grid margin-b-20 product-list-grid">
+                        <a href="#" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
+                          <span className="icon-circle"><i className="icon"></i></span>
+                          <label className="product-name text-primary fw-medium">category Name</label>
+                        </a>
+                    </div>
                     <div className="divider margin-b-20" />
                     <FrequentlyBoughts />
                   </div>

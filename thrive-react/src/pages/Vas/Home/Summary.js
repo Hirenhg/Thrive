@@ -15,7 +15,7 @@ const Summary = () => {
   });
 
   return (
-    <div className="tab-pane fade" id="pills-vas-summary" role="tabpanel" aria-labelledby="pills-vas-summary-tab" tabIndex={0}>
+    <div className="{`tab-pane fade${active ? ' active show' : ''}`}" id="pills-vas-summary" role="tabpanel" aria-labelledby="pills-vas-summary-tab" tabIndex={0}>
       <div className="flex-grow-1 d-flex flex-column">
         <div className="summary-box border-ea padding-30 border-radius-14 margin-b-20 bg-white">
           {loadingSummaryData ? (

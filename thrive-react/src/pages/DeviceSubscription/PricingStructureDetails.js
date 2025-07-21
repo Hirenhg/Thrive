@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import { images } from '../../config/images';
 
 const PricingStructureDetails = () => {
   // Placeholder data
@@ -15,7 +16,7 @@ const PricingStructureDetails = () => {
       </div>
       <div className="d-grid justify-content-between margin-b-20 pricing-structure-row">
         <div className="bg-gray-200 border-radius-14 padding-30 d-flex justify-content-center align-items-center pricing-structure-img-block">
-          <img alt="cashless-pos" src="./assets/pos-1.png" />
+           <img alt="cashless-pos" src={images.PosDevice} /> 
         </div>
         <div className="d-flex flex-column justify-content-between">
           <div className="border border-ea border-radius-14 padding-20 margin-b-20">

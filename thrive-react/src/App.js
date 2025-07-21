@@ -24,6 +24,8 @@ import Documents from "./pages/Documents/Documents";
 import Profile from "./pages/Profile/Profile";
 import Vas from './pages/Vas/Home/Index';
 import Home from './pages/Auth/Home';
+import DeviceSubscription from './pages/DeviceSubscription/DeviceSubscription';
+import Kyc from './pages/Kyc/Kyc';
 
 function AppWrapper() {
   const token = localStorage.getItem("token");
@@ -58,6 +60,8 @@ function AppWrapper() {
           <Route path="documents" element={<Documents />} />
           <Route path="profile" element={<Profile />} />
           <Route path="vas" element={<Vas />} />
+          <Route path="device-subscription" element={<DeviceSubscription />} />
+          <Route path="kyc" element={<Kyc />} />
         </Route>
         {/* Redirect root to /home if not authenticated */}
         <Route path="/" element={token ? <Navigate to="/" /> : <Navigate to="/home" />} />

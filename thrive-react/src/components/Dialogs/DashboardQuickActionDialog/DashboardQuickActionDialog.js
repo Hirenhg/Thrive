@@ -35,7 +35,7 @@ const DashboardQuickActionDialog = ({ open, onClose }) => {
                                 </i>
                             </div>
                         </NavLink>
-                        <NavLink to="/deposit" className="quick-action-group d-flex align-items-center justify-content-between" onClick={handleNav}>
+                        <NavLink to="/atm-deposits" className="quick-action-group d-flex align-items-center justify-content-between" onClick={handleNav}>
                             <div className="me-2">
                                 <div className="text-primary f-size-14 fw-medium mb-1">Deposit</div>
                                 <div className="text-gray-400 f-size-12">Find your nearest ATM and Pay reference</div>

@@ -1,8 +1,64 @@
 import React, { useState } from 'react'
 import { images } from '../../../config/images';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    Title: '',
+    Name: '',
+    Surname: '',
+    MobileNumber: '',
+    DateOfBirth: '',
+    EmailAddress: '',
+    ConfirmEmailAddress: '',
+    ReferralCode: '',
+    Password: '',
+    ConfirmPassword: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    if (form.Password !== form.ConfirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+    if (form.EmailAddress !== form.ConfirmEmailAddress) {
+      setError('Emails do not match');
+      return;
+    }
+    setLoading(true);
+    try {
+      // Adjust the API endpoint as per your backend
+      await axios.post('http://localhost:5000/api/auth/register', {
+        title: form.Title,
+        name: form.Name,
+        surname: form.Surname,
+        mobileNumber: form.MobileNumber,
+        dateOfBirth: form.DateOfBirth,
+        email: form.EmailAddress,
+        referralCode: form.ReferralCode,
+        password: form.Password
+      });
+      setLoading(false);
+      navigate('/signup-complete');
+    } catch (err) {
+      setLoading(false);
+      setError(
+        err.response?.data?.message || 'Registration failed. Please try again.'
+      );
+    }
+  };
+
   return (
     <div className='signup-main'>
       <div className="content min-vh-100 mw-sm-940 m-auto">
@@ -12,14 +68,15 @@ const SignUp = () => {
           </a>
         </div>
         <div className="bg-white border-radius-14 padding-40 w-100 rounder-sm-0 h-sm-100 d-flex signup-form-block ">
-          <form className="w-100">
+          <form className="w-100" onSubmit={handleSubmit}>
             <div className="w-100 personal-details">
               <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">Sign Up for Free</h4>
               <p className="mb-2 mb-sm-3 text-gray-300">Personal details</p>
+              {error && <div className="alert alert-danger">{error}</div>}
               <div className="signup-details-box p-3 border-radius-6 margin-b-20"><div className="form-row d-flex flex-sm-row flex-column">
                 <div className="form-group margin-b-10 margin-r-10 w-100 mw-sm-150"><label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Title</label>
-                  <select name="Title" className="form-select form-control w-100 f-size-12 fw-medium text-primary valid">
-                    <option value="" selected="" disabled="" hidden="">Select Title</option>
+                  <select name="Title" className="form-select form-control w-100 f-size-12 fw-medium text-primary valid" value={form.Title} onChange={handleChange} required>
+                    <option value="" disabled hidden>Select Title</option>
                     <option value="Mr">Mr</option>
                     <option value="Ms">Ms</option>
                     <option value="Mrs">Mrs</option>
@@ -27,80 +84,59 @@ const SignUp = () => {
                 </div>
                 <div className="form-group margin-b-10 margin-r-10 w-100">
                   <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Name</label>
-                  <input placeholder="Name" name="Name" className="form-control f-size-12 fw-medium valid" />
+                  <input placeholder="Name" name="Name" className="form-control f-size-12 fw-medium valid" value={form.Name} onChange={handleChange} required />
                 </div>
                 <div className="form-group margin-b-10 w-100">
                   <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Surname</label>
-                  <input placeholder="Surname" name="Surname" className="form-control f-size-12 fw-medium valid" />
+                  <input placeholder="Surname" name="Surname" className="form-control f-size-12 fw-medium valid" value={form.Surname} onChange={handleChange} required />
                 </div></div>
                 <div className="form-row d-flex flex-sm-row flex-column">
                   <div className="form-group margin-b-10 margin-r-10 w-100">
                     <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Cell Phone</label>
-                    <input placeholder="Cell Phone" name="MobileNumber" className="form-control f-size-12 fw-medium valid" />
+                    <input placeholder="Cell Phone" name="MobileNumber" className="form-control f-size-12 fw-medium valid" value={form.MobileNumber} onChange={handleChange} required />
                   </div>
                   <div className="form-group margin-b-10 w-100"><label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Date of Birth</label>
-                    <input placeholder="Date of Birth" type="date" min="1900-01-01" max="2099-12-31" className="form-control f-size-12 fw-medium date-control text-uppercase valid" />
+                    <input placeholder="Date of Birth" type="date" min="1900-01-01" max="2099-12-31" className="form-control f-size-12 fw-medium date-control text-uppercase valid" name="DateOfBirth" value={form.DateOfBirth} onChange={handleChange} required />
                   </div></div>
                 <div className="form-row d-flex flex-sm-row flex-column">
                   <div className="form-group margin-b-10 w-100 margin-r-10">
                     <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Email</label>
-                    <input placeholder="Email" name="EmailAddress" className="form-control f-size-12 fw-medium valid" />
+                    <input placeholder="Email" name="EmailAddress" className="form-control f-size-12 fw-medium valid" value={form.EmailAddress} onChange={handleChange} required />
                   </div>
                   <div className="form-group margin-b-10 w-100">
                     <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Confirm Email</label>
-                    <input placeholder="Confirm Email" name="ConfirmEmailAddress" className="form-control f-size-12 fw-medium valid" />
+                    <input placeholder="Confirm Email" name="ConfirmEmailAddress" className="form-control f-size-12 fw-medium valid" value={form.ConfirmEmailAddress} onChange={handleChange} required />
                   </div></div>
                 <div className="form-row d-flex flex-sm-row flex-column">
                   <div className="form-group margin-b-10 w-100">
                     <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Referral Code(Optional)</label>
-                    <input placeholder="Referral Code" name="ReferralCode" className="form-control f-size-12 fw-medium valid" />
+                    <input placeholder="Referral Code" name="ReferralCode" className="form-control f-size-12 fw-medium valid" value={form.ReferralCode} onChange={handleChange} />
                   </div>
                 </div>
                 <div className="form-row d-flex flex-sm-row flex-column"><div className="form-group  mb-2 mb-sm-0 w-100 margin-r-10">
                   <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Password</label>
                   <div className="input-pwd-group position-relative">
-                    <input type="password" placeholder="Password" name="Password" className="form-control f-size-12 fw-medium valid" />
+                    <input type="password" placeholder="Password" name="Password" className="form-control f-size-12 fw-medium valid" value={form.Password} onChange={handleChange} required />
                     <a className="eye-icon">
                       <img src={images.IcoEye} alt="eye-img" />
-                      {/* <img src="../assets/ico-eye-hide.svg" alt="eye-img"/> */}
                     </a>
                   </div>
                 </div>
                   <div className="form-group w-100"><label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Confirm Password</label>
                     <div className="input-pwd-group position-relative">
-                      <input type="password" placeholder="Confirm Password" name="ConfirmPassword" className="form-control f-size-12 fw-medium valid" />
+                      <input type="password" placeholder="Confirm Password" name="ConfirmPassword" className="form-control f-size-12 fw-medium valid" value={form.ConfirmPassword} onChange={handleChange} required />
                       <a className="eye-icon">
                       <img src={images.IcoEye} alt="eye-img" />
-                        {/* <img src="../assets/ico-eye-hide.svg" alt="eye-img"/> */}
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="next-btn-action mw-sm-150">
-                <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next <i className="arrow-right mx-2"></i></button>
+                <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center" type="submit" disabled={loading}>{loading ? 'Registering...' : 'Next'} <i className="arrow-right mx-2"></i></button>
               </div>
             </div>
-            <div className="w-100 tc-details d-none">
-                <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">Verify OTP</h4>
-                  <div className="mb-2 mb-sm-3 text-gray-300">An OTP has been send to your phone number ending with XXX XXX 2588</div>
-                  <div className="signup-details-box p-3 border-radius-6 margin-b-20">
-                    <div className="otp-input-row">
-                          <input maxlength="1" inputmode="numeric" name="Model.Otp1" className="form-control f-size-12 fw-medium text-center otp-input valid"/>
-                          <input maxlength="1" inputmode="numeric" name="Model.Otp2" className="form-control f-size-12 fw-medium text-center otp-input valid"/>
-                          <input maxlength="1" inputmode="numeric" name="Model.Otp3" className="form-control f-size-12 fw-medium text-center otp-input valid"/>
-                          <input maxlength="1" inputmode="numeric" name="Model.Otp4" className="form-control f-size-12 fw-medium text-center otp-input valid"/>
-                          <input maxlength="1" inputmode="numeric" name="Model.Otp5" className="form-control f-size-12 fw-medium text-center otp-input valid"/>
-                          <input maxlength="1" inputmode="numeric" name="Model.Otp6" className="form-control f-size-12 fw-medium text-center otp-input valid"/>
-                      </div>
-                      <div className="f-size-14 fw-medium text-gray-400 margin-t-10">Did not receive the code?
-                          <a href="#" title="Resend OTP" className="text-primary">Resend</a>
-                      </div>
-                  </div>
-                  <div className="next-btn-action mw-sm-150">
-                    <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Sign Up now <i className="arrow-right mx-2"></i></button>
-                  </div>
-            </div>
+            {/* OTP and other UI can be handled here if needed */}
           </form>
         </div>
         <div className="d-flex justify-content-between w-100 py-4 px-sm-0 flex-sm-row flex-column text-center">
