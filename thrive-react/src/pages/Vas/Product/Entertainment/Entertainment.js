@@ -1,10 +1,12 @@
 ﻿import React from 'react';
+import NetworkProvider from '../../NetworkProvider';
 
 const Entertainment = () => {
   return (
     <div className="entertainment-main">
-      <h4 className="text-primary fw-medium mb-3">Entertainment</h4>
-      <div>Entertainment purchase form or info goes here (placeholder).</div>
+      <h6 className="margin-b-20 text-primary f-size-20 fw-medium">Entertainment</h6>
+      <div className="divider margin-b-20"></div>
+      <div><NetworkProvider/></div>
     </div>
   );
 };

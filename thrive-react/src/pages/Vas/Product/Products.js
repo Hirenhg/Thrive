@@ -1,10 +1,16 @@
 ﻿import React, { useState } from 'react';
+import Airtime from './Airtime/Airtime';
+import Data from './Data/Data';
+import Electricity from './Electricity/Electricity';
+import Entertainment from './Entertainment/Entertainment';
+import BillPayment from './BillPayment/BillPayment';
 
 const categories = [
-  { TabUrl: 'vas-airtime', IconClass: 'ico-airtime', Description: 'Airtime & Data' },
+  { TabUrl: 'vas-airtime', IconClass: 'ico-airtime', Description: 'Airtime' },
+  { TabUrl: 'vas-data', IconClass: 'ico-data', Description: 'Data' },
   { TabUrl: 'vas-electricity', IconClass: 'ico-electricity', Description: 'Electricity' },
-  { TabUrl: 'vas-entertainment', IconClass: 'ico-entertainment', Description: 'Entertainment' },
-  { TabUrl: 'vas-billpayments', IconClass: 'ico-bill', Description: 'Bill Payments' },
+  { TabUrl: 'vas-entertainment', IconClass: 'ico-gaming', Description: 'Entertainment' },
+  { TabUrl: 'vas-billpayments', IconClass: 'ico-vas-voucher', Description: 'Bill Payments' },
 ];
 
 const Products = () => {
@@ -21,6 +27,7 @@ const Products = () => {
         </div>
       </div>
       <div className="bg-white border-radius-14 w-100 contant-detail-box vas-detail-box rounder-sm-0">
+      <div className='d-flex flex-column flex-md-row'>
         <div className="vas-detail-tabs-col margin-r-30 h-100">
           <div className="nav nav-pills flex-column w-100" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             {categories.map((category) => (
@@ -39,28 +46,28 @@ const Products = () => {
             ))}
           </div>
         </div>
-        <div className="tab-content" id="pills-tabContent">
-          <div className="tab-pane fade show active" role="tabpanel" aria-labelledby={`pills-${activeTab}-tab`} tabIndex={0}>
-            {(() => {
-              switch (activeTab) {
-                case 'vas-airtime':
-                  return <div>MobileAirtime Component Placeholder</div>;
-                case 'vas-electricity':
-                  return <div>Electricity Component Placeholder</div>;
-                case 'vas-entertainment':
-                  return <div>Entertainment Component Placeholder</div>;
-                case 'vas-billpayments':
-                  return (
-                    <div className="d-flex flex-column">
-                      <h6 className="margin-b-20 text-primary f-size-20 fw-medium">Bill Payments</h6>
-                      <div className="divider margin-b-20"></div>
-                    </div>
-                  );
-                default:
-                  return null;
-              }
-            })()}
+        <div className='vas-feature-content-col'>
+          <div className="tab-content" id="pills-tabContent">
+            <div className="tab-pane fade show active" role="tabpanel" aria-labelledby={`pills-${activeTab}-tab`} tabIndex={0}>
+              {(() => {
+                switch (activeTab) {
+                  case 'vas-airtime':
+                    return <Airtime/>;
+                  case 'vas-data':
+                    return <Data/>;
+                  case 'vas-electricity':
+                    return <Electricity/>;
+                  case 'vas-entertainment':
+                    return <Entertainment/>;
+                  case 'vas-billpayments':
+                    return (<BillPayment/>);
+                  default:
+                    return null;
+                }
+              })()}
+            </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

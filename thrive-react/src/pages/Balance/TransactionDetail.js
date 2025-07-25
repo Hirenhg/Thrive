@@ -26,9 +26,9 @@ const TransactionDetail = () => {
     fetchTransaction();
   }, [id]);
 
-  if (loading) return <div>Loading transaction details...</div>;
+  if (loading) return <div className="text-center">Loading transaction details...</div>;
   if (error) return <div className="alert alert-danger">{error}</div>;
-  if (!transaction) return <div>No transaction found.</div>;
+  if (!transaction) return <div className="text-center">No transaction found.</div>;
 
   return (
     <div className="transaction-detail-main">

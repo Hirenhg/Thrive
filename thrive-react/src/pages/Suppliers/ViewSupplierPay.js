@@ -1,168 +1,175 @@
-import React, { useState } from 'react'
-import SupplierHistory from './SupplierHistory'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import SupplierHistory from './SupplierHistory';
 import PageHeading from '../../components/PageHeading/PageHeading';
 
 const ViewSupplierPay = () => {
-    const [activeTab, setActiveTab] = useState("pay");
-    return (
-        <div className="view-supplier-pay-main">
-            <div className="d-flex align-items-sm-center flex-column flex-sm-row justify-content-between margin-b-20 page-heading">
-                <PageHeading PageHeadingName="Rozetka" iconClassName="ico-back" iconTo="/Suppliers" />
-                <div className="nav nav-pills heading-tabs bg-gray-200 p-1 rounded" id="pills-tab" role="tablist">
-                    <button className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center ${activeTab === "pay" ? "active" : ""}`} type="button" role="tab" onClick={() => setActiveTab("pay")}>Pay</button>
-                    <button className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center ${activeTab === "history" ? "active" : ""}`} type="button" role="tab" onClick={() => setActiveTab("history")}>History</button>
-                    <button className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center ${activeTab === "info" ? "active" : ""}`} type="button" role="tab" onClick={() => setActiveTab("info")}>Info</button>
-                </div>
-            </div>
-            <div className="tab-content" id="pills-tabContent">
-                {activeTab === "pay" && (
-                    <div className="tab-pane fade show active" role="tabpanel">
-                        <div className="w-100 mw-sm-340 view-supplier-contant view-supplier-pay-contant center-block">
-                            <div className="bg-primary border-radius-14 w-100 balance-box rounder-sm-0 padding-30 margin-b-20 text-center">
-                                <h5 className="text-white fw-medium mb-2">
-                                    Balance
-                                </h5>
-                                <div className="f-size-10 text-gray-400 fw-semibold text-uppercase mb-2">Available Amount</div>
-                                <h2 className="text-white fw-medium mb-2">R36
-                                    <span className="fs-4">.24</span>
-                                </h2>
-                                <div className="d-none text-white fw-medium f-size-10 bg-gray-600 rounded last-update-tag text-nowrap m-auto">
-                                    Last updated 20h ago ?????
-                                </div>
-                            </div>
-                            <div className="bg-white border-ea border-radius-14 padding-30 w-100 position-relative supplier-pay-box">
-                                <div className="supplier-pay-form">
-                                    <h5 className="text-primary fw-medium margin-b-10 text-center">
-                                        Pay
-                                    </h5>
-                                    <div className="bg-gray-100 border-ea rounded padding-10 margin-b-20 d-flex align-items-center">
-                                        <div className="bg-gray-200 rounded iconbox w-sm-40 h-sm-40  p-0 overflow-hidden">
-                                            <i className="icon-img icon-placeholder"></i>
-                                        </div>
-                                        <div className="margin-l-10">
-                                            <div className="f-size-14 text-primary text-capitalize fw-medium">Rozetka</div>
-                                        </div>
-                                    </div>
-                                    <div className="form-group margin-b-10 text-center">
-                                        <label className="form-label text-gray-300 fw-semibold margin-b-10 f-size-10 text-center w-100">ENTER AMOUNT</label>
-                                        <input type="number" id="paymentAmount" className="form-control fw-medium text-center" placeholder="R 0.00" />
-                                    </div>
-                                    <div className="form-group">
-                                        <button id="btnNext" type="button" className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center disabled">
-                                            Next <i className="arrow-right margin-l-10"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="bg-white border-ea border-radius-14 padding-30 w-100 position-relative supplier-confirm-payment-box d-none">
-                                <div className="text-center">
-                                    <h5 className="text-primary fw-medium margin-b-20">
-                                        Confirm Payment
-                                    </h5>
-                                    <div className="payment-logo d-flex align-items-center justify-content-center">
-                                        <span className="bg-primary rounded iconbox w-sm-40 thrive-logo position-relative margin-r-10">
-                                            <i className="icon-img ico-logo"></i>
-                                        </span>
-                                        <span className="bg-gray-200 rounded iconbox w-sm-40 overflow-hidden">
-                                            <i className="icon-img icon-placeholder"></i>
-                                        </span>
-                                    </div>
-                                    <div className="f-size-12 text-gray-300 margin-b-10">You are about to pay Rozetka</div>
-                                    <h2 className="text-primary fw-medium margin-b-20">10
-                                        <span className="fs-4">.00</span>
-                                    </h2>
-                                    <div className="form-group">
-                                        <button id="btnPayNow" className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center  margin-b-10">Pay now</button>
-                                        <button id="btnPayCancel" className="btn btn-outline border border-ea w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"><i className="ico-edit margin-r-10"></i>Edit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                {activeTab === "history" && (
-                    <div className="tab-pane fade show active" role="tabpanel">
-                        <SupplierHistory />
-                    </div>
-                )}
-                {activeTab === "info" && (
-                    <div>
-                        <div className="tab-pane fade show active" role="tabpanel">
-                            <div className="w-100 mw-sm-340 view-supplier-contant center-block">
-                                <div className="bg-white border-ea border-radius-14 padding-30 w-100 position-relative supplier-info-box">
-                                    <div className="bg-gray-100 border-ea rounded padding-10 margin-b-20 d-flex align-items-center">
-                                        <div className="bg-gray-200 rounded iconbox-large w-sm-60 p-0">
-                                            <i className="icon-img icon-placeholder"></i>
-                                        </div>
-                                        <div className="margin-l-10">
-                                            <div className="f-size-12 text-primary text-capitalize fw-medium">
-                                                DriveCo
-                                            </div>
-                                            <div className="f-size-10 text-gray-400 name-subtext text-break">
-                                                Business, HEAD OFFICE, Unknown, Unknown, Gauteng, Unknown, Unknown
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="margin-b-20 d-flex align-items-center justify-content-between call-number">
-                                        <div className="call-info">
-                                            <div className="fw-bold text-primary f-size-12 pb-1">Number</div>
-                                            <div className="text-gray-300 f-size-12 fw-medium">
-                                                11 123 4567
-                                            </div>
-                                        </div>
-                                        <a href="tel:@SupplierPaymentModel.SupplierContact" className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"><i className="icon ico-call margin-r-10"></i> Call</a>
-                                    </div>
-                                    <div className="margin-b-20">
-                                        <div className="hours-info">
-                                            <div className="fw-bold text-primary f-size-12 pb-1">Hours</div>
-                                            <div className="text-gray-300 f-size-12 fw-medium">
-                                                WorkingHours
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="margin-b-20 d-flex align-items-center justify-content-between customer-id">
-                                        <div className="customer-info">
-                                            <div className="fw-bold f-size-12 text-primary  pb-1">Customer ID</div>
-                                            <div className="text-blue f-size-12 fw-medium d-flex align-items-center">
-                                                brandId1 <i className="ico-check"></i>
-                                            </div>
-                                        </div>
-                                        <button id="btnCustomerID" type="button" className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"><i className="icon ico-edit margin-r-10"></i> Edit</button>
-                                    </div>
-                                    <div className="d-flex align-items-center justify-content-between reference-number">
-                                        <div className="reference-info">
-                                            <div className="fw-bold f-size-12 text-primary pb-1">Payment reference number</div>
-                                            <div className="text-blue f-size-12 fw-medium">accountIdWithRecipient1</div>
-                                        </div>
-                                        <button id="btnPayNumber" type="button" className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"><i className="icon ico-edit margin-r-10"></i> Edit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="tab-pane fade show active d-none" role="tabpanel">
-                            <div className="w-100 mw-sm-340 view-supplier-contant center-block">
-                                <div className="bg-white border-ea border-radius-14 padding-30 w-100 position-relative supplier-info-box">
-                                    <div className="bg-gray-100 border-ea rounded padding-10 d-flex align-items-center">
-                                        <div className="bg-gray-300 rounded iconbox-large w-sm-60 p-0">
-                                            <i className="icon-img ico-super-trader"></i>
-                                        </div>
-                                        <div className="margin-l-10">
-                                            <div className="f-size-12 text-primary text-capitalize fw-medium">
-                                                Rozetka
-                                            </div>
-                                            <div className="f-size-10 text-gray-400 name-subtext text-break">
-                                                ThriveWebApp.Client.Models.Supplier.LinkedSupplierProfileData+SupplierAddress
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
-    )
-}
+  const [activeTab, setActiveTab] = useState("pay");
+  const [supplierData, setSupplierData] = useState(null);
+  const [balance, setBalance] = useState(0);
+  const [amount, setAmount] = useState('');
+  const [showConfirm, setShowConfirm] = useState(false);
 
-export default ViewSupplierPay
+  useEffect(() => {
+    // Fetch supplier data
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('/api/supplier/rozetka'); // Replace with actual endpoint
+        setSupplierData(res.data);
+        setBalance(res.data.balance);
+      } catch (err) {
+        console.error("Error fetching supplier data", err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleNext = () => {
+    if (amount > 0) setShowConfirm(true);
+  };
+
+  const handlePayNow = async () => {
+    try {
+      await axios.post('/api/supplier/pay', {
+        supplierId: supplierData.id,
+        amount,
+      });
+      alert('Payment Successful');
+      setAmount('');
+      setShowConfirm(false);
+    } catch (err) {
+      console.error("Payment failed", err);
+    }
+  };
+
+  if (!supplierData) return <div>Loading...</div>;
+
+  return (
+    <div className="view-supplier-pay-main">
+      <div className="d-flex align-items-sm-center flex-column flex-sm-row justify-content-between margin-b-20 page-heading">
+        <PageHeading PageHeadingName={supplierData.name} iconClassName="ico-back" iconTo="/Suppliers" />
+        <div className="nav nav-pills heading-tabs bg-gray-200 p-1 rounded">
+          {["pay", "history", "info"].map(tab => (
+            <button
+              key={tab}
+              className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center ${activeTab === tab ? "active" : ""}`}
+              onClick={() => {
+                setActiveTab(tab);
+                setShowConfirm(false);
+              }}
+            >
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* TABS */}
+      <div className="tab-content">
+        {activeTab === "pay" && (
+          <div className="tab-pane fade show active">
+            <div className="w-100 mw-sm-340 view-supplier-contant view-supplier-pay-contant center-block">
+              {/* Balance Box */}
+              <div className="bg-primary border-radius-14 padding-30 text-center text-white margin-b-20">
+                <h5 className="mb-2">Balance</h5>
+                <div className="f-size-10 text-uppercase mb-2">Available Amount</div>
+                <h2 className="fw-medium">R{balance.toFixed(2)}</h2>
+              </div>
+
+              {!showConfirm ? (
+                <div className="bg-white border-ea border-radius-14 padding-30">
+                  <h5 className="text-primary text-center mb-3">Pay</h5>
+                  <div className="bg-gray-100 p-2 rounded d-flex align-items-center mb-3">
+                    <div className="iconbox bg-gray-200 rounded w-sm-40 h-sm-40">
+                      <i className="icon-img icon-placeholder"></i>
+                    </div>
+                    <div className="ml-2">{supplierData.name}</div>
+                  </div>
+                  <div className="form-group text-center mb-3">
+                    <label className="form-label text-gray-300 fw-semibold f-size-10">ENTER AMOUNT</label>
+                    <input
+                      type="number"
+                      className="form-control fw-medium text-center"
+                      placeholder="R 0.00"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                    />
+                  </div>
+                  <button
+                    onClick={handleNext}
+                    disabled={!amount || parseFloat(amount) <= 0}
+                    className="btn btn-primary w-100 rounded f-size-12 fw-medium"
+                  >
+                    Next <i className="arrow-right ml-2" />
+                  </button>
+                </div>
+              ) : (
+                <div className="bg-white border-ea border-radius-14 padding-30">
+                  <h5 className="text-primary text-center mb-3">Confirm Payment</h5>
+                  <div className="payment-logo d-flex justify-content-center mb-2">
+                    <span className="bg-primary iconbox rounded w-sm-40 text-white mr-2">
+                      <i className="icon-img ico-logo"></i>
+                    </span>
+                    <span className="bg-gray-200 iconbox rounded w-sm-40">
+                      <i className="icon-img icon-placeholder"></i>
+                    </span>
+                  </div>
+                  <div className="f-size-12 text-gray-300 text-center mb-2">You are about to pay {supplierData.name}</div>
+                  <h2 className="text-primary text-center fw-medium">R{parseFloat(amount).toFixed(2)}</h2>
+                  <button onClick={handlePayNow} className="btn btn-primary w-100 rounded mb-2">Pay Now</button>
+                  <button onClick={() => setShowConfirm(false)} className="btn btn-outline border border-ea w-100 rounded">Edit</button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {activeTab === "history" && (
+          <div className="tab-pane fade show active">
+            <SupplierHistory supplierId={supplierData.id} />
+          </div>
+        )}
+
+        {activeTab === "info" && (
+          <div className="tab-pane fade show active">
+            <div className="w-100 mw-sm-340 view-supplier-contant center-block">
+              <div className="bg-white border-ea border-radius-14 padding-30">
+                <div className="d-flex align-items-center mb-3">
+                  <div className="iconbox-large bg-gray-300 rounded mr-2">
+                    <i className="icon-img icon-placeholder"></i>
+                  </div>
+                  <div>
+                    <div className="f-size-12 text-primary fw-medium">{supplierData.name}</div>
+                    <div className="f-size-10 text-gray-400">{supplierData.address}</div>
+                  </div>
+                </div>
+                <div className="mb-3">
+                  <strong className="f-size-12 text-primary">Number</strong>
+                  <div className="text-gray-300 f-size-12">{supplierData.phone}</div>
+                </div>
+                <div className="mb-3">
+                  <strong className="f-size-12 text-primary">Hours</strong>
+                  <div className="text-gray-300 f-size-12">{supplierData.workingHours}</div>
+                </div>
+                <div className="mb-3 d-flex justify-content-between">
+                  <div>
+                    <strong className="f-size-12 text-primary">Customer ID</strong>
+                    <div className="text-blue f-size-12">{supplierData.customerId}</div>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <div>
+                    <strong className="f-size-12 text-primary">Reference No.</strong>
+                    <div className="text-blue f-size-12">{supplierData.paymentReference}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ViewSupplierPay;

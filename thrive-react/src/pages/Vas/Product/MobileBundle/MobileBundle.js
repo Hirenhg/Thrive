@@ -1,10 +1,12 @@
 ﻿import React from 'react';
+import NetworkProvider from '../../NetworkProvider';
 
 const MobileBundle = () => {
   return (
     <div className="mobile-bundle-main">
-      <h4 className="text-primary fw-medium mb-3">Mobile Bundle</h4>
-      <div>MobileBundle purchase form or info goes here (placeholder).</div>
+      <h6 className="margin-b-20 text-primary f-size-20 fw-medium">Mobile Bundle</h6>
+      <div className="divider margin-b-20"></div>
+      <div><NetworkProvider/></div>
     </div>
   );
 };
