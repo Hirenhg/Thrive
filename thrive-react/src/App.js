@@ -26,6 +26,7 @@ import Vas from './pages/Vas/Home/Index';
 import Home from './pages/Auth/Home';
 import DeviceSubscription from './pages/DeviceSubscription/DeviceSubscription';
 import Kyc from './pages/Kyc/Kyc';
+import Products from './pages/Vas/Product/Products';
 
 function AppWrapper() {
   const token = localStorage.getItem("token");
@@ -60,6 +61,7 @@ function AppWrapper() {
           <Route path="documents" element={<Documents />} />
           <Route path="profile" element={<Profile />} />
           <Route path="vas" element={<Vas />} />
+          <Route path="products" element={<Products />} />
           <Route path="device-subscription" element={<DeviceSubscription />} />
           <Route path="kyc" element={<Kyc />} />
         </Route>
