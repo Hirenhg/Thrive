@@ -13,7 +13,7 @@ const RepresentativeData = ({ representative, onNavigate, onRemove }) => (
   </div>
 );
 
-const RepresentativeList = ({ onNext, onBack }) => {
+const RepresentativeList = ({ NextStep, PreviousStep}) => {
   // Placeholder state for representatives
   const [representatives, setRepresentatives] = useState([
     { id: 1, name: 'John Doe', role: 'Director', share: 60 },
@@ -30,21 +30,14 @@ const RepresentativeList = ({ onNext, onBack }) => {
     setRepresentatives((prev) => prev.filter((r) => r.id !== id));
   };
 
-  const handleNext = (e) => {
-    e.preventDefault();
-    // Placeholder: check if total share is 100%
-    const totalShare = representatives.reduce((sum, r) => sum + r.share, 0);
-    if (totalShare !== 100) {
-      setShowPopup(true);
-      return;
-    }
-    if (onNext) onNext();
-  };
-
-  const handleBack = (e) => {
-    e.preventDefault();
-    if (onBack) onBack();
-  };
+  // const NextStep = (e) => {
+  //   e.preventDefault();
+  //   const totalShare = representatives.reduce((sum, r) => sum + r.share, 0);
+  //   if (totalShare !== 100) {
+  //     setShowPopup(true);
+  //     return;
+  //   }
+  // };
 
   const handlePopupYes = () => {
     setShowPopup(false);
@@ -86,20 +79,10 @@ const RepresentativeList = ({ onNext, onBack }) => {
             <p className="text-center text-primary f-size-12 margin-b-30">
               Shareholder % must be equal to 100% before proceeding
             </p>
-            <div className="form-group d-flex align-items-center justify-content-between">
-              <button
-                className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10"
-                onClick={handleBack}
-              >
-                Back
-              </button>
-              <button
-                className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"
-                onClick={handleNext}
-              >
-                Next <i className="arrow-right mx-2"></i>
-              </button>
-            </div>
+          <div className="form-group d-flex align-items-center justify-content-between">
+              <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
+              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" type="button" onClick={NextStep}>Continue</button>
+            </div> 
             {/* Popup for share validation */}
             {showPopup && (
               <div className="modal d-block" tabIndex="-1" role="dialog" style={{ background: 'rgba(0,0,0,0.3)' }}>

@@ -133,7 +133,7 @@ const DisplayDeviceList = () => {
                 {formatCurrency(selectedFeeData.FeesTotal)} <span className="fw-normal mx-1">p/m</span>
               </div>
             </div>
-            <Link className="btn btn-primary rounded-2 f-size-12 fw-medium" to="/device-subscription">
+            <Link className="btn btn-primary rounded-2 f-size-12 fw-medium line-height-26" to="/device-subscription">
               Confirm
             </Link>
           </div>

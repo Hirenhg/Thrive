@@ -1,26 +1,26 @@
 ﻿import React, { useState } from "react";
 
-const Iidentifii = () => {
+const Iidentifii = ({}) => {
   // These would typically come from props, context, or API
-  const [isSuccess, setIsSuccess] = useState(false);
+  // const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [iframeURL] = useState("https://your-identity-verification-url.com"); // Replace with actual URL
+  // const [iframeURL] = useState("https://your-identity-verification-url.com");
 
   // You can add logic to update isSuccess/isError based on events or API responses
 
-  if (!isSuccess) {
-    return (
-      <div className="d-flex align-items-center justify-content-center mx-4 px-1 mx-sm-0 px-sm-0">
-        <iframe
-          src={iframeURL}
-          allow="camera;fullscreen;accelerometer;gyroscope;magnetometer"
-          className="bg-white border-ea border-radius-14 w-100 identifill-box min-vh-100"
-          sandbox="allow-same-origin allow-scripts"
-          title="Identity Verification"
-        />
-      </div>
-    );
-  }
+  // if (!isSuccess) {
+  //   return (
+  //     <div className="d-flex align-items-center justify-content-center mx-4 px-1 mx-sm-0 px-sm-0">
+  //       <iframe
+  //         src={iframeURL}
+  //         allow="camera;fullscreen;accelerometer;gyroscope;magnetometer"
+  //         className="bg-white border-ea border-radius-14 w-100 identifill-box min-vh-100"
+  //         sandbox="allow-same-origin allow-scripts"
+  //         title="Identity Verification"
+  //       />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="d-flex align-items-center justify-content-center mx-4 px-1 mx-sm-0 px-sm-0">

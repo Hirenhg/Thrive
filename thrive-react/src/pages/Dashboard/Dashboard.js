@@ -34,20 +34,67 @@ const Dashboard = () => {
             </div>
             <TopBalance />
             {/* CashlessPro Card - static */}
-            <div className="card border-radius-14 padding-30 margin-b-20 cashlesspro-card border-0 mx-3 mx-sm-0">
-                <div className="d-flex justify-content-between">
-                    <div className="cashlesspro-left-col d-flex flex-column justify-content-between">
-                        <div className="cashlesspro-text">
-                            <h4 className="mb-2 text-white fw-semibold">Apply for a CashlessPro</h4>
-                            <div className="f-size-10 text-white fw-semibold mb-3">Apply for a fast and reliable card machine with low rates and quick setup — perfect for any business.</div>
-                        </div>
-                        <Link className="btn btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center mw-sm-130" to="/device-subscription">Apply now <i className="arrow-right mx-2"></i></Link>
+            <div className="card border-radius-14 padding-30 margin-b-20 cashless-payment-card border-0 mx-3 mx-sm-0">
+                <div className="cashless-payment-shape-logo">
+                    <Link to="/" className="thrive-logo d-flex align-items-center justify-content-center overflow-hidden">
+                    <img src={images.thriveLogo} alt="thrive_mobile" />
+                    </Link>
+                </div>
+
+                <div className="d-flex flex-column justify-content-between">
+                    <div className="margin-b-10">
+                    <h5 className="mb-1 text-white fw-semibold">Start Accepting Cashless Payments</h5>
+                    <div className="f-size-12 text-white">Fast, reliable, and affordable solutions for your business</div>
                     </div>
-                    <div className="cashlesspro-imagebox bg-gray-100 border-radius-6 d-flex align-items-center justify-content-center text-center">
-                        <img src={images.PosDevice} alt="device" />
+
+                    <div className="mb-3">
+                    <div className="mb-3 d-flex flex-column flex-sm-row justify-content-between w-100">
+                        <div className="cashless-payment-option position-relative">
+                        <div className="option-text ms-4 me-0 me-sm-2">
+                            <div className="f-size-12 text-white fw-semibold">Thrive.Mobile</div>
+                            <div className="f-size-10 text-white">Turn your Android device into a card machine</div>
+                        </div>
+                        </div>
+                        <Link to="/device-subscription" className="btn btn-primary rounded f-size-12 text-nowrap d-flex align-items-center justify-content-center btn-pos">
+                        Get Thrive.Mobile <i className="arrow-right mx-2"></i>
+                        </Link>
+                    </div>
+
+                    <div className="d-flex flex-column flex-sm-row justify-content-between w-100">
+                        <div className="cashless-payment-option position-relative">
+                        <div className="option-text ms-4 me-0 me-sm-2">
+                            <div className="f-size-12 text-white fw-semibold">Thrive.Mobile + CashlessPro</div>
+                            <div className="f-size-10 text-white">All-in-one card machine with printer, 4G & Wi-Fi</div>
+                        </div>
+                        </div>
+                        <Link to="/device-subscription" className="btn btn-primary rounded f-size-12 text-nowrap d-flex align-items-center justify-content-center btn-cashless">
+                        Get CashlessPro <i className="arrow-right mx-2"></i>
+                        </Link>
+                    </div>
+                    </div>
+
+                    <div className="d-grid align-items-center cashless-payment-logos">
+                    <div className="payment-logo d-flex align-items-center justify-content-center overflow-hidden">
+                        <img src={images.mastercardLogo} alt="mastercard_logo" />
+                    </div>
+                    <div className="payment-logo d-flex align-items-center justify-content-center overflow-hidden">
+                        <img src={images.visaLogo} alt="visa_logo" />
+                    </div>
+                    <div className="payment-logo d-flex align-items-center justify-content-center overflow-hidden">
+                        <img src={images.applepayLogo} alt="applepay_logo" />
+                    </div>
+                    <div className="payment-logo d-flex align-items-center justify-content-center overflow-hidden">
+                        <img src={images.gpayLogo} alt="gpay_logo" />
+                    </div>
+                    <div className="payment-logo d-flex align-items-center justify-content-center overflow-hidden">
+                        <img src={images.samsungpayLogo} alt="samsungpay_logo" />
+                    </div>
+                    <div className="payment-logo d-flex align-items-center justify-content-center overflow-hidden">
+                        <img src={images.contactlessLogo} alt="contactless_logo" />
+                    </div>
                     </div>
                 </div>
-            </div>
+                </div>
             {/* Profile Verification Card - static */}
             <div className="card border-radius-14 padding-30 margin-b-20 complete-profile-card border-0 mx-3 mx-sm-0">
                 <h4 className="mb-1 text-primary fw-bold">Complete your profile verification</h4>

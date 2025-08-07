@@ -5,17 +5,8 @@ import FrequentlyBoughts from './FrequentlyBoughts';
 import { Link} from "react-router-dom";
 
 const Vas = () => {
-  // Example state, replace with real data fetching logic
-  const [categories, setCategories] = useState([]);
-  const [dataLoaded, setDataLoaded] = useState(false);
   const [activeTab, setActiveTab] = useState('products');
-
-  useEffect(() => {
-    // Fetch categories here and set state
-    // setCategories([...]);
-    // setDataLoaded(true);
-  }, []);
-
+  
   return (
     <div className="vas-main">
       <div className="d-flex align-items-sm-center flex-column flex-sm-row justify-content-between margin-b-20 page-heading">

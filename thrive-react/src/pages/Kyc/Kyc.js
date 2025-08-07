@@ -1,30 +1,29 @@
 ﻿import React, { useState } from 'react';
-// Import subcomponents as needed
-// import BusinessType from './BusinessType';
-// import BusinessDetail from './BusinessDetail';
-// import BusinessAddress from './BusinessAddress';
-// import CompanyDocuments from './CompanyDocuments';
-// import Representative from './Representative';
-// import RepresentAddress from './RepresentAddress';
-// import RepresentativeList from './RepresentativeList';
-// import KycDeclaration from './KycDeclaration';
-// import Verification from './Verification';
-// import Iidentifii from './Iidentifii';
+import BusinessType from './BusinessType';
+import BusinessDetail from './BusinessDetail';
+import BusinessAddress from './BusinessAddress';
+import CompanyDocuments from './CompanyDocuments';
+import Representative from './Representative';
+import RepresentAddress from './RepresentAddress';
+import RepresentativeList from './RepresentativeList';
+import KycDeclaration from './KycDeclaration';
+import Verification from './Verification';
+import Iidentifii from './Iidentifii';
+import { images } from '../../config/images'
 
 const Kyc = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  // Placeholder data for subcomponents
-  // const businessDetailViewModel = {};
-  // const businessAddressViewModel = {};
-  // const companyDocuments = {};
-  // const currentRepresentative = {};
-  // const businessRepresentative = { BusinessRepresentatives: [] };
-  // const representAddressViewModel = {};
-  // const representativeVms = [];
-  // const kycDeclarationViewModel = {};
-  // const verificationViewModel = {};
-  // const iframeURL = '';
-  // const kycDeclaration = {};
+  const businessDetailViewModel = {};
+  const businessAddressViewModel = {};
+  const companyDocuments = {};
+  const currentRepresentative = {};
+  const businessRepresentative = { BusinessRepresentatives: [] };
+  const representAddressViewModel = {};
+  const representativeVms = [];
+  const kycDeclarationViewModel = {};
+  const verificationViewModel = {};
+   const iframeURL = '';
+  const kycDeclaration = {};
 
   const supportEmail = 'support@thrive.trade';
   const supportPhone = '011 6363 640';
@@ -37,8 +36,8 @@ const Kyc = () => {
     <div className="kyc-block">
       <div className="d-flex align-items-center margin-b-20 page-heading">
         <div className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 d-flex align-items-center justify-content-center">
-          {currentStep === 12 ? (
-            <span className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0 d-flex align-items-center justify-content-center" style={{ cursor: 'pointer' }} onClick={IdentifyPageBack}>
+          {currentStep === 11 ? (
+            <span className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0 d-flex align-items-center justify-content-center cursor-pointer" onClick={IdentifyPageBack}>
               <i className="icon ico-back"></i>
             </span>
           ) : (
@@ -79,49 +78,74 @@ const Kyc = () => {
         </div>
       )}
       {currentStep === 2 && (
-        // <BusinessType OnClickNextStep={NextStep} businessDetailViewModel={businessDetailViewModel} isLoading={isLoading} />
-        <div>BusinessType Component Placeholder <button onClick={NextStep}>Next</button></div>
+        <BusinessType
+          businessDetailViewModel={businessDetailViewModel}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 3 && (
-        // <BusinessDetail OnClickNextStep={NextStep} OnClickPreviousStep={PreviousStep} businessDetailViewModel={businessDetailViewModel} />
-        <div>BusinessDetail Component Placeholder <button onClick={PreviousStep}>Back</button> <button onClick={NextStep}>Next</button></div>
+        <BusinessDetail
+          businessDetailViewModel={businessDetailViewModel}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 4 && (
-        // <BusinessAddress OnClickNextStep={NextStep} OnClickPreviousStep={PreviousStep} businessAddressViewModel={businessAddressViewModel} />
-        <div>BusinessAddress Component Placeholder <button onClick={PreviousStep}>Back</button> <button onClick={NextStep}>Next</button></div>
+        <BusinessAddress
+          businessAddressViewModel={businessAddressViewModel}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 5 && (
-        // <CompanyDocuments OnClickNextStep={NextStep} OnClickPreviousStep={PreviousStep} phoneNumber={profileViewModel.PhoneNumber} companyDocumentsData={companyDocuments} />
-        <div>CompanyDocuments Component Placeholder <button onClick={PreviousStep}>Back</button> <button onClick={NextStep}>Next</button></div>
+        <CompanyDocuments
+          companyDocumentsData={companyDocuments}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 6 && (
-        // <Representative businessRepresentativeVm={currentRepresentative} representatives={businessRepresentative.BusinessRepresentatives} OnClickNextStep={NextStep} OnClickPreviousStep={PreviousStep} />
-        <div>Representative Component Placeholder <button onClick={PreviousStep}>Back</button> <button onClick={NextStep}>Next</button></div>
+        <Representative
+          businessRepresentativeVm={currentRepresentative}
+          representatives={businessRepresentative.BusinessRepresentatives}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 7 && (
-        // <RepresentAddress representAddressVm={representAddressViewModel} OnClickNextStep={NextStep} OnClickPreviousStep={PreviousStep} />
-        <div>RepresentAddress Component Placeholder <button onClick={PreviousStep}>Back</button> <button onClick={NextStep}>Next</button></div>
+        <RepresentAddress
+          representAddressVm={representAddressViewModel}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 8 && (
-        // <RepresentativeList OnClickNextStep={NextStep} OnClickPreviousStep={PreviousStep} OnRemove={RemoveRepresentative} OnNavigate={OpenRepresentativeForm} representativesVm={representativeVms} />
-        <div>RepresentativeList Component Placeholder <button onClick={PreviousStep}>Back</button> <button onClick={NextStep}>Next</button></div>
+        <RepresentativeList
+          representativesVm={representativeVms}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 9 && (
-        // <KycDeclaration OnClickNextStep={NextStep} OnClickPreviousStep={PreviousStep} kycDeclarationData={kycDeclarationViewModel} />
-        <div>KycDeclaration Component Placeholder <button onClick={PreviousStep}>Back</button> <button onClick={NextStep}>Next</button></div>
+        <KycDeclaration
+          kycDeclarationData={kycDeclarationViewModel}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 10 && (
         <div className="d-flex align-items-center justify-content-center mx-4 px-1 mx-sm-0 px-sm-0">
           <div className="bg-white border-ea border-radius-14 padding-30 w-100 mw-sm-550 kyc-box">
             <div className="w-100 verification-details">
               <div className="margin-b-30 logo">
-                <img alt="logo" src="./assets/logo.svg" />
+                  <img src={images.Logo} alt="logo" />
               </div>
               <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">Verification</h4>
               <p className="margin-b-20 text-gray-300">Identification verification</p>
               <div className="kyc-form">
                 <div className="w-100 mw-sm-150 identification-proof text-center m-auto mb-4">
-                  <img alt="proof" src="./assets/identification-proof.svg" />
+                  <img alt="proof" src={images.identificationProof} />
                 </div>
                 <div className="form-group d-flex align-items-center justify-content-between">
                   <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
@@ -133,12 +157,14 @@ const Kyc = () => {
         </div>
       )}
       {currentStep === 11 && (
-        // <Verification OnClickNextStep={NextStep} OnClickPreviousStep={PreviousStep} verificationViewModel={verificationViewModel} />
-        <div>Verification Component Placeholder <button onClick={PreviousStep}>Back</button> <button onClick={NextStep}>Next</button></div>
+        <Verification
+          verificationViewModel={verificationViewModel}
+          NextStep={NextStep}
+          PreviousStep={PreviousStep}
+        />
       )}
       {currentStep === 12 && (
-        // <Iidentifii iframeURL={iframeURL} kycDeclaration={kycDeclaration} OnClickCancelled={IdentifyPageBack} />
-        <div>Iidentifii Component Placeholder <button onClick={IdentifyPageBack}>Cancel</button></div>
+        <Iidentifii iframeURL={iframeURL} kycDeclaration={kycDeclaration} />
       )}
     </div>
   );

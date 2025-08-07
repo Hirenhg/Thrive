@@ -23,7 +23,7 @@ const incomeSources = [
   { Value: "other", DisplayName: "Other" },
 ];
 
-const KycDeclaration = () => {
+const KycDeclaration = ({ NextStep, PreviousStep}) => {
   const [isSoleProp, setIsSoleProp] = useState(false); // Set as needed
   const [form, setForm] = useState({
     isPublicOfficial: "",
@@ -283,20 +283,9 @@ const KycDeclaration = () => {
               Public official
             </a>
             <div className="form-group d-flex align-items-center justify-content-between">
-              <button
-                className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10"
-                onClick={handleBack}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"
-                type="submit"
-              >
-                Next <i className="arrow-right mx-2"></i>
-              </button>
-            </div>
+              <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
+              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" type="button" onClick={NextStep}>Continue</button>
+            </div> 
           </form>
           {/* You can implement the declaration information popup as a separate component if needed */}
           {showPopup && (

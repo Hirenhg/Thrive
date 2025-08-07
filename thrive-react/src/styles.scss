@@ -16,6 +16,7 @@ $grayf2: #f2f2f2;
 $graye2e8: #e2e8f0;
 $text-danger: #ef4444;
 $text-blue: #1d4ed8;
+$text-green: #34C759;
 
 // 3. Import the rest of bootstrap
 @import "bootstrap/scss/bootstrap";
@@ -198,6 +199,10 @@ h5 {
 
 .text-blue {
     color: $text-blue;
+}
+
+.text-green {
+    color: $text-green;
 }
 
 .text-primary-hover {
@@ -418,6 +423,10 @@ h5 {
     height: 40px;
 }
 
+.w-sm-30 {
+    width: 30px;
+}
+
 .w-sm-40 {
     width: 40px;
 }
@@ -440,10 +449,6 @@ h5 {
 
 .w-sm-150 {
     width: 150px;
-}
-
-.w-sm-200 {
-    width: 200px;
 }
 
 .mw-sm-90 {
@@ -470,10 +475,6 @@ h5 {
 
 .mw-sm-300 {
     max-width: 300px;
-}
-
-.mw-sm-320 {
-    max-width: 320px;
 }
 
 .mw-sm-340 {
@@ -759,7 +760,8 @@ input[type=number] {
         &.dropdown {
             .dropdown-toggle {
                 &.userinfo {
-                    padding: 0 25px 0 0;  
+                    padding: 0;
+                    padding-right: 25px;
                 }
 
                 &:after {
@@ -797,6 +799,9 @@ input[type=number] {
                         &:hover {
                             background: $gray100;
                         }
+                    }
+                    button.dropdown-item:active {
+                        color: $white !important;
                     }
                 }
             }
@@ -1098,6 +1103,90 @@ input[type=number] {
     }
 }
 
+.cashless-payment-card {
+    background: linear-gradient(90deg, #171717 0%, #3E3E3E 100%);
+       .cashless-payment-shape-logo {
+        .thrive-logo {
+            position: absolute;
+            right: 0;
+            top: 0px;
+            background: $gray100 url(./assets/logo-shape.svg) no-repeat right 0;
+            width: 180px;
+            height: 50px;
+            img {
+                position: relative;
+                top: -6px;
+                left: 8px;
+            }
+        }
+    }
+
+    .disable {
+        opacity: 0.5;
+    }
+
+    .btn-otp {
+        .ico-eyeview {
+            background: url(./assets/ico-eyeview.svg) no-repeat 0 0;
+            background-size: 18px;
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            flex: 0 0 18px;
+        }
+    }
+
+    .cashless-payment-option {
+        &:before {
+            content: "";
+            border: 1px dashed $white;
+            border-radius: 50px;
+            position: absolute;
+            left: 0;
+            height: 16px;
+            width: 16px;
+            display: inline-block;
+            top: 10px;
+        }
+    }
+
+    .cashless-payment-status {
+        &:before {
+            border: none;
+            background: url(./assets/ico-clock-y.svg) no-repeat 0 0;
+            background-size: 16px;
+        }
+    }
+
+    .cashless-payment-status-success {
+        &:before {
+            border: none;
+            background: url(./assets/ico-check-g.svg) no-repeat 0 0;
+            background-size: 16px;
+        }
+    }
+
+    .btn {
+        line-height: 26px;
+        max-width: max-content;
+    }
+
+    .cashless-payment-logos {
+        grid-template-columns: repeat(auto-fill, 45px);
+        gap: 20px;
+
+        .payment-logo {
+            max-height: 30px;
+
+            img {
+                max-height: 30px;
+                max-width: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
 .cashlesspro-card {
     background: linear-gradient(270deg, #37383C 0%, #9597A2 100%);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
@@ -1123,19 +1212,8 @@ input[type=number] {
         }
     }
 }
-.quick-action-main:after {
-    content: "";
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-}
 .quick-action-dialog-block {
-    position: fixed;
-    z-index: 2;
+    position: relative;
     left: 50%;
     right: 50%;
     transform: translate(-50%, -0%);
@@ -1908,16 +1986,11 @@ input[type=number] {
 .table.transaction-history-table {
     th {
         padding: 3px 10px;
-        border-width: 0;
     }
 
     td {
         border-color: $gray100;
-        border-width: 0;
     }
-}
-.table > :not(:last-child) > :last-child > * {
-    border-color: $gray100;
 }
 /*** balance end ***/
 /// ** bank transfer start ***/
@@ -1945,7 +2018,7 @@ input[type=number] {
     th,
     td {
         vertical-align: middle;
-        border-color: $gray100;
+        border-color: $gray100 !important;
         padding: 10px;
 
         &:last-child {
@@ -3766,7 +3839,7 @@ input[type=number] {
 
     .navbar {
         padding: 10px 0;
-        margin: 0 0 20px;
+        margin: 0;
 
         .menu-overlay {
             min-height: 100vh;
@@ -3837,8 +3910,8 @@ input[type=number] {
         }
 
         .navbar-top {
-            width: 100%;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start !important;
         }
 
         .nav-user-details {
@@ -3911,11 +3984,40 @@ input[type=number] {
         }
     }
 
-        .store-deposit-tab {
-            .pay-wholesalers-row {
-                grid-template-columns: 1fr 1fr;
-            }
+    .cashless-payment-card {
+        padding: 20px;
+
+        .cashless-payment-logos {
+            grid-template-columns: repeat(auto-fill, 38px);
+            gap: 15px;
         }
+
+        .btn-pos,
+        .btn-cashless {
+            background: none;
+            border: none;
+            padding: 0 24px;
+            text-decoration: underline;
+            height: auto;
+            margin-top: 3px;
+        }
+
+        .btn-otp {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-contact {
+            max-width: 100%;
+            margin-top: 5px;
+        }
+    }
+
+    .store-deposit-tab {
+        .pay-wholesalers-row {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
 
         .balance-box {
             margin: 0 auto 20px;
@@ -4245,7 +4347,6 @@ input[type=number] {
         .navbar {
             border-color: #242424;
             background: #171717;
-            margin: 0;
 
             .navbar-brand {
                 img {
@@ -4332,11 +4433,6 @@ input[type=number] {
             }
 
             .navbar {
-                .navbar-top {
-                    flex-direction: column;
-                    align-items: flex-start !important;
-                }
-
                 .navbar-brand {
                     margin: 0;
                     position: fixed;

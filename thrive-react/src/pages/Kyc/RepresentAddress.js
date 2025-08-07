@@ -33,7 +33,7 @@ const countries = [
   // Add more countries as needed
 ];
 
-const RepresentAddress = () => {
+const RepresentAddress = ({ NextStep, PreviousStep}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [isAccountHolder, setIsAccountHolder] = useState(true); // Set as needed
@@ -228,21 +228,10 @@ const RepresentAddress = () => {
                 </div>
               </div>
             )}
-            <div className="form-group d-flex align-items-center justify-content-between">
-              <button
-                className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10"
-                onClick={handleBack}
-                type="button"
-              >
-                Back
-              </button>
-              <button
-                className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"
-                type="submit"
-              >
-                Next <i className="arrow-right mx-2"></i>
-              </button>
-            </div>
+          <div className="form-group d-flex align-items-center justify-content-between">
+              <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
+              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" type="button" onClick={NextStep}>Continue</button>
+            </div> 
           </form>
           {/* You can implement the confirmation popup as a separate component if needed */}
           {showPopup && (

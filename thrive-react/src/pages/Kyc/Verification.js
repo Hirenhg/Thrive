@@ -1,7 +1,6 @@
 ﻿import React, { useState } from 'react';
 
-const Verification = ({ onNext, onBack }) => {
-  // Placeholder state for form fields
+const Verification = ({ NextStep, PreviousStep}) => {
   const [form, setForm] = useState({
     IDNumber: '',
     Title: 'Mr',
@@ -28,24 +27,23 @@ const Verification = ({ onNext, onBack }) => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleNext = (e) => {
-    e.preventDefault();
-    // Placeholder validation
-    let newErrors = {};
-    if (!form.IDNumber) newErrors.IDNumber = 'ID Number is required';
-    if (!form.Name) newErrors.Name = 'Name is required';
-    if (!form.Surname) newErrors.Surname = 'Surname is required';
-    if (!form.DateOfBirth) newErrors.DateOfBirth = 'Date of Birth is required';
-    if (!form.CountryOfBirth) newErrors.CountryOfBirth = 'Country of Birth is required';
-    if (!form.CountryOfResidence) newErrors.CountryOfResidence = 'Country of Residence is required';
-    setErrors(newErrors);
-    if (Object.keys(newErrors).length === 0 && onNext) onNext();
-  };
+  // const handleNext = (e) => {
+  //   e.preventDefault();
+  //   let newErrors = {};
+  //   if (!form.IDNumber) newErrors.IDNumber = 'ID Number is required';
+  //   if (!form.Name) newErrors.Name = 'Name is required';
+  //   if (!form.Surname) newErrors.Surname = 'Surname is required';
+  //   if (!form.DateOfBirth) newErrors.DateOfBirth = 'Date of Birth is required';
+  //   if (!form.CountryOfBirth) newErrors.CountryOfBirth = 'Country of Birth is required';
+  //   if (!form.CountryOfResidence) newErrors.CountryOfResidence = 'Country of Residence is required';
+  //   setErrors(newErrors);
+  //   if (Object.keys(newErrors).length === 0 && onNext) onNext();
+  // };
 
-  const handleBack = (e) => {
-    e.preventDefault();
-    if (onBack) onBack();
-  };
+  // const handleBack = (e) => {
+  //   e.preventDefault();
+  //   if (onBack) onBack();
+  // };
 
   return (
     <div className="d-flex align-items-center justify-content-center mx-4 px-1 mx-sm-0 px-sm-0">
@@ -153,20 +151,10 @@ const Verification = ({ onNext, onBack }) => {
               </select>
               {errors.CountryOfResidence && <div className="f-size-12 pt-1 text-error">{errors.CountryOfResidence}</div>}
             </div>
-            <div className="form-group d-flex align-items-center justify-content-between">
-              <button
-                className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10"
-                onClick={handleBack}
-              >
-                Back
-              </button>
-              <button
-                className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"
-                onClick={handleNext}
-              >
-                Next <i className="arrow-right mx-2"></i>
-              </button>
-            </div>
+          <div className="form-group d-flex align-items-center justify-content-between">
+              <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
+              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" type="button" onClick={NextStep}>Continue</button>
+            </div> 
           </form>
         </div>
       </div>
