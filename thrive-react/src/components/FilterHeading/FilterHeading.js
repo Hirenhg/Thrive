@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-// import PropTypes from 'prop-types';
-
+import { useState } from 'react'
 const FilterHeading = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedOption, setSelectedOption] = useState(props.option1 || '');
@@ -78,14 +76,14 @@ const FilterHeading = (props) => {
 
     return (
         <div className='filter-heading-main'>
-            <h6 className="margin-b-20 text-capitalize">
-                {props.FilterHeadingName}
-            </h6>
             <div className="d-flex align-items-md-center flex-column flex-md-row justify-content-between">
-                <div className="available-amount-col margin-b-20">
+                <div className="available-amount-col margin-b-20 d-none">
                     <div className="f-size-12 text-gray-400 fw-semibold w-100 d-block text-uppercase">available Amount</div>
                     <div className="f-size-20 text-primary fw-medium w-100 d-block">R147,975.00</div>
                 </div>
+                <h6 className="margin-b-20 text-capitalize">
+                    {props.FilterHeadingName}
+                </h6>
                 <div className="d-flex align-items-md-center flex-column flex-md-row justify-content-md-end flex-grow-1 flex-shrink-1 margin-b-20">
                     <div className="form-group margin-r-10 mw-md-200 searchbar">
                         <input 

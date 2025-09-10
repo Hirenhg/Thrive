@@ -6,10 +6,6 @@ const VasBalance = () => {
   const [loadingSummaryData, setLoadingSummaryData] = React.useState(false);
   const [balance, setBalance] = React.useState(0);
 
-  // const goToTopupPage = () => {
-  //   window.location.href = '/Vas/TopUp/TopUp';
-  // };
-
   return (
     <div className="vas-balance-box-col padding-20 margin-r-20 h-100 bg-gray-100 border-radius-6 border-ea text-center">
       <div className="margin-b-10 text-gray-300 f-size-12">VAS balance</div>
@@ -21,7 +17,7 @@ const VasBalance = () => {
         <h6 className="margin-b-20 text-primary f-size-20">{balance}</h6>
       )}
       <div className="divider margin-b-20"></div>
-      <Link className="btn btn-primary w-100 rounded f-size-12 fw-medium" to="/TopUp">
+      <Link className="btn btn-primary w-100 rounded f-size-12 fw-medium" to="/topup">
         Top Up
       </Link>
     </div>

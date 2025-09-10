@@ -1,0 +1,39 @@
+{
+  "activity": [
+    {
+      "transaction": "Payment from Alpha Traders",
+      "processDate": "2025-09-01",
+      "crAmount": 5000.00,
+      "drAmount": 0.00,
+      "balance": 5000.00
+    },
+    {
+      "transaction": "Payment to Beta Wholesalers",
+      "processDate": "2025-09-02",
+      "crAmount": 0.00,
+      "drAmount": 1200.50,
+      "balance": 3799.50
+    },
+    {
+      "transaction": "Refund from Gamma Imports",
+      "processDate": "2025-09-03",
+      "crAmount": 300.00,
+      "drAmount": 0.00,
+      "balance": 4099.50
+    },
+    {
+      "transaction": "Purchase at Delta Distributors",
+      "processDate": "2025-09-04",
+      "crAmount": 0.00,
+      "drAmount": 950.00,
+      "balance": 3149.50
+    },
+    {
+      "transaction": "Payment from Epsilon Co.",
+      "processDate": "2025-09-05",
+      "crAmount": 2500.00,
+      "drAmount": 0.00,
+      "balance": 5649.50
+    }
+  ]
+}

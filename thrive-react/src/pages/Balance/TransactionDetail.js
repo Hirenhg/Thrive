@@ -16,7 +16,7 @@ const TransactionDetail = () => {
       setError('');
       try {
         // For now, fetch all and use index as id
-        const res = await axios.get('http://localhost:5000/api/dashboard/recent-activity');
+        const res = await axios.get('http://localhost:5000/api/dashboard/transaction-detail');
         setTransaction(res.data[id]);
       } catch (err) {
         setError('Failed to load transaction details.');

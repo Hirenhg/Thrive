@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Summary = () => {
   // Example state, replace with real data fetching logic
@@ -48,7 +49,7 @@ const Summary = () => {
                   <div className="fw-semibold mb-2 text-primary">{model.Year} Summary</div>
                   <div className="text-gray-300 f-size-12 fw-medium">{new Date().toLocaleDateString(undefined, { day: '2-digit', month: 'long' })}</div>
                 </div>
-                <a href="/vas/history" className="f-size-12 text-blue fw-semibold cursor-pointer">View all</a>
+                <Link to="/history" className="f-size-12 text-blue fw-semibold cursor-pointer">View all</Link>
               </div>
               <div className="divider margin-b-20"></div>
               <div className="d-flex justify-content-between mb-3">

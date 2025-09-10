@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import FilterHeading from '../../components/FilterHeading/FilterHeading'
 import Pagination from '../../components/Pagination/Pagination'
 import TransactionHistoryTable from '../../components/TransactionHistoryTable/TransactionHistoryTable'
 import axios from 'axios';
+import PageHeading from '../../components/PageHeading/PageHeading';
 
 const Balance = () => {
   const [transactions, setTransactions] = useState([]);
@@ -15,7 +16,7 @@ const Balance = () => {
       setLoading(true);
       setError('');
       try {
-        const res = await axios.get('http://localhost:5000/api/dashboard/recent-activity');
+        const res = await axios.get('http://localhost:5000/api/dashboard/transaction-history');
         const mapped = res.data.map(item => ({
           date: item.processDate,
           label: item.transaction,
@@ -39,6 +40,9 @@ const Balance = () => {
 
   return (
     <div className='balance-main'>
+      <div className='margin-b-20 page-heading'>
+        <PageHeading PageHeadingName="Balance" iconClassName="ico-balance" iconTo="/balance"/>
+      </div>
       <div className="bg-white border-radius-14 w-100 balance-history-box rounder-sm-0 padding-30 border-ea">
         <FilterHeading
           FilterHeadingName="Transaction History"

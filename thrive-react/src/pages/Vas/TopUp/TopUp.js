@@ -1,72 +1,77 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState } from "react";
 
 const TopUp = () => {
-  // Example state, replace with real data fetching logic
-  const [loading, setLoading] = useState(false);
-  const [topupFrom, setTopupFrom] = useState('');
-  const [topupTo, setTopupTo] = useState('');
-  const [amount, setAmount] = useState('');
-  const [step, setStep] = useState(1);
-
   const handleBackClicked = () => {
-    // Implement navigation logic if needed
     window.history.back();
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setStep(2);
-    }, 1000);
   };
 
   return (
     <div className="vas-topup-main">
       <div className="d-flex align-items-sm-center flex-column flex-sm-row justify-content-between margin-b-20 page-heading">
         <div className="d-flex align-items-center">
-          <div className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0 d-flex align-items-center justify-content-center" onClick={handleBackClicked} style={{ cursor: 'pointer' }}>
+          <div
+            className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0 d-flex align-items-center justify-content-center"
+            onClick={handleBackClicked}
+            style={{ cursor: "pointer" }}
+          >
             <i className="icon ico-back"></i>
           </div>
-          <h6 className="mb-0 text-primary fw-medium text-capitalize">Account transfer</h6>
+          <h6 className="mb-0 text-primary fw-medium text-capitalize">
+            Account transfer
+          </h6>
         </div>
       </div>
       <div className="d-flex align-items-center justify-content-center mt-4 pt-2">
         <div className="w-100 mw-sm-340 topup-block">
-          {loading ? (
-            <div className="loading-skeleton">
-              <div className="custom-skeleton mw-sm-150 h-20 m-auto mb-3"></div>
-              <div className="custom-skeleton mw-sm-150 h-20 m-auto mb-3"></div>
-              <div className="custom-skeleton mw-sm-150 h-20 m-auto mb-3"></div>
+          <div className="bg-primary border-radius-14 w-100 wallet-box rounder-sm-0 padding-30 margin-b-20 text-center">
+            <h5 className="text-white fw-medium mb-2">Thrive account</h5>
+            <div className="f-size-10 text-gray-400 fw-semibold text-uppercase mb-2">
+              Available Amount
             </div>
-          ) : step === 1 ? (
-            <form onSubmit={handleSubmit}>
-              <div className="form-group mb-3">
-                <label>From</label>
-                <input type="text" className="form-control" value={topupFrom} onChange={e => setTopupFrom(e.target.value)} placeholder="Source account" />
+            <h2 className="text-white fw-medium mb-0">
+              R848,609<span className="fs-3">.57</span>
+            </h2>
+          </div>
+          <div className="bg-white border-ea border-radius-14 padding-30 w-100 position-relative topup-form-box">
+            <div className="topup-form">
+              <a className="cursor-pointer f-size-12 text-blue fw-semibold text-link m-auto mb-4 text-center d-block">
+                switch
+              </a>
+              <div className="bg-primary rounded padding-10 margin-b-30 d-flex align-items-center">
+                <div className="bg-white rounded iconbox w-sm-40 p-0">
+                  <i className="icon-img icon-vas"></i>
+                </div>
+                <div className="margin-l-10">
+                  <div className="f-size-20 text-white fw-medium">
+                    VAS wallet
+                  </div>
+                  <div className="f-size-14 text-white amount-text">
+                    R43,241<span>.68</span>
+                  </div>
+                </div>
               </div>
-              <div className="form-group mb-3">
-                <label>To</label>
-                <input type="text" className="form-control" value={topupTo} onChange={e => setTopupTo(e.target.value)} placeholder="Destination account" />
+              <div className="form-group margin-b-10 text-center">
+                <label className="f-size-10 text-gray-400 margin-b-10 text-center text-uppercase w-100">
+                  How much would you like to transfer?
+                </label>
+                <input
+                  id="paymentAmount"
+                  type="number"
+                  className="form-control fw-medium text-center"
+                  placeholder="R 0.00"
+                />
               </div>
-              <div className="form-group mb-3">
-                <label>Amount</label>
-                <input type="number" className="form-control" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Amount" />
+              <div className="form-group">
+                <button className=" btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">
+                  Next <i className="arrow-right margin-l-10"></i>
+                </button>
               </div>
-              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" type="submit">Top Up</button>
-            </form>
-          ) : (
-            <div className="text-center">
-              <div className="margin-b-20 f-size-20 text-primary fw-medium">Top Up Successful!</div>
-              <div className="margin-b-20 f-size-12 text-primary">Your account has been topped up.</div>
-              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" onClick={() => setStep(1)}>Top Up Again</button>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default TopUp; 
+export default TopUp;

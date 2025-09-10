@@ -1,0 +1,26 @@
+{
+  "levels": [
+    {
+      "discount": "12%",
+      "status": "active"
+    },
+    {
+      "discount": "28%",
+      "status": "active"
+    },
+    {
+      "discount": "40%",
+      "status": "active"
+    },
+    {
+      "discount": "50%",
+      "status": "locked",
+      "away": "R 150K Away"
+    },
+    {
+      "discount": "60%",
+      "status": "locked",
+      "away": "R 650K Away"
+    }
+  ]
+}

@@ -31,23 +31,23 @@ const Vas = () => {
                 <div className="tab-pane fade active show" id="pills-vas-products" role="tabpanel" aria-labelledby="pills-vas-products-tab" tabIndex={0}>
                   <div className="flex-grow-1 d-flex flex-column">
                     <div className="d-grid margin-b-20 product-list-grid">
-                        <Link to="/" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
+                        <Link to="/products" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
                           <span className="icon-circle"><i className="icon ico-airtime"></i></span>
                           <label className="product-name text-primary fw-medium">Airtime</label>
                         </Link>
-                          <Link to="/" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
+                          <Link to="/products" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
                           <span className="icon-circle"><i className="icon ico-gaming"></i></span>
                           <label className="product-name text-primary fw-medium">Entertainment</label>
                         </Link>
-                          <Link to="/" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
+                          <Link to="/products" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
                           <span className="icon-circle"><i className="icon ico-data"></i></span>
                           <label className="product-name text-primary fw-medium">Data</label>
                         </Link>
-                          <Link to="/" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
+                          <Link to="/products" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
                           <span className="icon-circle"><i className="icon ico-vas-voucher"></i></span>
                           <label className="product-name text-primary fw-medium">Bill Payments</label>
                         </Link>
-                          <Link to="/" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
+                          <Link to="/products" className="bg-white border-radius-14 w-100 d-flex align-items-center product-card">
                           <span className="icon-circle"><i className="icon ico-electricity"></i></span>
                           <label className="product-name text-primary fw-medium">Electricity</label>
                         </Link>

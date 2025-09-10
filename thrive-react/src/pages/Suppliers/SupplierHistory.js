@@ -14,7 +14,7 @@ const SupplierHistory = () => {
   const fetchSupplierHistory = async (page = 1) => {
     setLoading(true);
     try {
-      const response = await axios.get(`/api/suppliers/history`, {
+      const response = await axios.get(`/api/suppliers/history.json`, {
         params: {
           page,
           pageSize,

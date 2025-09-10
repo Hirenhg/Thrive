@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Alpha Traders",
+      "type": "Super Trader",
+      "img": "/images/logo-ott.png"
+    },
+    {
+      "id": 2,
+      "name": "Beta Wholesalers",
+      "type": "Supplier"
+    },
+    {
+      "id": 3,
+      "name": "Gamma Imports",
+      "type": "Supplier"
+    },
+    {
+      "id": 4,
+      "name": "Delta Distributors",
+      "type": "Super Trader"
+    },
+    {
+      "id": 5,
+      "name": "Epsilon Co.",
+      "type": "Supplier"
+    },
+    {
+      "id": 6,
+      "name": "Zeta Group",
+      "type": "Supplier"
+    },
+    {
+      "id": 7,
+      "name": "Omega Exports",
+      "type": "Super Trader"
+    },
+    {
+      "id": 8,
+      "name": "Sigma Pvt Ltd",
+      "type": "Supplier"
+    },
+    {
+      "id": 9,
+      "name": "Theta Logistics",
+      "type": "Supplier"
+    },
+    {
+      "id": 10,
+      "name": "Lambda Retailers",
+      "type": "Supplier"
+    }
+  ],
+  "total": 25
+}

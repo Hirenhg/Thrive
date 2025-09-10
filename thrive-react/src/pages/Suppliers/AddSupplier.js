@@ -17,9 +17,8 @@ const AddSupplier = () => {
         const fetchSuppliers = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`/api/suppliers/available?page=${pageIndex}`);
+                const response = await axios.get(`/api/suppliers/available.json?page=${pageIndex}`);
                 const { data, total } = response.data;
-
                 setSuppliers(data);
                 setTotalCount(total);
             } catch (err) {
@@ -60,7 +59,11 @@ const AddSupplier = () => {
                                             <tbody>
                                                 <tr>
                                                     <td className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0">
+                                                        {supplier.img && supplier.img !== "" ? (
+                                                        <img src={supplier.img} alt={supplier.name} className="icon-img" />
+                                                        ) : (
                                                         <i className="icon-img icon-placeholder"></i>
+                                                        )}
                                                     </td>
                                                     <td className="label-text">
                                                         <div className="suppliers-info">
@@ -79,7 +82,7 @@ const AddSupplier = () => {
                                         </table>
                                     </td>
                                     <td className="w-sm-75">
-                                        <Link className='text-decoration-none' to={`/add-supplier-form/${supplier.id}`}>
+                                        <Link className='text-decoration-none' to={`/add-supplier-form`}>
                                             <button className="btn btn-outline border border-gray-200 rounded text-uppercase f-size-12 fw-medium text-capitalize d-flex align-items-center justify-content-center btn-add">
                                                 Add <i className="ico-add"></i>
                                             </button>

@@ -17,13 +17,13 @@ const Suppliers = () => {
     const fetchSuppliers = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`/api/suppliers?page=${pageIndex}`);
+            const response = await axios.get(`/api/suppliers/suppliers.json?page=${pageIndex}`);
             const { recent, linked } = response.data;
 
             setRecentSuppliers(recent || []);
             setSuppliers(linked || []);
         } catch (err) {
-            setError('Failed to fetch suppliers.');
+           setError('Failed to fetch suppliers.');
         } finally {
             setLoading(false);
         }
@@ -37,7 +37,11 @@ const Suppliers = () => {
         <li className="list-group-item d-flex align-items-center justify-content-between" key={supplier.id}>
             <div className="d-flex align-items-center">
                 <div className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0">
-                    <img className="icon-img icon-placeholder" alt="logo" />
+                   {supplier.img && supplier.img !== "" ? (
+                    <img src={supplier.img} alt={supplier.name} className="icon-img" />
+                    ) : (
+                    <i className="icon-img icon-placeholder"></i>
+                    )}
                 </div>
                 <div className="suppliers-info">
                     <span className="f-size-14 text-primary-hover fw-medium text-capitalize w-100 d-block line-height-18 text-nowrap">
@@ -54,8 +58,8 @@ const Suppliers = () => {
                 </div>
             </div>
             <div className="d-flex align-items-center">
-                <Link to={`/view-supplier-pay/${supplier.id}`} className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center btn-pay text-decoration-none">Pay</Link>
-                <Link to={`/supplier-history/${supplier.id}`} className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium margin-l-10 d-flex align-items-center justify-content-center btn-history text-decoration-none">History</Link>
+                <Link to="/view-supplier-pay" className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center btn-pay text-decoration-none">Pay</Link>
+                <Link to={`/supplier-history`} className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium margin-l-10 d-flex align-items-center justify-content-center btn-history text-decoration-none">History</Link>
             </div>
         </li>
     );
@@ -92,8 +96,9 @@ const Suppliers = () => {
                                 <ul className="list-group">
                                     {recentSuppliers.map(renderSupplierItem)}
                                 </ul>
-                            ) : (
-                                <SupplierEmpty EmptyTitle="Recently Paid" EmptyDes="No suppliers paid yet" />
+                            )
+                             : (
+                                <SupplierEmpty EmptyDes="No suppliers paid yet" />
                             )}
                         </div>
 
