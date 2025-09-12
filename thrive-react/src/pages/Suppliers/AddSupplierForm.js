@@ -10,7 +10,7 @@ const AddSupplierForm = () => {
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
-  // Example supplier data (can be passed via props or fetched from API)
+  // Example supplier
   const supplier = {
     id: 1,
     name: 'Distell',
@@ -24,18 +24,15 @@ const AddSupplierForm = () => {
     setSuccessMsg('');
 
     try {
-      const payload = {
-        supplierId: supplier.id,
-        customerNumber,
-        paymentReference: useCustomReference ? customReference : customerNumber,
-      };
-
-      const response = await axios.post('/api/suppliers/link', payload);
-
-      setSuccessMsg('Supplier linked successfully!');
-      setCustomerNumber('');
-      setCustomReference('');
-      setUseCustomReference(false);
+      const response = await axios.get('/api/suppliers/addSupplier.json');
+      if (response.data.status === 'success') {
+        setSuccessMsg(response.data.message);
+        setCustomerNumber('');
+        setCustomReference('');
+        setUseCustomReference(false);
+      } else {
+        setErrorMsg('Something went wrong.');
+      }
     } catch (error) {
       console.error('Error linking supplier:', error);
       setErrorMsg('Failed to link supplier. Please try again.');

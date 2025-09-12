@@ -4,6 +4,7 @@ import Pagination from '../../components/Pagination/Pagination'
 import TransactionHistoryTable from '../../components/TransactionHistoryTable/TransactionHistoryTable'
 import axios from 'axios';
 import PageHeading from '../../components/PageHeading/PageHeading';
+import PendingTransactions from '../../components/PendingTransactions/PendingTransactions';
 
 const Balance = () => {
   const [transactions, setTransactions] = useState([]);
@@ -43,6 +44,9 @@ const Balance = () => {
       <div className='margin-b-20 page-heading'>
         <PageHeading PageHeadingName="Balance" iconClassName="ico-balance" iconTo="/balance"/>
       </div>
+      <div className='margin-b-20'>
+        <PendingTransactions/>
+      </div>
       <div className="bg-white border-radius-14 w-100 balance-history-box rounder-sm-0 padding-30 border-ea">
         <FilterHeading
           FilterHeadingName="Transaction History"
@@ -53,7 +57,7 @@ const Balance = () => {
           data={transactions}
           onSearch={handleFilter}
         />
-        <form id="ProfilePersonalForm" FormName="ProfilePersonalForm" className="w-100">
+        <form id="ProfilePersonalForm" className="w-100">
           {loading ? (
             <div>Loading transactions...</div>
           ) : error ? (

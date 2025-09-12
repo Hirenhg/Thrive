@@ -1,4 +1,5 @@
 ﻿import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const TopUp = () => {
   const handleBackClicked = () => {
@@ -62,9 +63,9 @@ const TopUp = () => {
                 />
               </div>
               <div className="form-group">
-                <button className=" btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">
+                <Link to="/bank-transfer-form" className=" btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">
                   Next <i className="arrow-right margin-l-10"></i>
-                </button>
+                </Link>
               </div>
             </div>
           </div>

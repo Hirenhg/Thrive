@@ -11,12 +11,12 @@ const Thrive = () => {
             </div>
             <div className="w-100 profile-editform bg-white">
                 <div className="form-group margin-b-20">
-                    <label for="thriveID" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Thrive ID</label>
-                    <input className="form-control f-size-12 fw-medium" readonly />
+                    <label htmlFor="thriveID" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Thrive ID</label>
+                    <input className="form-control f-size-12 fw-medium" readOnly />
                 </div>
                 <div className="form-group margin-b-20 d-none">
-                    <label for="thriveID" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Active devices</label>
-                    <input className="form-control f-size-12 fw-medium" readonly />
+                    <label htmlFor="thriveID" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Active devices</label>
+                    <input className="form-control f-size-12 fw-medium" readOnly />
                 </div>
                 <div className="device-list-block margin-b-20 d-md-none d-none">
                     <div className="margin-b-10">
@@ -60,13 +60,13 @@ const Thrive = () => {
                     </div>
                 </div>
                 <div className="form-group margin-b-20 d-none">
-                    <label for="consultantName" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Growth Consultant Name</label>
-                    <input type="text" className="form-control f-size-12 fw-medium" id="consultantName" value="Thabo Moseki" readonly />
+                    <label htmlFor="consultantName" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Growth Consultant Name</label>
+                    <input type="text" className="form-control f-size-12 fw-medium" id="consultantName" value="Thabo Moseki" readOnly />
                 </div>
                 <div className="form-group margin-b-20 d-none">
-                    <label for="contactNumber" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Contact Number</label>
+                    <label htmlFor="contactNumber" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Contact Number</label>
                     <div className="d-flex align-items-center call-number">
-                        <input type="text" className="form-control f-size-12 fw-medium margin-r-10" id="contactNumber" value="086 273 1543" readonly />
+                        <input type="text" className="form-control f-size-12 fw-medium margin-r-10" id="contactNumber" value="086 273 1543" readOnly />
                         <button type="button" className="btn btn-outline border border-gray-200 mw-sm-90 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"><i className="icon ico-call margin-r-10"></i> Call</button>
                     </div>
                 </div>

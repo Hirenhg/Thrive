@@ -1,0 +1,20 @@
+{
+  "title": "Card Sales",
+  "description": "Pending card sales are card sales which have not been processed.",
+  "date": "2025-05-31",
+  "totalAmount": 200.0,
+  "transactions": [
+    {
+      "id": 1,
+      "title": "Card Deposit",
+      "dateTime": "2025-05-31T14:40:00",
+      "amount": 150.0
+    },
+    {
+      "id": 2,
+      "title": "Cashback",
+      "dateTime": "2025-05-31T14:40:00",
+      "amount": 50.0
+    }
+  ]
+}

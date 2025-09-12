@@ -1,0 +1,28 @@
+[
+  {
+    "tradeDate": "12 September 2025",
+    "saleAmount": "R20.00",
+    "commission": "R6.00",
+    "sales": [
+      {
+        "name": "DSTV sales",
+        "amount": "R20.00",
+        "commission": "R6.00",
+        "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/DSTV.svg"
+      }
+    ]
+  },
+  {
+    "tradeDate": "11 September 2025",
+    "saleAmount": "R50.00",
+    "commission": "R15.00",
+    "sales": [
+      {
+        "name": "MTN Airtime",
+        "amount": "R50.00",
+        "commission": "R15.00",
+        "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/MTN.svg"
+      }
+    ]
+  }
+]

@@ -1,5 +1,4 @@
 import React from 'react'
-import BankTransferForm from './BankTransferForm'
 import PageHeading from '../../components/PageHeading/PageHeading'
 import { Link } from 'react-router-dom'
 
@@ -24,7 +23,7 @@ const BankTransfer = () => {
                         </p>
                         <div className="form-group margin-b-30">
                             <Link to="/bank-transfer-form">
-                                <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center" onClick={BankTransferForm}>Next<i className="arrow-right margin-l-10"></i></button>
+                                <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">Next<i className="arrow-right margin-l-10"></i></button>
                             </Link>
                         </div>
                         <div className="form-group text-center f-size-14 fw-medium text-gray-400">

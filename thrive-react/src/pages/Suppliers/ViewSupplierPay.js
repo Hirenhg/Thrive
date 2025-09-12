@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SupplierHistory from './SupplierHistory';
 import PageHeading from '../../components/PageHeading/PageHeading';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 const ViewSupplierPay = () => {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("pay");
   const [supplierData, setSupplierData] = useState(null);
   const [balance, setBalance] = useState(0);
@@ -41,14 +42,13 @@ const ViewSupplierPay = () => {
       console.error("Payment failed", err);
     }
   };
-
+  
   if (!supplierData) return <div>Loading...</div>;
 
   return (
     <div className="view-supplier-pay-main">
       <div className="d-flex align-items-sm-center flex-column flex-sm-row justify-content-between margin-b-20 page-heading">
-        {/* <PageHeading PageHeadingName={supplierData.name} iconClassName="ico-back" iconTo="/Suppliers" /> */}
-        <PageHeading PageHeadingName="supplierData" iconClassName="ico-back" iconTo="/Suppliers" />
+        <PageHeading PageHeadingName="Alpha Traders" iconClassName="ico-back" iconTo="/Suppliers" />
         <div className="nav nav-pills heading-tabs bg-gray-200 p-1 rounded">
           {["pay", "history", "info"].map(tab => (
             <button
@@ -64,13 +64,10 @@ const ViewSupplierPay = () => {
           ))}
         </div>
       </div>
-
-      {/* TABS */}
       <div className="tab-content">
         {activeTab === "pay" && (
           <div className="tab-pane fade show active">
             <div className="w-100 mw-sm-340 view-supplier-contant view-supplier-pay-contant center-block">
-              {/* Balance Box */}
               <div className="bg-primary border-radius-14 w-100 balance-box rounder-sm-0 padding-30 margin-b-20 text-center">
                 <h5 className="text-white fw-medium mb-2">Balance</h5>
                 <div className="f-size-10 text-gray-400 fw-semibold text-uppercase mb-2">Available Amount</div>
@@ -86,7 +83,7 @@ const ViewSupplierPay = () => {
                     <div className="iconbox bg-gray-200 rounded w-sm-40 h-sm-40">
                       <i className="icon-img icon-placeholder"></i>
                     </div>
-                    <div className="mx-2">{supplierData.name} Supplier Data</div>
+                    <div className="mx-2">{supplierData.name} Alpha Traders</div>
                   </div>
                   <div className="form-group text-center mb-3">
                     <label className="form-label text-gray-300 fw-semibold f-size-10">ENTER AMOUNT</label>
@@ -127,7 +124,6 @@ const ViewSupplierPay = () => {
             </div>
           </div>
         )}
-
         {activeTab === "history" && (
           <div className="tab-pane fade show active">
             <SupplierHistory supplierId={supplierData.id} />

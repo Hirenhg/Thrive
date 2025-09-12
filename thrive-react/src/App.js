@@ -29,6 +29,7 @@ import Kyc from './pages/Kyc/Kyc';
 import Products from './pages/Vas/Product/Products';
 import TopUp from './pages/Vas/TopUp/TopUp';
 import History from './pages/Vas/History/History';
+import PendingTransactionDetail from './pages/Balance/PendingTransactionDetail';
 
 
 function AppWrapper() {
@@ -51,7 +52,8 @@ function AppWrapper() {
         <Route path="/" element={<ProtectedRoute />}> 
           <Route index element={<Dashboard />} />
           <Route path="balance" element={<Balance />} />
-          <Route path="atm-deposits" element={<AtmDeposits />} />
+          <Route path="atm-deposits" element={<AtmDeposits />} />.
+          <Route path="pending-transaction-detail" element={<PendingTransactionDetail />} />
           <Route path="transaction-detail" element={<TransactionDetail />} />
           <Route path="suppliers" element={<Suppliers />} />
           <Route path="add-supertrader" element={<AddSuperTrader />} />

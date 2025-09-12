@@ -44,7 +44,7 @@ const Header = () => {
 
         const header = {
             headers: {
-                Authorization: `Bearer ${profileToken}`
+                'x-auth-token': profileToken
             }
         }
 
@@ -54,7 +54,6 @@ const Header = () => {
             })
             .catch((err) => {
                 console.log("Error occurred", err)
-                // Don't show alert for profile fetch errors, just log them
             })
     }
 

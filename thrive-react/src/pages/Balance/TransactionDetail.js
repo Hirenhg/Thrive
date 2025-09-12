@@ -1,93 +1,121 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import PageHeading from '../../components/PageHeading/PageHeading';
-import Pagination from '../../components/Pagination/Pagination';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import Pagination from '../../components/Pagination/Pagination'
 
-const TransactionDetail = () => {
-  const { id } = useParams();
-  const [transaction, setTransaction] = useState(null);
+const CashDepositDetail = () => {
+  const [detail, setDetail] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchTransaction = async () => {
-      setLoading(true);
-      setError('');
+    const fetchDetail = async () => {
       try {
-        // For now, fetch all and use index as id
-        const res = await axios.get('http://localhost:5000/api/dashboard/transaction-detail');
-        setTransaction(res.data[id]);
+        const res = await fetch("/api/balance/transaction-detail.json");
+        const data = await res.json();
+        setDetail(data);
       } catch (err) {
-        setError('Failed to load transaction details.');
+        console.error("Failed to load transaction detail", err);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
-    fetchTransaction();
-  }, [id]);
+    fetchDetail();
+  }, []);
 
-  if (loading) return <div className="text-center">Loading transaction details...</div>;
-  if (error) return <div className="alert alert-danger">{error}</div>;
-  if (!transaction) return <div className="text-center">No transaction found.</div>;
+  const formatCurrency = (val) =>
+    `R${val.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short"
+    });
+  };
+
+  const formatDateTime = (dateStr) => {
+    const date = new Date(dateStr);
+    return (
+      date.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }) +
+      " | " +
+      date.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit"
+      })
+    );
+  };
+
+  if (loading) return <div className="text-center">Loading...</div>;
+  if (!detail) return <div className="text-center">No data found.</div>;
 
   return (
     <div className="transaction-detail-main">
-      <div className='margin-b-20 page-heading'>
-        <PageHeading PageHeadingName={transaction.transaction} iconClassName="ico-back" iconTo="/balance"/>
+      <div className="d-flex align-items-center margin-b-20 page-heading">
+        <Link
+          className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 d-flex align-items-center justify-content-center"
+          to="/balance"
+        >
+          <i className="icon ico-back"></i>
+        </Link>
+        <h6 className="mb-0 text-primary fw-medium text-capitalize">
+          {detail.title}
+        </h6>
       </div>
       <div className="bg-white border-radius-14 w-100 contant-detail-box rounder-sm-0 d-flex flex-column justify-content-between border-ea">
         <table className="table" id="tblTransactionDetail">
           <thead>
             <tr>
               <th className="text-primary fw-medium px-0">
-                {transaction.processDate}
+                {formatDate(detail.date)}
               </th>
               <th className="mw-sm-300 text-primary fw-medium text-right text-nowrap">
-                {transaction.crAmount > 0 ? `+R${transaction.crAmount}` : `-R${transaction.drAmount}`}
+                +{formatCurrency(detail.totalAmount)}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="px-0">
-                <label>
-                  <span className="pb-1 time f-size-12 text-gray-400 fw-medium w-100 d-block">
-                    {transaction.processDate}
-                  </span>
-                  <span className="pb-1 f-size-14 text-primary fw-medium w-100 d-block line-height-18 text-capitalize text-nowrap">
-                    {transaction.transaction}
-                  </span>
-                  <span className="suppoting-text f-size-12 text-gray-400 fw-medium w-100 d-block">
-                    Balance after: R{transaction.balance}
-                  </span>
-                </label>
-              </td>
-              <td>
-                <table className="ms-auto">
-                  <tbody>
-                    <tr>
-                      <td>
-                        {transaction.crAmount > 0 ? `+R${transaction.crAmount}` : `-R${transaction.drAmount}`}
-                      </td>
-                      <td>
-                        <button className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center btn-pdf">
-                          <span className=" d-none d-sm-inline">
-                            Proof of payment
-                          </span>
-                          <i className="ico-download"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
+            {detail.transactions.map((item) => (
+              <tr key={item.id}>
+                <td className="px-0">
+                  <label>
+                    <span className="pb-1 time f-size-12 text-gray-400 fw-medium w-100 d-block">
+                      {formatDateTime(item.dateTime)}
+                    </span>
+                    <span className="pb-1 f-size-14 text-primary fw-medium w-100 d-block line-height-18 text-capitalize text-nowrap">
+                      {item.title}
+                    </span>
+                  </label>
+                </td>
+                <td className="mw-sm-300 f-size-14 text-primary fw-medium text-right text-nowrap">
+                  <table className="ms-auto">
+                    <tbody>
+                      <tr>
+                        <td className={item.amount < 0 ? "text-danger" : "text-success"}>
+                          {item.amount < 0 ? `-R${Math.abs(item.amount).toFixed(2)}` : `+R${item.amount.toFixed(2)}`}
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-outline border border-gray-200 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center btn-pdf"
+                            onClick={() => console.log("Download proof for", item.id)}
+                          >
+                            <span className="d-none d-sm-inline">Proof of payment</span>
+                            <i className="ico-download"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
-        <Pagination TotalCount="1 to 1 of 1" pgIndex="1" />
       </div>
     </div>
   );
 };
 
-export default TransactionDetail;
+export default CashDepositDetail;

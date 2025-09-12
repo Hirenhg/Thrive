@@ -9,19 +9,19 @@ const Personal = () => {
                     Personal
                 </div>
             </div>
-            <div FormName="ProfilePersonalForm" className="w-100 profile-editform bg-white">
+            <div className="w-100 profile-editform bg-white">
                 <div className="form-group margin-b-20">
-                    <label for="surname" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Surname</label>
-                    <input type='text' className="form-control f-size-12 fw-medium" readonly />
+                    <label htmlFor="surname" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Surname</label>
+                    <input type='text' className="form-control f-size-12 fw-medium" readOnly />
                 </div>
                 <div className="form-group margin-b-20">
-                    <label for="name" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Name</label>
-                    <input type='text' className="form-control f-size-12 fw-medium" readonly />
+                    <label htmlFor="name" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Name</label>
+                    <input type='text' className="form-control f-size-12 fw-medium" readOnly />
                 </div>
                 <div className="form-group">
-                    <label for="cellphone" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Cell Phone</label>
+                    <label htmlFor="cellphone" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Cell Phone</label>
                     <div className="d-flex align-items-center change-number">
-                        <input type='number' className="form-control f-size-12 fw-medium margin-r-10" readonly />
+                        <input type='number' className="form-control f-size-12 fw-medium margin-r-10" readOnly />
                         <button type="button" className="btn btn-outline border border-gray-200 mw-sm-90 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center disabled"><i className="icon ico-edit margin-r-10"></i> Change</button>
                     </div>
                 </div>

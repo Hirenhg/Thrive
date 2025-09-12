@@ -37,15 +37,15 @@ const Documents = () => {
                                                 <div className="custom-statement-form-details">
                                                     <div className="w-100" >
                                                         <div className="form-group margin-b-10">
-                                                            <label for="startDate" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Start Date</label>
+                                                            <label htmlFor="startDate" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Start Date</label>
                                                             <input type='date' className="form-control f-size-12 fw-medium" id="startDate" placeholder="DD/MM/YYYY"></input>
                                                         </div>
                                                         <div className="form-group margin-b-10">
-                                                            <label for="endDate" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">End Date</label>
+                                                            <label htmlFor="endDate" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">End Date</label>
                                                             <input type='date' className="form-control f-size-12 fw-medium" id="endData" placeholder="DD/MM/YYYY"></input>
                                                         </div>
                                                         <div className="form-group margin-b-20">
-                                                            <label for="format" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Format</label>
+                                                            <label htmlFor="format" className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Format</label>
                                                             <select className="form-select form-control f-size-12 fw-medium" id="format">
                                                                 <option value="excel">Excel</option>
                                                                 <option value="csv">Csv</option>

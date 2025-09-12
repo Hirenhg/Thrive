@@ -23,21 +23,23 @@ const AtmDeposits = () => {
                             <tr>
                                 <td className="px-0">
                                     <table>
-                                        <tr>
-                                            <td className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 px-0">
-                                                <i className="icon ico-atm"></i>
-                                            </td>
-                                            <td className="label-text">
-                                                <label>
-                                                    <span className="pb-1 f-size-14 text-primary fw-medium w-100 d-block line-height-18 text-capitalize text-nowrap">
-                                                        7.15 km away
-                                                    </span>
-                                                    <span className="suppoting-text f-size-12 text-gray-400 w-100 d-block">
-                                                        Standard Chartered Bank Ahmedabad Branch
-                                                    </span>
-                                                </label>
-                                            </td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 px-0">
+                                                    <i className="icon ico-atm"></i>
+                                                </td>
+                                                <td className="label-text">
+                                                    <label>
+                                                        <span className="pb-1 f-size-14 text-primary fw-medium w-100 d-block line-height-18 text-capitalize text-nowrap">
+                                                            7.15 km away
+                                                        </span>
+                                                        <span className="suppoting-text f-size-12 text-gray-400 w-100 d-block">
+                                                            Standard Chartered Bank Ahmedabad Branch
+                                                        </span>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </td>
                                 <td className="f-size-14 text-primary fw-medium text-nowrap">
@@ -47,21 +49,23 @@ const AtmDeposits = () => {
                             <tr>
                                 <td className="px-0">
                                     <table>
-                                        <tr>
-                                            <td className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 px-0">
-                                                <i className="icon ico-atm"></i>
-                                            </td>
-                                            <td className="label-text">
-                                                <label>
-                                                    <span className="pb-1 f-size-14 text-primary fw-medium w-100 d-block line-height-18 text-capitalize text-nowrap">
-                                                        18.45 km away
-                                                    </span>
-                                                    <span className="suppoting-text f-size-12 text-gray-400 w-100 d-block">
-                                                        GUJARAT MOBILE
-                                                    </span>
-                                                </label>
-                                            </td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 px-0">
+                                                    <i className="icon ico-atm"></i>
+                                                </td>
+                                                <td className="label-text">
+                                                    <label>
+                                                        <span className="pb-1 f-size-14 text-primary fw-medium w-100 d-block line-height-18 text-capitalize text-nowrap">
+                                                            18.45 km away
+                                                        </span>
+                                                        <span className="suppoting-text f-size-12 text-gray-400 w-100 d-block">
+                                                            GUJARAT MOBILE
+                                                        </span>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </td>
                                 <td className="f-size-14 text-primary fw-medium text-nowrap">

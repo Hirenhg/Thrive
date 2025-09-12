@@ -2461,6 +2461,16 @@ input[type=number] {
     }
 }
 
+.bank-transfer-confirm-payment-box,
+.bank-transfer-success-payment-box {
+    .payment-logo {
+        .thrive-logo:before {
+            left: auto;
+            right: -16px;
+        }
+    }
+}
+
 .supplier-info-box {
     .customer-info {
         div {

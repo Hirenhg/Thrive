@@ -1,0 +1,24 @@
+{
+  "summary": {
+    "totalAmount": 12500.75,
+    "startDate": "01 Sep 2025",
+    "endDate": "05 Sep 2025"
+  },
+  "transactions": [
+    {
+      "type": "Card Sales",
+      "date": "03 Sep 2025",
+      "totalAmount": 850.50
+    },
+    {
+      "type": "Wallet Topup",
+      "date": "04 Sep 2025",
+      "totalAmount": 2500.00
+    },
+    {
+      "type": "Card Sales",
+      "date": "05 Sep 2025",
+      "totalAmount": 950.25
+    }
+  ]
+}
