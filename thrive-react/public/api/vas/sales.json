@@ -1,0 +1,34 @@
+[
+  {
+    "tradeDate": "03 September 2025",
+    "totalSales": "R10.00",
+    "commission": "R0.25",
+    "sales": [
+      {
+        "name": "CellC Pinless Variable sales",
+        "amount": "R10.00",
+        "commission": "R0.25",
+        "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/CellC.svg"
+      }
+    ]
+  },
+  {
+    "tradeDate": "02 September 2025",
+    "totalSales": "R26.00",
+    "commission": "R0.37",
+    "sales": [
+      {
+        "name": "Electricity sales",
+        "amount": "R15.00",
+        "commission": "R0.10",
+        "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/Electricity.svg"
+      },
+      {
+        "name": "Telkom Pinless Variable sales",
+        "amount": "R11.00",
+        "commission": "R0.27",
+        "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/Telkom.svg"
+      }
+    ]
+  }
+]

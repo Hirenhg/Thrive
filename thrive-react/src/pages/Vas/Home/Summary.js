@@ -2,17 +2,16 @@
 import { Link } from 'react-router-dom';
 
 const Summary = () => {
-  // Example state, replace with real data fetching logic
   const [loadingSummaryData, setLoadingSummaryData] = React.useState(false);
   const [model, setModel] = React.useState({
     Year: new Date().getFullYear(),
-    TotalSalesAmount: 0,
-    TotalCommissionAmount: 0,
-    TotalWalletTransfers: 0,
-    AirtimeAndDataSummary: { CommissionAmountPercentage: 0, CommissionAmount: 0 },
-    ElectricitySummary: { CommissionAmountPercentage: 0, CommissionAmount: 0 },
-    EntertainmentSummary: { CommissionAmountPercentage: 0, CommissionAmount: 0 },
-    BillPaymentSummary: { CommissionAmountPercentage: 0, CommissionAmount: 0 },
+    TotalSalesAmount: "R 9,652.83",
+    TotalCommissionAmount: "R 612.64",
+    TotalWalletTransfers: "R 14,950.00",
+    AirtimeAndDataSummary: { CommissionAmountPercentage: "42%", CommissionAmount: "R 260.00" },
+    ElectricitySummary: { CommissionAmountPercentage: "42%", CommissionAmount: "R 260.00" },
+    EntertainmentSummary: { CommissionAmountPercentage: "42%", CommissionAmount: "R 260.00" },
+    BillPaymentSummary: { CommissionAmountPercentage: "42%", CommissionAmount: "R 260.00" },
   });
 
   return (
@@ -93,7 +92,6 @@ const Summary = () => {
               <div className="fw-semibold margin-b-30 text-primary">{model.Year} Commission Breakdown</div>
               <div className="d-flex flex-column flex-md-row align-items-center">
                 <div className="commission-chart margin-r-30" style={{ width: 150, height: 150 }}>
-                  {/* Chart placeholder */}
                   <canvas id="doughnutChart" width="150" height="150"></canvas>
                 </div>
                 <div className="d-grid justify-content-between summary-commission-data">

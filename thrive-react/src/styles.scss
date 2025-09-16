@@ -297,7 +297,8 @@ h5 {
     border-color: $primary-hover;
 }
 
-.btn-primary.disabled {
+.btn-primary.disabled,
+.btn-primary:disabled {
     border-color: $gray200;
     background: $gray200;
     color: $gray300;

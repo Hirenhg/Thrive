@@ -10,7 +10,7 @@ const TradingAddressDetails = () => {
       <div className="mb-2">Address: {addressDetails.address}</div>
       <div className="mb-2">City: {addressDetails.city}</div>
       <div className="mb-2">Postal Code: {addressDetails.postalCode}</div>
-      <button className="btn btn-primary w-100 rounded f-size-12 fw-medium mt-3">Continue</button>
+      <button className="btn btn-primary w-100 rounded f-size-12 fw-medium mt-3">NExt</button>
     </div>
   );
 };

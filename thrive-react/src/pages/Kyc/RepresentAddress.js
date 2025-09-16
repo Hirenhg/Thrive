@@ -33,7 +33,7 @@ const countries = [
   // Add more countries as needed
 ];
 
-const RepresentAddress = ({ NextStep, PreviousStep}) => {
+const RepresentAddress = ({ NextStep, PreviousStep }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [isAccountHolder, setIsAccountHolder] = useState(true); // Set as needed
@@ -190,7 +190,7 @@ const RepresentAddress = ({ NextStep, PreviousStep}) => {
                 </select>
               </div>
             </div>
-            <div className="form-group margin-b-10">
+            <div className="form-group margin-b-30">
               <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">Proof of Address</label>
               <div className="custom-file-input position-relative">
                 <span className={`file-upload-placeholder form-control f-size-12 fw-medium ${form.proofOfAddressName ? "file-upload-filename" : ""}`}>
@@ -228,10 +228,11 @@ const RepresentAddress = ({ NextStep, PreviousStep}) => {
                 </div>
               </div>
             )}
-          <div className="form-group d-flex align-items-center justify-content-between">
+            <div className="form-group d-flex align-items-center justify-content-between">
               <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
-              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" type="button" onClick={NextStep}>Continue</button>
-            </div> 
+              <button onClick={NextStep} type="submit" className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">
+                Next <i className="arrow-right mx-2"></i>
+              </button>            </div>
           </form>
           {/* You can implement the confirmation popup as a separate component if needed */}
           {showPopup && (

@@ -11,7 +11,7 @@ import ProtectedRoute from './protected/ProtectedRoute';
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Balance from "./pages/Balance/Balance";
 import TransactionDetail from "./pages/Balance/TransactionDetail";
-import AtmDeposits from "./pages/Balance/AtmDeposits";
+import Deposit from "./pages/Deposit/Deposit";
 import Suppliers from "./pages/Suppliers/Suppliers";
 import AddSuperTrader from "./pages/Suppliers/AddSuperTrader";
 import AddSupplier from "./pages/Suppliers/AddSupplier";
@@ -29,6 +29,7 @@ import Kyc from './pages/Kyc/Kyc';
 import Products from './pages/Vas/Product/Products';
 import TopUp from './pages/Vas/TopUp/TopUp';
 import History from './pages/Vas/History/History';
+import IndividualSales from './pages/Vas/History/IndividualSales';
 import PendingTransactionDetail from './pages/Balance/PendingTransactionDetail';
 
 
@@ -52,7 +53,7 @@ function AppWrapper() {
         <Route path="/" element={<ProtectedRoute />}> 
           <Route index element={<Dashboard />} />
           <Route path="balance" element={<Balance />} />
-          <Route path="atm-deposits" element={<AtmDeposits />} />.
+          <Route path="deposit" element={<Deposit />} />.
           <Route path="pending-transaction-detail" element={<PendingTransactionDetail />} />
           <Route path="transaction-detail" element={<TransactionDetail />} />
           <Route path="suppliers" element={<Suppliers />} />
@@ -63,12 +64,13 @@ function AppWrapper() {
           <Route path="view-supplier-pay" element={<ViewSupplierPay />} />
           <Route path="bank-transfer" element={<BankTransfer />} />
           <Route path="bank-transfer-form" element={<BankTransferForm />} />
-          <Route path="documents" element={<Documents />} />
           <Route path="profile" element={<Profile />} />
           <Route path="vas" element={<Vas />} />
           <Route path="topup" element={<TopUp />} />
           <Route path="history" element={<History/>} />
+          <Route path="individualsales" element={<IndividualSales/>} />
           <Route path="products" element={<Products />} />
+          <Route path="documents" element={<Documents />} />
           <Route path="device-subscription" element={<DeviceSubscription />} />
           <Route path="kyc" element={<Kyc />} />
         </Route>

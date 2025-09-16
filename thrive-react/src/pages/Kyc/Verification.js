@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
+import { images } from '../../config/images';
 
-const Verification = ({ NextStep, PreviousStep}) => {
+const Verification = ({ NextStep, PreviousStep }) => {
   const [form, setForm] = useState({
     IDNumber: '',
     Title: 'Mr',
@@ -50,7 +51,7 @@ const Verification = ({ NextStep, PreviousStep}) => {
       <div className="bg-white border-ea border-radius-14 padding-30 w-100 mw-sm-550 kyc-box">
         <div className="w-100 identity-details">
           <div className="margin-b-30 logo">
-            <img alt="logo" src="./assets/logo.svg" />
+            <img alt="logo" src={images.Logo} />
           </div>
           <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">Verification</h4>
           <p className="margin-b-30 text-gray-300">Identity details</p>
@@ -151,10 +152,11 @@ const Verification = ({ NextStep, PreviousStep}) => {
               </select>
               {errors.CountryOfResidence && <div className="f-size-12 pt-1 text-error">{errors.CountryOfResidence}</div>}
             </div>
-          <div className="form-group d-flex align-items-center justify-content-between">
+            <div className="form-group d-flex align-items-center justify-content-between">
               <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
-              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" type="button" onClick={NextStep}>Continue</button>
-            </div> 
+              <button onClick={NextStep} type="submit" className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">
+                Next <i className="arrow-right mx-2"></i>
+              </button>            </div>
           </form>
         </div>
       </div>

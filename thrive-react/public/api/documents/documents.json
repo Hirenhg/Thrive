@@ -1,0 +1,19 @@
+{
+  "statements": [
+    { "month": "January", "year": "2025", "path": "/files/statements/jan-2025.pdf" },
+    { "month": "December", "year": "2024", "path": "/files/statements/dec-2024.pdf" }
+  ],
+  "proofPayments": [
+    {
+      "vendor": "Rozetka",
+      "type": "Super Trader",
+      "status": "Paid",
+      "date": "21 Feb 2025",
+      "amount": "+R 10.95",
+      "path": "/files/payments/rozetka-2025.pdf"
+    }
+  ],
+  "creditNotes": [
+    { "month": "August", "year": "2023", "path": "/files/credit/aug-2023.pdf" }
+  ]
+}

@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from "react-router-dom";
+import QuickPay from '../QuickPay/QuickPay';
+import QRCode from '../QRCode/QRCode';
 
 const DashboardQuickActionDialog = ({ open, onClose }) => {
+    const [openQuickPay, setOpenQuickPay] = useState(false);
+    const [openQRCode, setOpenQRCode] = useState(false);
+   
     if (!open) return null;
     const handleNav = () => {
         if (onClose) onClose();
     };
+    const isHidden = openQuickPay || openQRCode; 
     return (
-        <div className="modal d-flex align-items-center justify-content-center" tabIndex="-1" role="dialog" style={{ background: 'rgba(0,0,0,0.3)' }}>
-            <div className="modal-dialog" role="document">
+        <>
+            <div
+                className="modal d-flex align-items-center justify-content-center"
+                tabIndex="-1"
+                role="dialog"
+                style={{
+                background: 'rgba(0,0,0,0.3)',
+                display: isHidden ? 'none !important' : 'flex'
+                }}
+            >         
+           <div className="modal-dialog" role="document">
                 <div className="modal-content">
                     <div className='quick-action-main'>
                         <div className="quick-action-dialog-block">
@@ -38,7 +53,7 @@ const DashboardQuickActionDialog = ({ open, onClose }) => {
                                             </i>
                                         </div>
                                     </NavLink>
-                                    <NavLink to="/atm-deposits" className="quick-action-group d-flex align-items-center justify-content-between" onClick={handleNav}>
+                                    <NavLink to="/deposit" className="quick-action-group d-flex align-items-center justify-content-between" onClick={handleNav}>
                                         <div className="me-2">
                                             <div className="text-primary f-size-14 fw-medium mb-1">Deposit</div>
                                             <div className="text-gray-400 f-size-12">Find your nearest ATM and Pay reference</div>
@@ -48,7 +63,7 @@ const DashboardQuickActionDialog = ({ open, onClose }) => {
                                             </i>
                                         </div>
                                     </NavLink>
-                                    <div className="quick-action-group d-flex align-items-center justify-content-between">
+                                    <NavLink onClick={() => setOpenQuickPay(true)} className="quick-action-group d-flex align-items-center justify-content-between">
                                         <div className="me-2">
                                             <div className="text-primary f-size-14 fw-medium mb-1">Quick pay</div>
                                             <div className="text-gray-400 f-size-12">Move your Thrive wallet funds to a bank account</div>
@@ -57,8 +72,8 @@ const DashboardQuickActionDialog = ({ open, onClose }) => {
                                             <i className="icon ico-quick-pay">
                                             </i>
                                         </div>
-                                    </div>
-                                    <div className="quick-action-group d-flex align-items-center justify-content-between">
+                                    </NavLink>
+                                    <NavLink onClick={() => setOpenQRCode(true)}  className="quick-action-group d-flex align-items-center justify-content-between">
                                         <div className="me-2">
                                             <div className="text-primary f-size-14 fw-medium mb-1">QR Code</div>
                                             <div className="text-gray-400 f-size-12">Access your QR code or your payment request code</div>
@@ -67,7 +82,7 @@ const DashboardQuickActionDialog = ({ open, onClose }) => {
                                             <i className="icon ico-qr">
                                             </i>
                                         </div>
-                                    </div>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +90,9 @@ const DashboardQuickActionDialog = ({ open, onClose }) => {
                 </div>
             </div>
         </div>
-    )
+        <QuickPay open={openQuickPay} onClose={() => setOpenQuickPay(false)} />
+        <QRCode open={openQRCode} onClose={() => setOpenQRCode(false)} />
+        </>)   
 }
 
 export default DashboardQuickActionDialog;

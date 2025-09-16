@@ -22,7 +22,7 @@ const Kyc = () => {
   const representativeVms = [];
   const kycDeclarationViewModel = {};
   const verificationViewModel = {};
-   const iframeURL = '';
+  const iframeURL = '';
   const kycDeclaration = {};
 
   const supportEmail = 'support@thrive.trade';
@@ -71,7 +71,7 @@ const Kyc = () => {
               <div className="form-group text-center f-size-14 fw-medium text-gray-400">
                 Need help? Contact support <br />
                 <a href={`mailto:${supportEmail}`} title={supportEmail} className="text-primary">{supportEmail}</a> or
-                <a href={`tel:${supportPhone}`} title="Contact support" className="text-primary">{supportPhone}</a>
+                <a href={`tel:${supportPhone}`} title="Contact support" className="text-primary"> {supportPhone}</a>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@ const Kyc = () => {
           <div className="bg-white border-ea border-radius-14 padding-30 w-100 mw-sm-550 kyc-box">
             <div className="w-100 verification-details">
               <div className="margin-b-30 logo">
-                  <img src={images.Logo} alt="logo" />
+                <img src={images.Logo} alt="logo" />
               </div>
               <h4 className="margin-b-10 text-primary fw-medium d-flex align-items-center justify-content-between">Verification</h4>
               <p className="margin-b-20 text-gray-300">Identification verification</p>
@@ -149,8 +149,9 @@ const Kyc = () => {
                 </div>
                 <div className="form-group d-flex align-items-center justify-content-between">
                   <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
-                  <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center" onClick={NextStep}>Next <i className="arrow-right mx-2"></i></button>
-                </div>
+                  <button onClick={NextStep} type="submit" className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">
+                    Next <i className="arrow-right mx-2"></i>
+                  </button>                </div>
               </div>
             </div>
           </div>

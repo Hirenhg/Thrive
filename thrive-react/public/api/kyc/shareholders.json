@@ -1,0 +1,46 @@
+[
+  {
+    "id": "Mitul",
+    "name": "Mitul",
+    "surname": "Sheth",
+    "identityNumber": "",
+    "cellphone": "",
+    "dob": "",
+    "country": "South Africa",
+    "director": "Yes",
+    "shares": 70
+  },
+  {
+    "id": "Jemin",
+    "name": "Jemin",
+    "surname": "Kinaj",
+    "identityNumber": "",
+    "cellphone": "",
+    "dob": "",
+    "country": "American Samoa",
+    "director": "Yes",
+    "shares": 20
+  },
+  {
+    "id": "Amanda",
+    "name": "Amanda",
+    "surname": "Wick",
+    "identityNumber": "",
+    "cellphone": "",
+    "dob": "",
+    "country": "Greenland",
+    "director": "Yes",
+    "shares": 5
+  },
+  {
+    "id": "Alex",
+    "name": "Alex",
+    "surname": "Sheth",
+    "identityNumber": "",
+    "cellphone": "",
+    "dob": "",
+    "country": "South Africa",
+    "director": "No",
+    "shares": 5
+  }
+]

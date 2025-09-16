@@ -1,6 +1,6 @@
 ﻿import React, { useState } from "react";
 
-const Representative = ({ NextStep, PreviousStep}) => {
+const Representative = ({ NextStep, PreviousStep }) => {
   const [form, setForm] = useState({
     isDirector: false,
     isShareHolder: false,
@@ -178,8 +178,9 @@ const Representative = ({ NextStep, PreviousStep}) => {
             </div>
             <div className="form-group d-flex align-items-center justify-content-between">
               <button className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10" onClick={PreviousStep}>Back</button>
-              <button className="btn btn-primary w-100 rounded f-size-12 fw-medium" type="button" onClick={NextStep}>Continue</button>
-            </div> 
+              <button onClick={NextStep} type="submit" className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center">
+                Next <i className="arrow-right mx-2"></i>
+              </button>            </div>
           </form>
           {/* You can implement the confirmation popup as a separate component if needed */}
           {showPopup && (

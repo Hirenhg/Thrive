@@ -1,6 +1,6 @@
 ﻿import React, { useState } from "react";
 
-const Iidentifii = ({}) => {
+const Iidentifii = ({ }) => {
   // These would typically come from props, context, or API
   // const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
