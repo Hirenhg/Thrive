@@ -1,21 +1,19 @@
 ﻿import React, { useEffect, useState } from "react";
 import { images } from "../../config/images";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const RepresentativeList = ({ NextStep, PreviousStep }) => {
+const RepresentativeList = ({  NextStep, PreviousStep, onAddRepresentative, onEditRepresentative }) => {
   const [shareholders, setShareholders] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("/api/kyc/shareholders.json")
+    axios.get("/api/kyc/shareholders.json")
       .then((res) => setShareholders(res.data))
       .catch((err) => console.error("Error fetching shareholders:", err));
   }, []);
 
   const handleRemove = (id) => {
     setShareholders((prev) => prev.filter((p) => p.id !== id));
+    console.warn("Implement remove in parent if needed");
   };
 
   return (
@@ -34,11 +32,10 @@ const RepresentativeList = ({ NextStep, PreviousStep }) => {
           <h4 className="margin-b-20 text-primary fw-semibold d-flex align-items-center justify-content-between">
             Directors & Shareholders
             <button
-              onClick={() => navigate("/Representative")}
+              onClick={onAddRepresentative}
               className="plus-shareholders btn btn-link text-primary p-0"
               title="Add Representative"
             >
-              + Add
             </button>
           </h4>
 
@@ -76,7 +73,6 @@ const RepresentativeList = ({ NextStep, PreviousStep }) => {
                     data-bs-parent="#accordionbody-contant"
                   >
                     <div className="accordion-body mw-sm-340 m-auto px-sm-0 pt-2">
-                      {/* Row 1 */}
                       <div className="form-group-row d-sm-flex justify-content-sm-between">
                         <div className="form-group margin-b-10 w-100 me-sm-1">
                           <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">
@@ -101,8 +97,6 @@ const RepresentativeList = ({ NextStep, PreviousStep }) => {
                           />
                         </div>
                       </div>
-
-                      {/* Row 2 */}
                       <div className="form-group-row d-sm-flex justify-content-sm-between">
                         <div className="form-group margin-b-10 w-100 me-sm-1">
                           <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">
@@ -127,8 +121,6 @@ const RepresentativeList = ({ NextStep, PreviousStep }) => {
                           />
                         </div>
                       </div>
-
-                      {/* Row 3 */}
                       <div className="form-group-row d-sm-flex justify-content-sm-between">
                         <div className="form-group margin-b-10 w-100 me-sm-1">
                           <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">
@@ -153,8 +145,6 @@ const RepresentativeList = ({ NextStep, PreviousStep }) => {
                           />
                         </div>
                       </div>
-
-                      {/* Row 4 */}
                       <div className="form-group-row d-sm-flex justify-content-sm-between">
                         <div className="form-group margin-b-10 w-100 me-sm-1">
                           <label className="form-label text-primary fw-medium mb-1 f-size-12 line-height-20">
@@ -179,23 +169,17 @@ const RepresentativeList = ({ NextStep, PreviousStep }) => {
                           />
                         </div>
                       </div>
-
-                      {/* Action buttons */}
-                      <div className="form-group d-flex align-items-center justify-content-between">
-                        {idx > 0 && (
-                          <button
-                            type="button"
-                            onClick={() => handleRemove(person.id)}
-                            className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10"
-                          >
-                            Remove
-                          </button>
-                        )}
+                     <div className="form-group d-flex align-items-center justify-content-between">
                         <button
                           type="button"
-                          onClick={() =>
-                            navigate(`/Representative?id=${person.id}`)
-                          }
+                          onClick={() => handleRemove(person.id)}
+                          className="btn btn-outline border border-gray-200 w-100 rounded f-size-12 fw-medium text-center margin-r-10"
+                        >
+                          Remove
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => onEditRepresentative(person)}
                           className="btn btn-outline border border-gray-200 bg-gray-200 text-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center"
                         >
                           Edit

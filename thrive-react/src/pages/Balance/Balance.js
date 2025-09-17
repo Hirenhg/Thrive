@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import FilterHeading from '../../components/FilterHeading/FilterHeading'
-import Pagination from '../../components/Pagination/Pagination'
-import TransactionHistoryTable from '../../components/TransactionHistoryTable/TransactionHistoryTable'
+import { useEffect, useState } from 'react';
+import FilterHeading from '../../components/FilterHeading/FilterHeading';
+import Pagination from '../../components/Pagination/Pagination';
+import TransactionHistoryTable from '../../components/TransactionHistoryTable/TransactionHistoryTable';
 import axios from 'axios';
 import PageHeading from '../../components/PageHeading/PageHeading';
 import PendingTransactions from '../../components/PendingTransactions/PendingTransactions';
@@ -17,14 +17,28 @@ const Balance = () => {
       setLoading(true);
       setError('');
       try {
-        const res = await axios.get('http://localhost:5000/api/dashboard/transaction-history');
-        const mapped = res.data.map(item => ({
+        const res = await axios.get('/api/balance/transaction-history.json');
+        const history = res.data['transactions-history'] || [];
+
+        const mapped = history.map(item => ({
           date: item.processDate,
           label: item.transaction,
           amount: item.crAmount > 0 ? item.crAmount : -item.drAmount,
-          icon: item.transaction === 'WalletTransfer' ? 'ico-wallet-transfer' : item.transaction === 'CardDeposit' ? 'ico-desposit' : 'ico-cardfees',
-          type: item.transaction === 'WalletTransfer' ? 'Withdrawal' : item.transaction === 'CardDeposit' ? 'Deposit' : 'Type',
+          balance: item.balance, 
+          icon:
+            item.transaction === 'WalletTransfer'
+              ? 'ico-wallet-transfer'
+              : item.transaction === 'CardDeposit'
+              ? 'ico-desposit'
+              : 'ico-cardfees',
+          type:
+            item.transaction === 'WalletTransfer'
+              ? 'Withdrawal'
+              : item.transaction === 'CardDeposit'
+              ? 'Deposit'
+              : 'Fee',
         }));
+
         setTransactions(mapped);
         setFilteredTransactions(mapped);
       } catch (err) {
@@ -65,11 +79,14 @@ const Balance = () => {
           ) : (
             <TransactionHistoryTable transactions={filteredTransactions} />
           )}
-          <Pagination TotalCount={`1 to ${filteredTransactions.length} of ${filteredTransactions.length}`} pgIndex={"1"} />
+          <Pagination
+            TotalCount={`1 to ${filteredTransactions.length} of ${filteredTransactions.length}`}
+            pgIndex={"1"}
+          />
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Balance
+export default Balance;

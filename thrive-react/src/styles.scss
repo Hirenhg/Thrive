@@ -1988,6 +1988,10 @@ input[type=number] {
     th {
         padding: 3px 10px;
     }
+    
+    .thead {
+        background: $gray100;
+    }
 
     td {
         border-color: $gray100;

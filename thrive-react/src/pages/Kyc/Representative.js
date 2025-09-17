@@ -1,6 +1,6 @@
-﻿import React, { useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 
-const Representative = ({ NextStep, PreviousStep }) => {
+const Representative = ({ NextStep, PreviousStep, data, onSave }) => {
   const [form, setForm] = useState({
     isDirector: false,
     isShareHolder: false,
@@ -12,8 +12,16 @@ const Representative = ({ NextStep, PreviousStep }) => {
     cellphoneNumber: "",
     dateOfBirth: "",
   });
-  const [showPopup, setShowPopup] = useState(false);
   const [sharePercentageMessage, setSharePercentageMessage] = useState("");
+
+  useEffect(() => {
+    if (data) setForm((prev) => ({ ...prev, ...data }));
+  }, [data]);
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    onSave(form);
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -29,17 +37,6 @@ const Representative = ({ NextStep, PreviousStep }) => {
     } else {
       setSharePercentageMessage("");
     }
-  };
-
-  const handleBack = (e) => {
-    e.preventDefault();
-    // Implement back navigation logic here
-  };
-
-  const handleNext = (e) => {
-    e.preventDefault();
-    // Implement next step logic here
-    setShowPopup(true);
   };
 
   return (
@@ -182,10 +179,6 @@ const Representative = ({ NextStep, PreviousStep }) => {
                 Next <i className="arrow-right mx-2"></i>
               </button>            </div>
           </form>
-          {/* You can implement the confirmation popup as a separate component if needed */}
-          {showPopup && (
-            <div className="modal">Confirmation popup here. <button onClick={() => setShowPopup(false)}>Close</button></div>
-          )}
         </div>
       </div>
     </div>

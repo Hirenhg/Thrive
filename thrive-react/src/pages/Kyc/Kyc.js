@@ -11,7 +11,7 @@ import Verification from './Verification';
 import Iidentifii from './Iidentifii';
 import { images } from '../../config/images'
 
-const Kyc = () => {
+const Kyc = ({onAddRepresentative}) => {
   const [currentStep, setCurrentStep] = useState(1);
   const businessDetailViewModel = {};
   const businessAddressViewModel = {};
@@ -24,6 +24,40 @@ const Kyc = () => {
   const verificationViewModel = {};
   const iframeURL = '';
   const kycDeclaration = {};
+
+  const [representatives, setRepresentatives] = useState([]); 
+  const [editingRep, setEditingRep] = useState(null); // for edit mode
+
+   // Add representative
+  const handleAddRepresentative = () => {
+    setEditingRep(null);       // empty form
+    setCurrentStep(6);         // Representative step
+  };
+
+  // Edit representative
+  const handleEditRepresentative = (rep) => {
+    setEditingRep(rep);        // prefill form
+    setCurrentStep(6);         // Representative step
+  };
+
+  // Save Representative
+  const handleSaveRepresentative = (form) => {
+    if (editingRep) {
+      // update existing
+      setRepresentatives((prev) =>
+        prev.map((r) => (r.id === editingRep.id ? { ...editingRep, ...form } : r))
+      );
+    } else {
+      // add new
+      setRepresentatives((prev) => [
+        ...prev,
+        { ...form, id: Date.now() }
+      ]);
+    }
+    setEditingRep(null);
+    setCurrentStep(8); // go back to RepresentativeList
+  };
+
 
   const supportEmail = 'support@thrive.trade';
   const supportPhone = '011 6363 640';
@@ -109,6 +143,8 @@ const Kyc = () => {
         <Representative
           businessRepresentativeVm={currentRepresentative}
           representatives={businessRepresentative.BusinessRepresentatives}
+          data={editingRep}
+          onSave={handleSaveRepresentative}
           NextStep={NextStep}
           PreviousStep={PreviousStep}
         />
@@ -125,6 +161,9 @@ const Kyc = () => {
           representativesVm={representativeVms}
           NextStep={NextStep}
           PreviousStep={PreviousStep}
+          shareholders={representatives}
+          onAddRepresentative={handleAddRepresentative}
+          onEditRepresentative={handleEditRepresentative}
         />
       )}
       {currentStep === 9 && (

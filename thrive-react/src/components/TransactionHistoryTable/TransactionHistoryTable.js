@@ -1,74 +1,84 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const TransactionHistoryTable = ({ transactions }) => {
-    const groupedTransactions = transactions.reduce((acc, transaction) => {
-        const date = transaction.date;
-        if (!acc[date]) {
-            acc[date] = [];
-        }
-        acc[date].push(transaction);
-        return acc;
-    }, {});
+const TransactionHistoryTable = ({ transactions = [] }) => {
+  // group by date
+  const grouped = transactions.reduce((acc, t) => {
+    acc[t.date] = acc[t.date] || [];
+    acc[t.date].push(t);
+    return acc;
+  }, {});
 
-    return (
-        <div className='transactionhistorytable_main'>
-            <table className="table transaction-history-table" id="tblBalance">
-                {Object.entries(groupedTransactions).map(([date, transactions]) => (
-                    <React.Fragment key={date}>
-                        <thead className="bg-gray-100 rounded">
-                            <tr>
-                                <th className='f-size-12 text-primary-hover text-nowrap fw-medium border-0'>{date} - End of day balance</th>
-                                <th className="w-sm-100 f-size-14 fw-bold text-primary-hover text-nowrap text-right border-0">R{transactions.reduce((sum, t) => sum + t.amount, 0).toFixed(2)}</th>
-                                <th className="w-sm-40 border-0"></th>
-                            </tr>
-                        </thead>
+  return (
+    <div className="transactionhistorytable_main">
+      <table
+        className="table transaction-history-table"
+        id="tblBalance"
+      >
+        <tbody>
+          {Object.entries(grouped).map(([date, items]) => {
+            const endOfDayBalance = items[items.length - 1]?.balance ?? 0;
+            return (
+              <React.Fragment key={date}>
+                <tr>
+                    <td colSpan={3} className="rounded px-3 py-2 thead">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <span className="f-size-12 text-primary-hover fw-medium">
+                          {date} - End of day balance
+                        </span>
+                        <span className="f-size-14 fw-bold text-primary-hover">
+                          R {endOfDayBalance.toFixed(2)}
+                        </span>
+                      </div>
+                    </td>
+                </tr>
+
+                {items.map((transaction, idx) => (
+                  <tr key={idx}>
+                    <td className="px-0">
+                      <table>
                         <tbody>
-                            {transactions.map((transaction, index) => (
-                                <tr key={index}>
-                                    <td className="px-0">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 border-0">
-                                                        <i className={`icon ${transaction.icon}`}></i>
-                                                    </td>
-                                                    <td className="label-text border-0">
-                                                        <label>
-                                                            <span className="f-size-14 text-primary-hover fw-medium w-100 d-block line-height-18 text-nowrap">
-                                                                {transaction.label}
-                                                            </span>
-                                                            <span className="date f-size-12 text-gray-400 fw-medium w-100 d-block">
-                                                                {transaction.date}
-                                                            </span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                    <td className="w-sm-100 f-size-14 text-primary-hover fw-medium text-right">
-                                        <label>
-                                            <span className="f-size-14 text-primary-hover fw-medium w-100 d-block line-height-18 text-nowrap">
-                                                {transaction.amount < 0 ? '-' : ''}R {Math.abs(transaction.amount).toFixed(2)}
-                                            </span>
-                                        </label>
-                                    </td>
-                                    <td className="w-sm-40">
-                                        <Link to="/transaction-detail">
-                                            <button type="button" className="btn btn-outline border border-gray-200 rounded d-flex align-items-center">
-                                                <i className="icon ico-arrow-right"></i>
-                                            </button>
-                                        </Link>
-                                    </td>
-                                </tr>
-                            ))}
+                          <tr>
+                            <td className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 border-0">
+                              <i className={`icon ${transaction.icon}`}></i>
+                            </td>
+                            <td className="label-text border-0">
+                              <label>
+                                <span className="f-size-14 text-primary-hover fw-medium d-block line-height-18 text-nowrap">
+                                  {transaction.label}
+                                </span>
+                                <span className="date f-size-12 text-gray-400 fw-medium d-block">
+                                  {transaction.date}
+                                </span>
+                              </label>
+                            </td>
+                          </tr>
                         </tbody>
-                    </React.Fragment>
+                      </table>
+                    </td>
+                    <td className="w-sm-100 f-size-14 text-primary-hover fw-medium text-right">
+                      <label>
+                        <span className="f-size-14 text-primary-hover fw-medium d-block line-height-18 text-nowrap">
+                          {transaction.amount < 0 ? "-" : ""}R {Math.abs(transaction.amount).toFixed(2)}
+                        </span>
+                      </label>
+                    </td>
+                    <td className="w-sm-40">
+                      <Link to="/transaction-detail">
+                        <button type="button" className="btn btn-outline border border-gray-200 rounded d-flex align-items-center">
+                          <i className="icon ico-arrow-right"></i>
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
                 ))}
-            </table>
-        </div>
-    );
+              </React.Fragment>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default TransactionHistoryTable;

@@ -30,7 +30,6 @@ const countries = [
   "Namibia",
   "Botswana",
   "Zimbabwe",
-  // Add more countries as needed
 ];
 
 const RepresentAddress = ({ NextStep, PreviousStep }) => {
@@ -55,14 +54,8 @@ const RepresentAddress = ({ NextStep, PreviousStep }) => {
     }
   };
 
-  const handleBack = (e) => {
-    e.preventDefault();
-    // Implement back navigation logic here
-  };
-
   const handleNext = (e) => {
     e.preventDefault();
-    // Implement next step logic here
     setShowPopup(true);
   };
 
