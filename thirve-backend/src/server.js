@@ -8,7 +8,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', require('../src/routes/auth'));
-app.use('/api/dashboard', require('../src/routes/dashboard'));
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

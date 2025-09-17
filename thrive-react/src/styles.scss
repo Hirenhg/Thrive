@@ -1091,7 +1091,7 @@ input[type=number] {
 /*** modal module start */
 /*** dashboard ***/
 .complete-profile-card {
-    background: linear-gradient(172.94deg, #FF5F42 0.58%, #FF44DD 61.88%, #614BFF 99.42%);
+    background: linear-gradient(172.94deg, #dedede 0.58%, #ffffff 61.88%, #fafafa 99.42%);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.10);
 
     .btn {
@@ -2207,6 +2207,11 @@ input[type=number] {
     .page-link {
         cursor: pointer;
         border-color: $gray200;
+    }
+
+    .page-item.disabled .page-link, 
+    .page-link:disabled {
+        background: $white;
     }
 
     .page-back,

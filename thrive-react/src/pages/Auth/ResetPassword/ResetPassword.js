@@ -139,14 +139,16 @@ const ResetPassword = () => {
             )}
           </div>
         </div>
-        <div className="login-link mb-3 mb-sm-0 mx-3 mx-lg-0">
-          <div className="f-size-14 text-gray-400">Already have an account? <Link to="/login" className="text-primary text-decoration">Login</Link></div>
-        </div>
-        <div className="text-center f-size-14 fw-medium text-gray-400 mx-3 mx-lg-0">
-          Need help? Contact support <br />
-          <a href="mailto:support@thrive.trade" title="support@thrive.trade" className="text-primary">support@thrive.trade</a> or
-          <a href="tel:+010 824 2979" title="Contact support" className="text-primary">010 824 2979</a>
-        </div>
+        <div className="d-flex justify-content-between w-100 py-4 px-sm-0 flex-sm-row flex-column text-center">
+            <div className="login-link mb-3 mb-sm-0 mx-3 mx-lg-0">
+              <div className="f-size-14 text-gray-400">Already have an account? <Link to="/login" className="text-primary text-decoration">Login</Link></div>
+            </div>
+            <div className="text-center f-size-14 fw-medium text-gray-400 mx-3 mx-lg-0">
+              Need help? Contact support <br />
+              <a href="mailto:support@thrive.trade" title="support@thrive.trade" className="text-primary">support@thrive.trade</a> or
+              <a href="tel:+010 824 2979" title="Contact support" className="text-primary">010 824 2979</a>
+            </div>
+          </div>
       </div>
     </div>
   );

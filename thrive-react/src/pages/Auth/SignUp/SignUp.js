@@ -38,7 +38,6 @@ const SignUp = () => {
     }
     setLoading(true);
     try {
-      // Adjust the API endpoint as per your backend
       await axios.post('http://localhost:5000/api/auth/register', {
         title: form.Title,
         name: form.Name,
@@ -136,7 +135,6 @@ const SignUp = () => {
                 <button className="btn btn-primary w-100 rounded f-size-12 fw-medium d-flex align-items-center justify-content-center" type="submit" disabled={loading}>{loading ? 'Registering...' : 'Next'} <i className="arrow-right mx-2"></i></button>
               </div>
             </div>
-            {/* OTP and other UI can be handled here if needed */}
           </form>
         </div>
         <div className="d-flex justify-content-between w-100 py-4 px-sm-0 flex-sm-row flex-column text-center">

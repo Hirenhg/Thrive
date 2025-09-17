@@ -14,7 +14,7 @@ const BankTransferPaymentResult = ({ status = "success", onClose }) => {
             {status === "success" ? (
               // Successfully Paid
               <div className="w-100 mw-sm-340 bank-transfer-block">
-                <div className="bg-white border-ea border-radius-14 padding-30 w-100 position-relative bank-transfer-success-payment-box ">
+                <div className="bg-white border-ea border-radius-14 padding-30 w-100 position-relative bank-transfer-success-payment-box">
                   <div className="text-center">
                     <div className="icon-block">
                       <i className="ico-success-payment"></i>

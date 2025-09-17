@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/yourDB', {
+    await mongoose.connect('mongodb+srv://hirengabu_db_user:<Hideandsee1.>@thrive.hxiayjf.mongodb.net/?retryWrites=true&w=majority&appName=Thrive', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

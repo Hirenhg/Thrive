@@ -28,11 +28,11 @@ const QRCode = ({ open, onClose }) => {
                 <div className="qrcode-div">
                   <img src={images.qrcodeImage} alt="qrcode" />
                 </div>
-                   <div class="btns">
-                    <button class="btn btn-outline border border-ea w-100 rounded f-size-12 fw-medium margin-b-10 d-flex align-items-center justify-content-center">
-                      Download QR code<i class="ico-download ms-2"></i>
+                   <div className="btns">
+                    <button className="btn btn-outline border border-ea w-100 rounded f-size-12 fw-medium margin-b-10 d-flex align-items-center justify-content-center">
+                      Download QR code<i className="ico-download ms-2"></i>
                     </button>
-                    <button class="btn btn-outline border border-ea w-100 rounded f-size-12 fw-medium" onClick={onClose}>Close</button>
+                    <button className="btn btn-outline border border-ea w-100 rounded f-size-12 fw-medium" onClick={onClose}>Close</button>
                   </div>
               </div>
             </div>
