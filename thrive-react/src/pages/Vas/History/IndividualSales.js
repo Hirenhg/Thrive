@@ -1,8 +1,13 @@
-﻿import React from 'react';
+﻿import React, { useState } from 'react';
 import Pagination from '../../../components/Pagination/Pagination';
+import VasShareDialog from "../../../components/Dialogs/VasShareDialog/VasShareDialog";
+import { Link } from 'react-router-dom';
 
 const IndividualSales = () => {
+    const [open, setOpen] = useState(false);
+
   return (
+    <>
     <div className="individual-sales-main">
       <div className="margin-b-20 full-grid">
         <span className="network-card ott border-radius-6 text-center" style={{ background: "#1F50B2" }}>
@@ -77,12 +82,11 @@ const IndividualSales = () => {
                         <div className="item-name f-size-10 text-gray-300 fw-medium pb-1 text-capitalize">
                           DSTV
                         </div>
-                        <a
-                          style={{ cursor: "pointer" }}
-                          className="f-size-12 fw-semibold text-underline"
+                        <Link onClick={() => setOpen(true)}
+                          className="f-size-12 fw-semibold text-underline cursor-pointer"
                         >
                           Share
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="sale-amount f-size-10 text-gray-300 fw-medium text-center">
@@ -103,7 +107,14 @@ const IndividualSales = () => {
           </div>
         </div>
       </div>
-      <Pagination TotalCount="1 to 10 of 11" pgIndex={"1" || "2"  || "3"  || "4"} />    </div>
+      <Pagination TotalCount="1 to 10 of 11" pgIndex={"1" || "2"  || "3"  || "4"} />   
+       </div>
+      <VasShareDialog
+        open={open}
+        onClose={() => setOpen(false)}
+        productType="Individual sales" 
+      />
+    </>
   );
 };
 

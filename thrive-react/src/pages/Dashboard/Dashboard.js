@@ -31,9 +31,9 @@ const Dashboard = () => {
         fetchDashboardData();
     }, []);
 
-    if (loading) {
-        return <div className="text-center p-3">Loading...</div>;
-    }
+    // if (loading) {
+    //     return <div className="text-center p-3">Loading...</div>;
+    // }
 
     return (
         <div className="dashboard-block">
@@ -44,7 +44,6 @@ const Dashboard = () => {
                 />
             </div>
             <TopBalance />
-            {/* CashlessPro Card - static */}
             <div className="card border-radius-14 padding-30 margin-b-20 cashless-payment-card border-0 mx-3 mx-sm-0">
                 <div className="cashless-payment-shape-logo">
                     <Link to="/" className="thrive-logo d-flex align-items-center justify-content-center overflow-hidden">
@@ -106,14 +105,12 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            {/* Profile Verification Card - static */}
             <div className="card border-radius-14 padding-30 margin-b-20 complete-profile-card border-0 mx-3 mx-sm-0">
                 <h4 className="mb-1 text-primary fw-bold">Complete your profile verification</h4>
                 <div className="f-size-10 text-primary fw-semibold mb-3">Your account has limited functionality without KYC verification. Complete verification to unlock all features.</div>
                 <Link className="btn btn-primary rounded f-size-12 fw-medium margin-b-20 mw-sm-150" to="/kyc">Complete now</Link>
                 <Link className="f-size-10 text-primary fw-semibold text-link" href="#">Why do I need to be verified? </Link>
             </div>
-            {/* Sales Card - dynamic */}
             <div className="row">
                 <div className="col-md-6">
                     <div className="card border-radius-14 border-ea sales-card padding-30 margin-b-20">
@@ -134,7 +131,6 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                {/* Rewards Card - dynamic */}
                 <div className="col-md-6">
                     <div className="rewards-row">
                         <div className="card border-radius-14 border-ea rewards-level-card padding-30 margin-b-30">
@@ -189,7 +185,6 @@ const Dashboard = () => {
                                                 )}
                                             </label>
 
-                                            {/* Right side labels */}
                                             {level.away && (
                                                 <span className="text-primary-hover fw-medium text-uppercase away-text">
                                                 {level.away}
@@ -209,7 +204,6 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            {/* Recent Activity - dynamic */}
             <div className="row">
                 <div className="col-md-12">
                     <div className="bg-white border-radius-14 w-100 border-ea padding-30 recent-activity-card">

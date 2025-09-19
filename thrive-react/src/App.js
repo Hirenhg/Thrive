@@ -29,7 +29,6 @@ import Kyc from './pages/Kyc/Kyc';
 import Products from './pages/Vas/Product/Products';
 import TopUp from './pages/Vas/TopUp/TopUp';
 import History from './pages/Vas/History/History';
-import IndividualSales from './pages/Vas/History/IndividualSales';
 import PendingTransactionDetail from './pages/Balance/PendingTransactionDetail';
 
 
@@ -68,7 +67,6 @@ function AppWrapper() {
           <Route path="vas" element={<Vas />} />
           <Route path="topup" element={<TopUp />} />
           <Route path="history" element={<History/>} />
-          <Route path="individualsales" element={<IndividualSales/>} />
           <Route path="products" element={<Products />} />
           <Route path="documents" element={<Documents />} />
           <Route path="device-subscription" element={<DeviceSubscription />} />

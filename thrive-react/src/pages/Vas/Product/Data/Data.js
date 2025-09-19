@@ -125,33 +125,41 @@ const Data = () => {
                   role="tablist"
                 >
                   <button
-                    className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center w-100 ${activeTab === 'sms' ? 'active' : ''}`}
-                    type="button"
-                    onClick={() => handleTabChange('sms')}
-                  >
-                    SMS Bundle
-                  </button>
-                  <button
                     className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center w-100 ${activeTab === 'data' ? 'active' : ''}`}
                     type="button"
-                    onClick={() => handleTabChange('data')}
+                    onClick={() => handleTabChange('popular')}
+                  >
+                    Popular
+                  </button>
+                 <button
+                    className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center w-100 ${activeTab === 'data' ? 'active' : ''}`}
+                    type="button"
+                    onClick={() => handleTabChange('data-bundle')}
                   >
                     Data Bundle
                   </button>
+                  <button
+                    className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center w-100 ${activeTab === 'sms' ? 'active' : ''}`}
+                    type="button"
+                    onClick={() => handleTabChange('sms-bundle')}
+                  >
+                    SMS Bundle
+                  </button>
+                 
                 </div>
 
                 <div className="tab-content">
-                  {activeTab === 'sms' && (
-                    <div className="tab-pane fade show active" id="tab-pane-0" role="tabpanel">
-                      <div className="bg-gray-100 border-gray-200 rounded-3 p-3 data-plans-block margin-b-20">
+                 {activeTab === 'popular' && (
+                    <div className="tab-pane fade show active" id="tab-pane-1" role="tabpanel">
+                          <div className="bg-gray-100 border-gray-200 rounded-3 p-3 data-plans-block margin-b-20">
                         <div className="d-grid data-card-grid data-select" role="radiogroup" aria-label="Select Data">
                           {[
-                            { value: '863', label: '50 SMS R17.00', price: 'R17' },
-                            { value: '864', label: '30 SMS R10.00', price: 'R10' },
-                            { value: '865', label: '100 SMS R30.00', price: 'R30' },
-                            { value: '889', label: '15 SMS R5.00', price: 'R5' },
+                            { value: '683', label: 'Decommissioned - Daily 35MB R5.50', price: 'R5.50' },
+                            { value: '684', label: 'Decommissioned - Daily 75MB R10', price: 'R10'},
+                            { value: '685', label: 'Decommissioned - Daily 250MB R17', price: 'R17'},
+                            { value: '889', label: 'Hourly Rush Hour 5MB R1', price: 'R1' },
                           ].map((item) => (
-                            <label className="data-radio" key={item.value} tabIndex="0">
+                            <label className="data-radio" key={item.value} tabIndex="1">
                               <input
                                 type="radio"
                                 name="MobileProductId"
@@ -169,10 +177,60 @@ const Data = () => {
                       </div>
                     </div>
                   )}
-                  {activeTab === 'data' && (
-                    <div className="tab-pane fade show active">
-                      {/* Your Data bundle content goes here */}
-                      <p>Data Plans coming here...</p>
+                    {activeTab === 'data-bundle' && (
+                    <div className="tab-pane fade show active" id="tab-pane-2" role="tabpanel">
+                          <div className="bg-gray-100 border-gray-200 rounded-3 p-3 data-plans-block margin-b-20">
+                        <div className="d-grid data-card-grid data-select" role="radiogroup" aria-label="Select Data">
+                          {[
+                            { value: '863', label: 'Decommissioned - Daily 35MB R5.50', price: 'R5.50' },
+                            { value: '864', label: 'Decommissioned - Daily 75MB R10', price: 'R10' },
+                            { value: '865', label: 'Decommissioned - Daily 250MB R17', price: 'R17' },
+                            { value: '889', label: 'Hourly Rush Hour 5MB R1', price: 'R1' },
+                          ].map((item) => (
+                            <label className="data-radio" key={item.value} tabIndex="2">
+                              <input
+                                type="radio"
+                                name="MobileProductId"
+                                value={item.value}
+                                checked={selectedProductId === item.value}
+                                onChange={handleProductChange}
+                              />
+                              <span className="card-data border-ea padding-20 border-radius-14 text-center">
+                                <div className="fw-medium f-size-20 text-primary data-value text-uppercase">{item.label}</div>
+                                <div className="f-size-20 text-primary data-amount">{item.price}</div>
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {activeTab === 'sms-bundle' && (
+                    <div className="tab-pane fade show active" id="tab-pane-3" role="tabpanel">
+                      <div className="bg-gray-100 border-gray-200 rounded-3 p-3 data-plans-block margin-b-20">
+                        <div className="d-grid data-card-grid data-select" role="radiogroup" aria-label="Select Data">
+                          {[
+                            { value: '368', label: '50 SMS R17.00', price: 'R17' },
+                            { value: '468', label: '30 SMS R10.00', price: 'R10' },
+                            { value: '568', label: '100 SMS R30.00', price: 'R30' },
+                            { value: '988', label: '15 SMS R5.00', price: 'R5' },
+                          ].map((item) => (
+                            <label className="data-radio" key={item.value} tabIndex="3">
+                              <input
+                                type="radio"
+                                name="MobileProductId"
+                                value={item.value}
+                                checked={selectedProductId === item.value}
+                                onChange={handleProductChange}
+                              />
+                              <span className="card-data border-ea padding-20 border-radius-14 text-center">
+                                <div className="fw-medium f-size-20 text-primary data-value text-uppercase">{item.label}</div>
+                                <div className="f-size-20 text-primary data-amount">{item.price}</div>
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>

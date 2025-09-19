@@ -2,13 +2,11 @@
 import { images } from '../../config/images'
 
 const NetworkProvider = () => {
-  // Example state, replace with real data fetching logic
   const [loading, setLoading] = useState(true);
   const [networkProviders, setNetworkProviders] = useState([]);
   const [selectedProviderId, setSelectedProviderId] = useState(null);
 
   useEffect(() => {
-    // Simulate data fetching
     setTimeout(() => {
       setNetworkProviders([
         { Id: 1, Description: 'Provider A', },

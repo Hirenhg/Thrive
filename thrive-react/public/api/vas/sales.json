@@ -1,34 +1,68 @@
-[
-  {
-    "tradeDate": "03 September 2025",
-    "totalSales": "R10.00",
-    "commission": "R0.25",
-    "sales": [
-      {
-        "name": "CellC Pinless Variable sales",
-        "amount": "R10.00",
-        "commission": "R0.25",
-        "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/CellC.svg"
-      }
-    ]
-  },
-  {
-    "tradeDate": "02 September 2025",
-    "totalSales": "R26.00",
-    "commission": "R0.37",
-    "sales": [
-      {
-        "name": "Electricity sales",
-        "amount": "R15.00",
-        "commission": "R0.10",
-        "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/Electricity.svg"
-      },
-      {
-        "name": "Telkom Pinless Variable sales",
-        "amount": "R11.00",
-        "commission": "R0.27",
-        "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/Telkom.svg"
-      }
-    ]
-  }
-]
+{
+  "data": [
+    {
+      "date": "2025-09-19",
+      "totalSales": 5.0,
+      "commission": 0.12,
+      "items": [
+        {
+          "name": "R5 Chat sales",
+          "network": "CellC",
+          "amount": 5.0,
+          "commission": 0.12,
+          "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/CellC.svg"
+        }
+      ]
+    },
+    {
+      "date": "2025-09-18",
+      "totalSales": 82.0,
+      "commission": 12.96,
+      "items": [
+        {
+          "name": "R5 Chat sales",
+          "network": "CellC",
+          "amount": 40.0,
+          "commission": 0.96,
+          "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/CellC.svg"
+        },
+        {
+          "name": "DSTV sales",
+          "network": "DSTV",
+          "amount": 42.0,
+          "commission": 12.0,
+          "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/DSTV.svg"
+        }
+      ]
+    },
+    {
+      "date": "2025-09-17",
+      "totalSales": 62.22,
+      "commission": 12.38,
+      "items": [
+        {
+          "name": "DSTV sales",
+          "network": "DSTV",
+          "amount": 42.22,
+          "commission": 12.0,
+          "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/DSTV.svg"
+        },
+        {
+          "name": "Electricity sales",
+          "network": "Electricity",
+          "amount": 10.0,
+          "commission": 0.13,
+          "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/Electricity.svg"
+        },
+        {
+          "name": "CellC Pinless Variable sales",
+          "network": "CellC",
+          "amount": 10.0,
+          "commission": 0.25,
+          "logo": "https://stthriveglobal.blob.core.windows.net/vasimages/profile/CellC.svg"
+        }
+      ]
+    }
+  ],
+  "totalCount": 62
+}

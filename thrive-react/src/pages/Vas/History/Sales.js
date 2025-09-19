@@ -1,212 +1,134 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React, { useEffect, useState } from "react";
 import axios from "axios";
-import FilterHeading from "../../../components/FilterHeading/FilterHeading";
-import PageHeadingIcon from "../../../components/PageHeading/PageHeadingIcon";
-import Pagination from "../../../components/Pagination/Pagination";
+import Pagination from '../../../components/Pagination/Pagination';
+import IndividualSales from "./IndividualSales";
+import { Link } from "react-router-dom";
 
-const Documents = () => {
-  const [activeTab, setActiveTab] = useState("statements");
-  const [documents, setdocuments] = useState(null);
+const Sales = () => {
+  const [salesHistory, setSalesHistory] = useState([]);
+  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [totalCount, setTotalCount] = useState(0);
+  const [showIndividual, setShowIndividual] = useState(false);
+  const [selectedSale, setSelectedSale] = useState(null);
+
 
   useEffect(() => {
-    axios
-      .get("/api/documents/documents.json") 
-      .then((res) => {
-        setdocuments(res.data);
-      })
-      .catch((err) => {
-        console.error("Error loading documents.json:", err);
-      });
+    axios.get("/api/vas/sales.json").then((res) => {
+      setSalesHistory(res.data.data);
+      setTotalCount(res.data.totalCount);
+    });
   }, []);
 
-  if (!documents) {
-    return <p className="text-center">Loading...</p>;
+  const toggleExpand = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+   if (showIndividual && selectedSale) {
+    return (
+      <IndividualSales
+        data={selectedSale}
+        onBack={() => setShowIndividual(false)}
+      />
+    );
   }
 
   return (
-    <div className="documents-main">
-      <div className="d-flex align-items-sm-center flex-column flex-sm-row justify-content-between margin-b-20 page-heading">
-        <PageHeadingIcon PageHeadingName="Documents" iconClassName="ico-documents" />
-        <div className="nav nav-pills heading-tabs bg-gray-200 p-1 rounded" id="pills-tab" role="tablist">
-          <button
-            className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center ${
-              activeTab === "statements" ? "active" : ""
-            }`}
-            type="button"
-            role="tab"
-            onClick={() => setActiveTab("statements")}
-          >
-            Statements
-          </button>
-          <button
-            className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center ${
-              activeTab === "proof-payments" ? "active" : ""
-            }`}
-            type="button"
-            role="tab"
-            onClick={() => setActiveTab("proof-payments")}
-          >
-            Proof of payments
-          </button>
-          <button
-            className={`nav-link rounded text-gray-300 f-size-12 fw-medium text-center ${
-              activeTab === "credit-notes" ? "active" : ""
-            }`}
-            type="button"
-            role="tab"
-            onClick={() => setActiveTab("credit-notes")}
-          >
-            Credit Notes
-          </button>
+    <div className="sales-main">
+      <div className="margin-b-20 text-primary fw-medium">VAS sale history</div>
+
+      <div className="vas-history-list" id="VasHistoryList">
+        <div className="history-list-content-block">
+          <ul className="history-list-title d-grid align-items-center pb-3">
+            <li className="f-size-12 text-gray-300 text-nowrap">Trade Date</li>
+            <li className="f-size-12 text-gray-300 text-nowrap text-center">
+              Total VAS Sales
+            </li>
+            <li className="f-size-12 text-gray-300 text-nowrap text-right">
+              Commission Accrued
+            </li>
+            <li></li>
+          </ul>
+        <div className="accordion-item-block mb-3">
+            {salesHistory.map((sale, index) => (
+                <div key={index} className="accordion-item border-0">
+                  <div
+                    className="accordion-header cursor-pointer"
+                    onClick={() => toggleExpand(index)}
+                  >
+                    <div className="list-item-row d-grid align-items-center">
+                      <span className="f-size-14 text-primary fw-medium text-nowrap">
+                        {new Date(sale.date).toLocaleDateString("en-GB", {
+                          day: "2-digit",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </span>
+                      <span className="f-size-12 text-gray-300 fw-medium text-center">
+                        R{sale.totalSales.toFixed(2)}
+                      </span>
+                      <span className="f-size-12 text-gray-300 fw-medium text-end">
+                        R{sale.commission.toFixed(2)}
+                      </span>
+                      <span>
+                        <button className="accordion-button border-0"></button>
+                      </span>
+                    </div>
+                  </div>
+
+                  {expandedIndex === index && (
+                    <div className="accordion-collapse">
+                      <div className="accordion-body p-3">
+                        {sale.items.map((item, i) => (
+                          <div
+                            key={i}
+                            className="sale-item d-grid align-items-center"
+                          >
+                            <div className="d-flex align-items-center">
+                              <span
+                                className="network-card border-radius-6 text-center margin-r-10"
+                                style={{ flex: "0 0 45px" }}
+                              >
+                                <img
+                                  alt={`${item.name}-logo`}
+                                  src={item.logo}
+                                  width={30}
+                                  height={30}
+                                />
+                              </span>
+                              <div className="sale-info">
+                                <div className="item-name f-size-10 text-gray-300 fw-medium pb-1 text-capitalize">
+                                  {item.name}
+                                </div>
+                                <Link className="f-size-12 fw-semibold text-underline cursor-pointer"
+                                  onClick={() => {
+                                      setSelectedSale(sale);
+                                      setShowIndividual(true);
+                                    }}
+                                >
+                                  View items
+                                </Link>
+                              </div>
+                            </div>
+                            <div className="sale-amount f-size-10 text-gray-300 fw-medium text-center">
+                              R{item.amount.toFixed(2)}
+                            </div>
+                            <div className="sale-commission f-size-10 text-gray-300 fw-medium text-end">
+                              R{item.commission.toFixed(2)}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                
+              </div>
+            ))}
+          </div>
+          <Pagination TotalCount="1 to 10 of 11" pgIndex={"1" || "2"  || "3"  || "4"} />  
         </div>
-      </div>
-
-      <div className="tab-content" id="pills-tabContent">
-        {/* Statements Tab */}
-        {activeTab === "statements" && (
-          <div className="tab-pane fade show active" role="tabpanel">
-            <div className="bg-white border-radius-14 w-100 contant-detail-box document-detail-box rounder-sm-0 border-ea">
-              <div className="d-flex flex-wrap justify-content-between">
-                {/* Statements List */}
-                <div className="statement-list-col">
-                  <div className="statement-list-heading d-flex justify-content-between align-items-center margin-b-20">
-                    <h6 className="mb-0 text-primary fw-medium text-capitalize">
-                      Statements
-                    </h6>
-                  </div>
-                  <div className="statement-list-contant">
-                    <ul className="list-group">
-                      {documents.statements.map((statement, i) => (
-                        <li
-                          key={i}
-                          className="list-group-item d-flex align-items-center justify-content-between"
-                        >
-                          <div className="d-flex align-items-center">
-                            <div className="bg-gray-100 rounded iconbox w-sm-40 margin-r-10">
-                              <i className="ico-invoice"></i>
-                            </div>
-                            <span className="f-size-14 text-primary fw-medium w-100 d-block line-height-18 text-nowrap">
-                              {statement.month} {statement.year}
-                            </span>
-                          </div>
-                          <a
-                            href={statement.path}
-                            download
-                            className="btn btn-outline border border-gray-200 rounded text-uppercase f-size-12 fw-medium d-flex align-items-center justify-content-center btn-pdf"
-                          >
-                            <span className="d-none d-sm-inline">Pdf</span>{" "}
-                            <i className="ico-download"></i>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Proof of Payments Tab */}
-        {activeTab === "proof-payments" && (
-          <div className="tab-pane fade show active" role="tabpanel">
-            <div className="bg-white border-radius-14 w-100 contant-detail-box document-detail-box rounder-sm-0 border-ea">
-              <FilterHeading FilterHeadingName="Proof of payments" showSelect={false} />
-              <table className="table margin-b-20 border-t" id="tblPOPList">
-                <tbody>
-                  {documents.proofPayments.map((payment, i) => (
-                    <tr key={i}>
-                      <td className="px-0">
-                        <table>
-                          <tbody>
-                            <tr>
-                              <td className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0">
-                                <i className="icon-img icon-placeholder"></i>
-                              </td>
-                              <td className="document-info">
-                                <span className="f-size-14 text-primary-hover fw-medium w-100 d-block line-height-18 text-nowrap">
-                                  {payment.vendor}
-                                </span>
-                                <p className="d-flex align-items-sm-center flex-column flex-sm-row pt-1 mb-0">
-                                  <label className="bg-gray-200 text-primary-hover f-size-8 fw-medium text-uppercase text-nowrap suppliers-tag">
-                                    {payment.type}
-                                  </label>
-                                  <span className="date f-size-10 text-gray-400 fw-medium w-100 d-block">
-                                    {payment.status} – {payment.date}
-                                  </span>
-                                </p>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </td>
-                      <td className="f-size-12 text-primary fw-medium text-right payment-amount text-nowrap">
-                        {payment.amount}
-                      </td>
-                      <td className="w-sm-75 m-width-auto">
-                        <button className="btn btn-outline border border-gray-200 rounded text-uppercase f-size-12 fw-medium d-flex align-items-center justify-content-center btn-pdf">
-                          <span className="d-none d-sm-inline">Pdf</span>
-                          <i className="ico-download"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <Pagination
-                TotalCount={`1 to ${documents.proofPayments.length} of ${documents.proofPayments.length}`}
-                pgIndex={"1"}
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Credit Notes Tab */}
-        {activeTab === "credit-notes" && (
-          <div className="tab-pane fade show active" role="tabpanel">
-            <div className="bg-white border-radius-14 w-100 contant-detail-box document-detail-box rounder-sm-0 border-ea">
-              <div className="d-flex flex-wrap justify-content-between">
-                <div className="statement-list-col">
-                  <div className="statement-list-heading d-flex justify-content-between align-items-center margin-b-20">
-                    <h6 className="mb-0 text-primary fw-medium text-capitalize">
-                      Credit Notes
-                    </h6>
-                  </div>
-                  <div className="statement-list-contant">
-                    <ul className="list-group">
-                      {documents.creditNotes.map((note, i) => (
-                        <li
-                          key={i}
-                          className="list-group-item d-flex align-items-center justify-content-between"
-                        >
-                          <div className="d-flex align-items-center">
-                            <div className="bg-gray-100 rounded iconbox w-sm-40 margin-r-10">
-                              <i className="ico-invoice"></i>
-                            </div>
-                            <span className="f-size-14 text-primary fw-medium w-100 d-block line-height-18 text-nowrap">
-                              {note.month} {note.year}
-                            </span>
-                          </div>
-                          <a
-                            href={note.path}
-                            download
-                            className="btn btn-outline border border-gray-200 rounded text-uppercase f-size-12 fw-medium d-flex align-items-center justify-content-center btn-pdf"
-                          >
-                            <span className="d-none d-sm-inline">Pdf</span>
-                            <i className="ico-download"></i>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
-export default Documents;
+export default Sales;

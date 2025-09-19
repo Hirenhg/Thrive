@@ -71,9 +71,10 @@ POST http://localhost:5000/api/auth/register
 ```json
 POST http://localhost:5000/api/auth/login
 {
-  "email": "hiren@example.com",
+  "email": "hiren@example.com" "hiren@root.com", 
   "password": "123456"
 }
+
 ```
 
 ## Features Implemented

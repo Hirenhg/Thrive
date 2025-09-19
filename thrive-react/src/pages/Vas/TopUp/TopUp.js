@@ -11,9 +11,8 @@ const TopUp = () => {
       <div className="d-flex align-items-sm-center flex-column flex-sm-row justify-content-between margin-b-20 page-heading">
         <div className="d-flex align-items-center">
           <div
-            className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0 d-flex align-items-center justify-content-center"
+            className="bg-gray-200 rounded iconbox w-sm-40 margin-r-10 p-0 d-flex align-items-center justify-content-center cursor-pointer"
             onClick={handleBackClicked}
-            style={{ cursor: "pointer" }}
           >
             <i className="icon ico-back"></i>
           </div>

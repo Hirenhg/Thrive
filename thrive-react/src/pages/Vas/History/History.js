@@ -63,7 +63,6 @@ const VasHistory = () => {
               </form>
             </div>
           </div>
-          {/* Individual Sales Section */}
           <div className="vas-feature-col">
             <div className="flex-grow-1 d-flex flex-column">
               <div className="nav nav-pills detail-tabs bg-gray-200 p-1 rounded margin-b-30">

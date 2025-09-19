@@ -1,4 +1,4 @@
-require('dotenv').config(); // load .env (local dev ke liye)
+require('dotenv').config(); // load .env
 
 const express = require('express');
 const connectDB = require('./database/config/db');
@@ -14,8 +14,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/auth', require('./routes/auth'));
+app.use('/api/auth', require('./src/routes/auth'));
 
-// Use Render's port or fallback to 5000
+// Use PORT from .env or fallback to 5000
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

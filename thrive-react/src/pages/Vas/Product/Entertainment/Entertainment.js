@@ -63,6 +63,7 @@ const Entertainment = () => {
                       <img
                         alt="Lotto Star"
                         src="https://stthriveglobal.blob.core.windows.net/vasimages/banner/Lottostar.svg"
+                        Style={"object-fit: contain"}
                       />
                     </a>
                   </span>

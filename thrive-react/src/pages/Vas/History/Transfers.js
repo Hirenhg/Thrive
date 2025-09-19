@@ -13,6 +13,9 @@ const Transfers = () => {
 
   return (
     <div className="vas-history-list" id="VasTransferHistoryList">
+    <div className="margin-b-20 text-primary fw-medium">
+        VAS transfer history
+    </div>
       <div className="history-list-content-block">
         <div className="history-list-data">
           <ul className="history-list-title d-grid align-items-center pb-3">

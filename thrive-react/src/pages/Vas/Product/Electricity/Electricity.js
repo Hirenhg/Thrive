@@ -7,7 +7,7 @@ const Electricity = () => {
         Electricity
       </h6>
      <div className="divider margin-b-20"></div>
-      <form method="post">
+      <div>
         <div className="form-contant">
           <div className="margin-b-20 text-primary f-size-14">
             Enter detail below
@@ -65,7 +65,7 @@ const Electricity = () => {
             </button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

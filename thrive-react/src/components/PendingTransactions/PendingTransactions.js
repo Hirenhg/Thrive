@@ -13,7 +13,7 @@ const PendingTransactions = () => {
         setSummary(res.data.summary);
         setTransactions(res.data.transactions);
       } catch (err) {
-        console.error("Error loading pending transactions", err);
+      console.error("Error loading pending transactions", err);
       }
     };
     fetchData();
@@ -23,8 +23,6 @@ const PendingTransactions = () => {
   return (
     <div className="bg-white border-radius-14 w-100 balance-pending-trans-box rounder-sm-0 padding-30 border-ea margin-b-20">
       <h6 className="margin-b-20 text-capitalize">pending transactions</h6>
-
-      {/* Summary section */}
       {summary && (
         <div className="d-flex align-items-sm-center flex-column flex-sm-row justify-content-between">
           <div className="pending-b-col margin-b-20">
@@ -47,7 +45,6 @@ const PendingTransactions = () => {
         </div>
       )}
 
-      {/* Transactions table */}
       <div className="pending-trans-block">
         <div className="table-responsive">
           <table className="table pending-trans-table mb-0">
@@ -95,11 +92,14 @@ const PendingTransactions = () => {
                   </tr>
                 ))
               ) : (
-                <tr>
+                <>
+                <tr></tr>
+                {/* <tr>
                   <td colSpan="3" className="text-center text-gray-400 f-size-12">
                     No pending transactions found.
                   </td>
-                </tr>
+                </tr> */}
+                </>
               )}
             </tbody>
           </table>
